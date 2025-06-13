@@ -1,0 +1,18 @@
+:host {
+  .table-container {
+    position: relative;
+    min-height: 200px;
+    z-index: 1;
+
+    .table-content {
+      overflow-x: auto;
+    }
+  }
+
+  .table-column-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+}

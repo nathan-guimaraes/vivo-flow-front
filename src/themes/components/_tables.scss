@@ -1,0 +1,59 @@
+$table-cell-padding-y: 5px;
+$table-cell-padding-x: 15px;
+$table-cell-padding-y-sm: 2.5px;
+$table-cell-padding-x-sm: 7.5px;
+
+$table-cell-vertical-align: top;
+
+$table-color: var(--#{$prefix}body-color);
+$table-bg: transparent;
+$table-accent-bg: transparent;
+
+$table-th-font-weight: null;
+
+$table-striped-color: $table-color;
+$table-striped-bg-factor: 1;
+$table-striped-bg: rgba($gray-100, $table-striped-bg-factor);
+
+$table-active-color: $table-color;
+$table-active-bg-factor: 0.1;
+$table-active-bg: rgba($black, $table-active-bg-factor);
+
+$table-hover-color: $table-color;
+$table-hover-bg-factor: 0.075;
+$table-hover-bg: rgba($black, $table-hover-bg-factor);
+
+$table-border-factor: 0.1;
+$table-border-width: $border-width;
+$table-border-color: var(--#{$prefix}border-color);
+
+$table-striped-order: odd;
+$table-striped-columns-order: even;
+
+$table-group-separator-color: currentcolor;
+
+$table-caption-color: $text-muted;
+
+$table-bg-scale: -80%;
+
+.custom-theme {
+  .table {
+    & > thead {
+      & > tr {
+        --color: var(
+          --#{$prefix}table-header-color,
+          var(--#{$prefix}table-color)
+        );
+        color: var(--color);
+
+        --table-sort-header-arrow-size: 10px;
+      }
+    }
+
+    td,
+    th {
+      height: 50px;
+      vertical-align: middle;
+    }
+  }
+}

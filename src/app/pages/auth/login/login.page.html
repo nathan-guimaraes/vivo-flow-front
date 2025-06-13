@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-body p-6">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="row gy-5">
+        <div class="col-12">
+          <app-field label="{{ 'login.form.login.label' | translate }}">
+            <app-select-box
+              formControlName="login"
+              [dataSource]="userDataSource"
+              valueExpr="login"
+              displayExpr="name"
+              [searchModeEnabled]="true"
+              placeholder="{{ 'login.form.login.placeholder' | translate }}"
+              [invalid]="!!(submitted && f.login.errors)"
+            ></app-select-box>
+
+            <app-field-error-container *ngIf="!!(submitted && f.login.errors)">
+              <app-field-error-item *ngIf="!!f.login.errors.required">
+                {{ 'login.form.login.validation.required' | translate }}
+              </app-field-error-item>
+            </app-field-error-container>
+          </app-field>
+        </div>
+
+        <div class="col-12 d-flex justify-content-end">
+          <button type="submit" class="btn btn-primary-accent btn-lg">
+            {{ 'login.actions.signin' | translate }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

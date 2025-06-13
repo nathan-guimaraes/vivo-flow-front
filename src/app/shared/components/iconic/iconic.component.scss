@@ -1,0 +1,40 @@
+:host {
+  --internal-size: var(--iconic-size, var(--iconic-size-default, 1em));
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--internal-size);
+  height: var(--internal-size);
+  min-width: var(--internal-size);
+  min-height: var(--internal-size);
+  font-size: var(--internal-size);
+  box-sizing: content-box;
+
+  .icon-instance {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: unset;
+    line-height: 1;
+
+    --fill-color: var(--iconic-color, var(--color));
+
+    width: 100%;
+    height: 100%;
+    color: var(--fill-color);
+    fill: var(--fill-color);
+
+    svg {
+      --spacing: var(--iconic-spacing, 0px);
+      width: calc(100% - var(--spacing));
+      height: calc(100% - var(--spacing));
+    }
+  }
+
+  img.icon-instance {
+    object-fit: contain;
+    object-position: center center;
+  }
+}

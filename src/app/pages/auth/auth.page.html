@@ -1,0 +1,25 @@
+<ng-scrollbar>
+  <div class="my-5 scroll-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-5">
+          <div class="text-center mb-5">
+            <a routerLink="/" class="auth-logo mb-5 d-block">
+              <div
+                class="logo d-flex align-items-center justify-content-center"
+              >
+                <img src="assets/images/logo-vivo-flow.svg" />
+              </div>
+            </a>
+          </div>
+
+          <router-outlet></router-outlet>
+
+          <div class="mt-7 text-center">
+            <p>© {{year}} {{'footer.text' | translate}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-scrollbar>

@@ -1,0 +1,169 @@
+$input-btn-padding-y: 7px;
+$input-btn-padding-x: 10px;
+$input-btn-font-family: null;
+$input-btn-font-size: $font-size-sm;
+$input-btn-line-height: $line-height-base;
+
+$input-btn-focus-width: 2.5px;
+$input-btn-focus-color-opacity: 0.25;
+$input-btn-focus-color: rgba(
+  $component-active-bg,
+  $input-btn-focus-color-opacity
+);
+$input-btn-focus-blur: 0;
+$input-btn-focus-box-shadow: 0 0 $input-btn-focus-blur $input-btn-focus-width
+  $input-btn-focus-color;
+
+$input-btn-padding-y-sm: 2.5px;
+$input-btn-padding-x-sm: 5px;
+$input-btn-font-size-sm: $font-size-sm;
+
+$input-btn-padding-y-lg: 10px;
+$input-btn-padding-x-lg: 25px;
+$input-btn-font-size-lg: $font-size-base;
+
+$input-btn-border-width: $border-width;
+
+// #region Form control
+$input-padding-y: $input-btn-padding-y;
+$input-padding-x: var(--#{$prefix}input-padding-x);
+$input-font-family: $input-btn-font-family;
+$input-font-size: $input-btn-font-size;
+$input-font-weight: $font-weight-base;
+$input-line-height: $input-btn-line-height;
+
+$input-padding-y-sm: $input-btn-padding-y-sm;
+$input-padding-x-sm: $input-btn-padding-x-sm;
+$input-font-size-sm: $input-btn-font-size-sm;
+
+$input-padding-y-lg: $input-btn-padding-y-lg;
+$input-padding-x-lg: $input-btn-padding-x-lg;
+$input-font-size-lg: $input-btn-font-size-lg;
+
+$input-bg: var(--#{$prefix}input-bg);
+$input-disabled-color: null;
+$input-disabled-bg: var(--#{$prefix}input-disabled-bg);
+$input-disabled-border-color: null;
+
+$input-color: var(--#{$prefix}input-color);
+$input-border-color: var(--#{$prefix}input-border-color);
+$input-border-width: $input-btn-border-width;
+$input-box-shadow: $box-shadow-inset;
+
+$input-border-radius: $border-radius;
+$input-border-radius-sm: $border-radius-sm;
+$input-border-radius-lg: $border-radius-lg;
+
+$input-focus-bg: var(--#{$prefix}input-focus-bg, #{$input-bg});
+$input-focus-border-color: var(--#{$prefix}input-focus-border-color);
+$input-focus-color: var(--#{$prefix}input-focus-color, #{$input-color});
+$input-focus-width: $input-btn-focus-width;
+$input-focus-box-shadow: var(--#{$prefix}input-focus-box-shadow);
+
+$input-placeholder-color: var(--#{$prefix}input-placeholder-color);
+$input-plaintext-color: $body-color;
+
+$input-height-border: $input-border-width * 2;
+
+$input-height-inner: add($input-line-height * 1em, $input-padding-y * 2);
+$input-height-inner-half: add($input-line-height * 0.5em, $input-padding-y);
+$input-height-inner-quarter: add(
+  $input-line-height * 0.25em,
+  $input-padding-y * 0.5
+);
+
+$input-height: add(
+  $input-line-height * 1em,
+  add($input-padding-y * 2, $input-height-border, false)
+);
+$input-height-sm: add(
+  $input-line-height * 1em,
+  add($input-padding-y-sm * 2, $input-height-border, false)
+);
+$input-height-lg: add(
+  $input-line-height * 1em,
+  add($input-padding-y-lg * 2, $input-height-border, false)
+);
+
+$input-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+$form-color-width: 30px;
+
+$input-group-addon-padding-y: $input-padding-y;
+$input-group-addon-padding-x: 6px;
+$input-group-addon-font-weight: $input-font-weight;
+$input-group-addon-color: $input-color;
+$input-group-addon-bg: $gray-200;
+$input-group-addon-border-color: $input-border-color;
+// #endregion
+
+// #region Form Label
+$form-label-margin-bottom: 5px;
+// #endregion
+
+// #region Form Check
+$form-check-input-width: 1em;
+$form-check-min-height: $font-size-base * $line-height-base;
+$form-check-padding-start: $form-check-input-width + 0.5em;
+$form-check-margin-bottom: 1.25px;
+$form-check-label-color: null;
+$form-check-label-cursor: null;
+$form-check-transition: null;
+
+$form-check-input-active-filter: brightness(90%);
+
+$form-check-input-bg: $input-bg;
+$form-check-input-border: 2px solid $gray-400;
+$form-check-input-border-radius: 50%;
+$form-check-radio-border-radius: 50%;
+$form-check-input-focus-border: $input-focus-border-color;
+$form-check-input-focus-box-shadow: 0 0 $input-btn-focus-blur
+  $input-btn-focus-width $success-light;
+
+$form-check-input-checked-color: $success;
+$form-check-input-checked-bg-color: $success-light;
+$form-check-input-checked-border-color: $success;
+$form-check-input-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-checked-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/></svg>");
+$form-check-radio-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{$form-check-input-checked-color}'/></svg>");
+
+$form-check-input-indeterminate-color: $success;
+$form-check-input-indeterminate-bg-color: $success-light;
+$form-check-input-indeterminate-border-color: $success;
+$form-check-input-indeterminate-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-indeterminate-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>");
+
+$form-check-input-disabled-opacity: 0.5;
+$form-check-label-disabled-opacity: $form-check-input-disabled-opacity;
+$form-check-btn-check-disabled-opacity: $btn-disabled-opacity;
+
+$form-check-inline-margin-end: 10px;
+
+$form-switch-width: 1.875rem;
+$form-switch-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='4' fill='#{$white}' stroke='#{$gray-200}' stroke-width='10%'/></svg>");
+$form-switch-checked-bg-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='4' fill='#{$white}'/></svg>");
+$form-switch-focus-bg-image: $form-switch-bg-image;
+// #endregion
+
+// #region Form Feedback
+$form-feedback-margin-top: $form-text-margin-top;
+$form-feedback-font-size: $form-text-font-size;
+$form-feedback-font-style: $form-text-font-style;
+$form-feedback-valid-color: $success;
+$form-feedback-invalid-color: $success;
+
+$enable-validation-icons: false;
+// #endregion
+
+.custom-theme {
+  .form-switch {
+    .form-check-input {
+      height: $form-switch-width * 0.5;
+      border-width: 1px;
+      background-size: contain;
+      background-color: $gray-100;
+
+      &:checked {
+        background-color: $success;
+      }
+    }
+  }
+}

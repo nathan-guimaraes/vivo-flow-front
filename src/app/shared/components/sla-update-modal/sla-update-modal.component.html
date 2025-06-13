@@ -1,0 +1,47 @@
+<app-modal-template modalTitle="sla-update-modal.title">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="row mt-6">
+      <div class="col mb-3">
+        <app-field label="{{ 'sla-update-modal.form.sla.label' | translate }}">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="{{ 'defaults.placeholders.input' | translate }}"
+            [formControl]="f.time"
+            [ngClass]="{ 'is-invalid': !!(submitted && f.time.errors) }"
+          />
+
+          <app-field-error-container *ngIf="submitted && f.time.errors">
+            <app-field-error-item *ngIf="f.time.errors.required">
+              {{ "sla-update-modal.form.sla.validation.required" | translate }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+      <div class="col mb-3">
+        <app-field label="{{ 'sla-update-modal.form.type.label' | translate }}">
+          <app-select-box
+            [dataSource]="typesDataSource"
+            valueExpr="value"
+            displayExpr="label"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [formControl]="f.type"
+            [invalid]="!!(submitted && f.type.errors)"
+          ></app-select-box>
+
+          <app-field-error-container *ngIf="submitted && f.type.errors">
+            <app-field-error-item *ngIf="f.type.errors.required">
+              {{ "sla-update-modal.form.type.validation.required" | translate }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary-accent btn-lg mt-6">
+          {{ "sla-update-modal.actions.save" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</app-modal-template>

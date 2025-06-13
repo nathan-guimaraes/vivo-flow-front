@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 270px;
+  border-right: var(--border);
+  border-bottom: var(--border);
+
+  .skills-box-header {
+    background-color: var(--bs-gray-100);
+    border-bottom: var(--border);
+
+    .dropdown-items {
+      --dropdown-select-items-dropdown-width: 172px;
+    }
+  }
+
+  .skills-box-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 0;
+
+    .scrollbar {
+      flex: 1;
+      height: 100%;
+    }
+
+    .principal-indicator {
+      display: inline;
+      line-height: 20px;
+    }
+  }
+}

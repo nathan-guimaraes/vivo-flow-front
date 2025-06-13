@@ -1,0 +1,22 @@
+//Core files
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "variables";
+
+@import "components/reboot";
+@import "components/grid";
+@import "components/tables";
+@import "components/forms";
+@import "components/buttons";
+@import "components/dropdown";
+@import "components/nav";
+@import "components/card";
+@import "components/pagination";
+@import "components/alert";
+@import "components/list-group";
+@import "components/modal";
+@import "components/tooltip";
+@import "components/spinners";
+@import "components/offcanvas";
+
+@import "../../node_modules/bootstrap/scss/bootstrap";

@@ -1,0 +1,33 @@
+$offcanvas-padding-y: $spacer * 0.8;
+$offcanvas-padding-x: $spacer;
+$offcanvas-horizontal-width: 400px;
+$offcanvas-vertical-height: 30vh;
+$offcanvas-transition-duration: 0.3s;
+$offcanvas-border-color: null;
+$offcanvas-border-width: 0px;
+$offcanvas-title-line-height: 30px;
+$offcanvas-bg-color: $modal-content-bg;
+$offcanvas-color: $modal-content-color;
+$offcanvas-box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.25);
+$offcanvas-backdrop-bg: $modal-backdrop-bg;
+$offcanvas-backdrop-opacity: $modal-backdrop-opacity;
+
+.custom-theme {
+  .offcanvas-md {
+    background-color: var(--bs-offcanvas-bg) !important;
+
+    --bs-offcanvas-width: 690px;
+  }
+
+  .offcanvas-lg {
+    background-color: var(--bs-offcanvas-bg) !important;
+
+    --bs-offcanvas-width: 750px;
+  }
+
+  .offcanvas-xl {
+    background-color: var(--bs-offcanvas-bg) !important;
+
+    --bs-offcanvas-width: 920px;
+  }
+}

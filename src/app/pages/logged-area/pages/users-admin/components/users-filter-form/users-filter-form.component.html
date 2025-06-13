@@ -1,0 +1,202 @@
+<div [formGroup]="formGroup" class="row gy-3">
+  <div class="col-12">
+    <app-select-box
+      formControlName="logins"
+      class="filter"
+      [dataSource]="usersDataSource"
+      valueExpr="login"
+      displayExpr="login"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{ 'users-filter-form.form.login.placeholder' | translate }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      formControlName="names"
+      class="filter"
+      [dataSource]="usersDataSource"
+      valueExpr="name"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{ 'users-filter-form.form.user.placeholder' | translate }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      formControlName="supervisors"
+      class="filter"
+      [dataSource]="supervisorsDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'users-filter-form.form.supervisor.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      formControlName="profiles"
+      class="filter"
+      [dataSource]="profileDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'users-filter-form.form.profile.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      formControlName="towers"
+      class="filter"
+      [dataSource]="towerDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{ 'users-filter-form.form.tower.placeholder' | translate }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      formControlName="islands"
+      class="filter"
+      [dataSource]="islandDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'users-filter-form.form.island.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      formControlName="subislands"
+      class="filter"
+      [dataSource]="subislandDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'users-filter-form.form.subisland.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      formControlName="subjects"
+      class="filter"
+      [dataSource]="subjectDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'users-filter-form.form.subject.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      formControlName="segments"
+      class="filter"
+      [dataSource]="segmentDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'users-filter-form.form.segment.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      formControlName="suppliers"
+      class="filter"
+      [dataSource]="supplierDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'users-filter-form.form.supplier.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      formControlName="statuses"
+      class="filter"
+      [dataSource]="statusDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'users-filter-form.form.status.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+
+  <div class="col-12 d-flex justify-content-end">
+    <button
+      type="button"
+      class="btn btn-secondary-accent btn-lg"
+      (click)="formGroup.reset()"
+    >
+      {{ "defaults.actions.clear" | translate }}
+    </button>
+  </div>
+</div>

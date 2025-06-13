@@ -1,0 +1,53 @@
+<header class="header">
+  <div
+    class="header-top d-flex align-items-center justify-content-center flex-row"
+  >
+    <img class="logo" src="assets/images/logo-vivo-flow.svg" />
+  </div>
+
+  <div class="header-bottom bg-primary">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-auto gx-0">
+          <ul *ngIf="!!navItems?.length" class="nav align-items-center">
+            <li *ngFor="let item of navItems" class="nav-item">
+              <a
+                class="item-link nav-link"
+                [routerLink]="[item.path]"
+                [routerLinkActive]="'active'"
+              >
+                {{ item.text | translate }}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-auto ms-auto">
+          <div class="row">
+            <div class="col-auto border-end" *ngIf="!!btnGobackEnabled">
+              <button
+                type="button"
+                class="btn-goback btn btn-link d-flex align-items-center justify-content-center fs-md"
+                (click)="onBtnGobackClick()"
+              >
+                <app-iconic class="me-3" icon="arrow-left"></app-iconic>
+
+                {{ "header.actions.goback" | translate }}
+              </button>
+            </div>
+
+            <div class="col-auto">
+              <button
+                type="button"
+                class="btn-goback btn btn-link d-flex align-items-center justify-content-center fs-md"
+                (click)="onBtnSignOutClick()"
+              >
+                {{ "defaults.actions.signout" | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

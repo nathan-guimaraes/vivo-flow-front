@@ -1,0 +1,27 @@
+:host {
+  .parameters-box-list {
+    --border: var(--bs-border-width) solid var(--bs-border-color);
+
+    border-top: var(--border);
+    border-left: var(--border);
+
+    .parameters-box {
+      display: flex;
+      flex-direction: column;
+      border-right: var(--border);
+      border-bottom: var(--border);
+
+      .box-header {
+        background-color: var(--bs-gray-100);
+        border-bottom: var(--border);
+      }
+
+      .box-body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        height: 0;
+      }
+    }
+  }
+}

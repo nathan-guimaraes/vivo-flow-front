@@ -1,0 +1,41 @@
+<div class="container my-10">
+  <div class="row gy-8 mb-7 align-items-center">
+    <div class="col-auto">
+      <h2 class="text-accent m-0">{{ 'system-admin.title' | translate }}</h2>
+    </div>
+
+    <div *ngIf="canDownloadLogReport | async" class="col-auto ms-auto">
+      <app-iconic
+        class="pointer fs-xl"
+        appHoverClass="text-accent"
+        icon="download"
+        ngbTooltip="{{ 'defaults.actions.export' | translate }}"
+        (click)="onBtnExportClick()"
+      ></app-iconic>
+    </div>
+
+    <div class="col-12">
+      <ul class="list-group list-group-flush border-top border-bottom">
+        <li class="list-group-item px-0 py-4" *ngFor="let item of itemList">
+          <div class="d-flex">
+            <div class="">
+              <h4 class="text-primary mb-2">{{ item.title | translate }}</h4>
+
+              <span class="text-black"> {{ item.subtitle | translate }} </span>
+            </div>
+
+            <div class="ms-auto d-flex align-items-center">
+              <button
+                type="button"
+                class="btn btn-secondary-accent btn-action"
+                (click)="item.onClick?.()"
+              >
+                {{ item.button | translate }}
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<app-modal-template modalTitle="users-status-edit-modal.title">
+  <ngb-alert type="custom-warning" [dismissible]="false">
+    <div class="row">
+      <div class="col-auto">
+        <app-iconic
+          class="highlight-icon text-accent"
+          icon="warning"
+        ></app-iconic>
+      </div>
+
+      <div class="col">
+        {{
+          "users-status-edit-modal.warnings.usersWithDifferentStatus"
+            | translate
+        }}
+      </div>
+    </div>
+  </ngb-alert>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <app-field
+          label="{{ 'users-status-edit-modal.form.status.label' | translate }}"
+        >
+          <app-select-box
+            [dataSource]="statusDataSource"
+            valueExpr="id"
+            displayExpr="name"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [formControl]="f.status"
+            [invalid]="!!(submitted && f.status.errors)"
+          ></app-select-box>
+
+          <app-field-error-container *ngIf="submitted && f.status.errors">
+            <app-field-error-item *ngIf="f.status.errors.required">
+              {{
+                "users-status-edit-modal.form.status.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <app-field
+          label="{{
+            'users-status-edit-modal.form.returnedAt.label' | translate
+          }}"
+        >
+          <app-date-box [formControl]="f.returnedAt"></app-date-box>
+
+          <app-field-error-container *ngIf="submitted && f.returnedAt.errors">
+            <app-field-error-item *ngIf="f.returnedAt.errors.required">
+              {{
+                "users-status-edit-modal.form.returnedAt.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+
+      <div class="col-12 text-center mt-6">
+        <button type="submit" class="btn btn-primary-accent btn-lg">
+          {{ "users-status-edit-modal.actions.save" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</app-modal-template>

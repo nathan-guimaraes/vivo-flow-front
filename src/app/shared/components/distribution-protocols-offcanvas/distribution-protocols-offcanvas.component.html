@@ -1,0 +1,83 @@
+<app-offcanvas-template offcanvasTitle="distribution-protocols-offcanvas.title">
+  <form class="p-10" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="row gy-9">
+      <div class="col-12">
+        <h2 class="text-accent mb-0">
+          {{
+            "distribution-protocols-offcanvas.form.priority.title" | translate
+          }}
+        </h2>
+
+        <app-field
+          class="border-bottom pb-3"
+          label="{{
+            'distribution-protocols-offcanvas.form.priority.label' | translate
+          }}"
+        >
+          <app-select-box
+            [formControl]="f.priority"
+            [dataSource]="priorityDataSource"
+            valueExpr="value"
+            displayExpr="label"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [invalid]="!!(submitted && f.priority.errors)"
+          ></app-select-box>
+        </app-field>
+      </div>
+
+      <div class="col-12">
+        <h2 class="text-accent mb-0">
+          {{ "distribution-protocols-offcanvas.form.step.title" | translate }}
+        </h2>
+
+        <app-field
+          class="border-bottom pb-3"
+          label="{{
+            'distribution-protocols-offcanvas.form.step.label' | translate
+          }}"
+        >
+          <app-select-box
+            [formControl]="f.subislandId"
+            [dataSource]="subislandDataSource"
+            valueExpr="id"
+            displayExpr="name"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [invalid]="!!(submitted && f.subislandId.errors)"
+          ></app-select-box>
+        </app-field>
+      </div>
+
+      <div class="col-12">
+        <h2 class="text-accent mb-0">
+          {{ "distribution-protocols-offcanvas.form.user.title" | translate }}
+        </h2>
+
+        <app-field
+          class="border-bottom pb-3"
+          label="{{
+            'distribution-protocols-offcanvas.form.user.label' | translate
+          }}"
+        >
+          <app-select-box
+            [formControl]="f.userId"
+            [dataSource]="userDataSource"
+            valueExpr="id"
+            displayExpr="name"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [invalid]="!!(submitted && f.userId.errors)"
+          ></app-select-box>
+        </app-field>
+      </div>
+
+      <div class="col-12">
+        <button
+          type="submit"
+          class="btn btn-primary-accent btn-lg"
+          [disabled]="isBtnDisabled"
+        >
+          {{ "distribution-protocols-offcanvas.actions.save" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</app-offcanvas-template>

@@ -1,0 +1,17 @@
+<ng-scrollbar class="h-100" track="horizontal">
+  <div class="h-100">
+    <app-stepper [steps]="stepList"></app-stepper>
+  </div>
+</ng-scrollbar>
+
+<ng-template #textTemplate let-item="item">
+  <span class="info">
+    {{ item.text }} <br />
+    {{ item.data.queueTimeSpend }}
+  </span>
+</ng-template>
+
+<app-loading-indicator
+  [visible]="loadingController.changes | async"
+  [showBackdrop]="false"
+></app-loading-indicator>

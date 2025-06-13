@@ -1,0 +1,297 @@
+<div [formGroup]="formGroup" class="row gy-3">
+  <div class="col-12">
+    <input
+      [formControl]="f.number"
+      class="form-control"
+      placeholder="{{
+        'protocols-filter-form.form.number.placeholder' | translate
+      }}"
+    />
+  </div>
+  <div class="col-12">
+    <app-select-box
+      [formControl]="f.status"
+      class="filter"
+      [dataSource]="statusesDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      placeholder="{{
+        'protocols-filter-form.form.status.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      [formControl]="f.towers"
+      class="filter"
+      [dataSource]="towerDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'protocols-filter-form.form.tower.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      [formControl]="f.islands"
+      class="filter"
+      [dataSource]="islandDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'protocols-filter-form.form.island.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      [formControl]="f.subislands"
+      class="filter"
+      [dataSource]="subislandDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'protocols-filter-form.form.subisland.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      [formControl]="f.subjects"
+      class="filter"
+      [dataSource]="subjectDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'protocols-filter-form.form.subject.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      [formControl]="f.segments"
+      class="filter"
+      [dataSource]="segmentsDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'protocols-filter-form.form.segment.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      [formControl]="f.partnerCodes"
+      class="filter"
+      [dataSource]="partnerCodesDataSource"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'protocols-filter-form.form.partnerCode.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      [formControl]="f.documents"
+      class="filter"
+      [dataSource]="customerDocumentDataSource"
+      valueExpr="document"
+      displayExpr="document"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'protocols-filter-form.form.document.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      [formControl]="f.codeGroups"
+      class="filter"
+      [dataSource]="customerCodeGroupDataSource"
+      valueExpr="codeGroup"
+      displayExpr="codeGroup"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'protocols-filter-form.form.codeGroup.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      [formControl]="f.customerCodes"
+      class="filter"
+      [dataSource]="customerCodeDataSource"
+      valueExpr="code"
+      displayExpr="code"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'protocols-filter-form.form.customerCode.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      [formControl]="f.negotiationTypes"
+      class="filter"
+      [dataSource]="negotiationTypeDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'protocols-filter-form.form.negotiationType.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      [formControl]="f.products"
+      class="filter"
+      [dataSource]="productDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'protocols-filter-form.form.product.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      [formControl]="f.userIds"
+      class="filter"
+      [dataSource]="usersDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'protocols-filter-form.form.user.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      [formControl]="f.suppliers"
+      class="filter"
+      [dataSource]="suppliersDataSource"
+      valueExpr="id"
+      displayExpr="name"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [searchModeEnabled]="true"
+      searchMode="dropdown"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'protocols-filter-form.form.supplier.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      [formControl]="f.priorities"
+      class="filter"
+      [dataSource]="priorityDataSource"
+      valueExpr="value"
+      displayExpr="label"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'protocols-filter-form.form.priority.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+  <div class="col-12">
+    <app-select-box
+      [formControl]="f.slas"
+      class="filter"
+      [dataSource]="slaDataSource"
+      valueExpr="value"
+      displayExpr="label"
+      [selectedTextExprFn]="selectedTextExpr"
+      [multiple]="true"
+      [applyButtonEnabled]="true"
+      [showSelectControls]="true"
+      placeholder="{{
+        'protocols-filter-form.form.sla.placeholder' | translate
+      }}"
+    ></app-select-box>
+  </div>
+
+  <div class="col-12 d-flex justify-content-end">
+    <button
+      type="button"
+      class="btn btn-secondary-accent btn-lg"
+      (click)="formGroup.reset()"
+    >
+      {{ "defaults.actions.clear" | translate }}
+    </button>
+  </div>
+</div>

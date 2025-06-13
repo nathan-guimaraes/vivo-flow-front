@@ -1,0 +1,35 @@
+<app-modal-template modalTitle="pause-protocol-modal.title">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="row mt-6">
+      <div class="col-12">
+        <app-field
+          label="{{ 'pause-protocol-modal.form.reason.label' | translate }}"
+        >
+          <app-select-box
+            [dataSource]="pauseTypesDataSource"
+            valueExpr="value"
+            displayExpr="label"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [formControl]="f.reason"
+            [invalid]="!!(submitted && f.reason.errors)"
+          ></app-select-box>
+
+          <app-field-error-container *ngIf="submitted && f.reason.errors">
+            <app-field-error-item *ngIf="f.reason.errors.required">
+              {{
+                "pause-protocol-modal.form.reason.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+
+      <div class="col-12 mt-6">
+        <button type="submit" class="btn btn-primary-accent btn-lg w-100">
+          {{ "pause-protocol-modal.actions.pause" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</app-modal-template>

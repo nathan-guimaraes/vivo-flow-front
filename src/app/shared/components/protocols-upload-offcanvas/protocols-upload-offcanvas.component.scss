@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  height: 100%;
+
+  .log-list-container {
+    position: relative;
+
+    .list-group {
+      --bs-list-group-color: var(--bs-body-color);
+    }
+  }
+}

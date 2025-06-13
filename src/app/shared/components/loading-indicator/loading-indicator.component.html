@@ -1,0 +1,13 @@
+<div *ngIf="!!visible" class="loading-indicator-container w-100 h-100">
+  <div *ngIf="!!showBackdrop" class="backdrop w-100 h-100"></div>
+
+  <div
+    class="loading-indicator w-100 h-100 d-flex align-items-center justify-content-center"
+  >
+    <div
+      class="spinner-border"
+      [ngClass]="{ 'spinner-border-sm': size === 'small' }"
+      role="status"
+    ></div>
+  </div>
+</div>

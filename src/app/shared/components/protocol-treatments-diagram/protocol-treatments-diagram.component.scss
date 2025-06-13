@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  position: relative;
+  height: 80px;
+
+  .info {
+    white-space: nowrap;
+  }
+}

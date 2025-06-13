@@ -1,0 +1,126 @@
+<app-modal-template modalTitle="delegate-activities-modal.title">
+  <ngb-alert type="custom-warning" [dismissible]="false">
+    <div class="row">
+      <div class="col-auto">
+        <app-iconic
+          class="highlight-icon text-accent"
+          icon="warning"
+        ></app-iconic>
+      </div>
+
+      <div class="col">
+        {{ "delegate-activities-modal.warnings.info" | translate }}
+      </div>
+    </div>
+  </ngb-alert>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-5 mb-3">
+        <app-field
+          label="{{
+            'delegate-activities-modal.form.userId.label' | translate
+          }}"
+        >
+          <app-select-box
+            [dataSource]="usersDataSource"
+            valueExpr="id"
+            displayExpr="name"
+            [searchModeEnabled]="true"
+            searchMode="dropdown"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [formControl]="f.userTargetId"
+            [invalid]="!!(submitted && f.userTargetId.errors)"
+          ></app-select-box>
+
+          <app-field-error-container *ngIf="submitted && f.userTargetId.errors">
+            <app-field-error-item *ngIf="f.userTargetId.errors.required">
+              {{
+                "delegate-activities-modal.form.userId.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+
+      <div class="col-md-7">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <app-field
+              label="{{
+                'delegate-activities-modal.form.startedAt.label' | translate
+              }}"
+            >
+              <app-date-box [formControl]="f.startedAt"></app-date-box>
+
+              <app-field-error-container
+                *ngIf="submitted && f.startedAt.errors"
+              >
+                <app-field-error-item *ngIf="f.startedAt.errors.required">
+                  {{
+                    "delegate-activities-modal.form.startedAt.validation.required"
+                      | translate
+                  }}
+                </app-field-error-item>
+              </app-field-error-container>
+            </app-field>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <app-field
+              label="{{
+                'delegate-activities-modal.form.endedAt.label' | translate
+              }}"
+            >
+              <app-date-box [formControl]="f.endedAt"></app-date-box>
+
+              <app-field-error-container *ngIf="submitted && f.endedAt.errors">
+                <app-field-error-item *ngIf="f.endedAt.errors.required">
+                  {{
+                    "delegate-activities-modal.form.endedAt.validation.required"
+                      | translate
+                  }}
+                </app-field-error-item>
+              </app-field-error-container>
+            </app-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 mb-3">
+        <app-field
+          label="{{
+            'delegate-activities-modal.form.reason.label' | translate
+          }}"
+        >
+          <textarea
+            class="form-control"
+            placeholder="{{
+              'delegate-activities-modal.form.reason.placeholder' | translate
+            }}"
+            [formControl]="f.reason"
+            [ngClass]="{
+              'is-invalid': submitted && f.reason.errors
+            }"
+          ></textarea>
+
+          <app-field-error-container *ngIf="submitted && f.reason.errors">
+            <app-field-error-item *ngIf="f.reason.errors.required">
+              {{
+                "delegate-activities-modal.form.reason.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+
+      <div class="col-12 text-center mt-6">
+        <button type="submit" class="btn btn-primary-accent btn-lg">
+          {{ "delegate-activities-modal.actions.save" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</app-modal-template>

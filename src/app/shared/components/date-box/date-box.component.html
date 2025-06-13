@@ -1,0 +1,32 @@
+<div
+  ngbDropdown
+  #dropdown="ngbDropdown"
+  class="input-group"
+  [formGroup]="formGroup"
+>
+  <div class="input-group dropdown-anchor" ngbDropdownAnchor>
+    <input
+      class="form-control"
+      formControlName="text"
+      [mask]="inputMask"
+      [leadZeroDateTime]="true"
+      [showMaskTyped]="true"
+      placeHolderCharacter="_"
+    />
+
+    <span
+      class="input-group-text"
+      [class.pointer]="!this.disabled"
+      (click)="!this.disabled && dropdown.toggle()"
+    >
+      <app-iconic icon="calendar"></app-iconic>
+    </span>
+  </div>
+
+  <ngb-datepicker
+    ngbDropdownMenu
+    formControlName="date"
+    [firstDayOfWeek]="7"
+    (dateSelect)="onDateSelect($event)"
+  ></ngb-datepicker>
+</div>

@@ -1,0 +1,113 @@
+<div class="skills-box-header py-3 px-5">
+  <div class="row g-0 align-items-center">
+    <div class="col">
+      <span
+        class="fw-bold {{ disabled ? 'text-black-50' : 'text-primary-light' }}"
+      >
+        {{ title | translate }}
+      </span>
+    </div>
+
+    <div class="col-auto d-flex justify-content-center align-items-center">
+      <app-iconic
+        icon="trash"
+        class="{{ isBtnDeleteDisabled ? 'text-black-50' : 'pointer' }}"
+        appHoverClass="text-accent"
+        [appHoverClassDisabled]="isBtnDeleteDisabled"
+        ngbTooltip="{{ 'defaults.actions.delete' | translate }}"
+        [disableTooltip]="isBtnDeleteDisabled"
+        (click)="_onBtnDeleteClick()"
+      ></app-iconic>
+    </div>
+
+    <div class="col-auto ms-8 d-flex justify-content-center align-items-center">
+      <app-dropdown-select-items
+        [(value)]="dropdownSelectedItems"
+        (valueChange)="_onItemsSelected($event)"
+        [dataSource]="dataSource"
+        [multiple]="true"
+        [searchModeEnabled]="true"
+        [displayExpr]="displayExpr"
+        [parentKeyExpr]="parentKeyExpr"
+        [groupMode]="!!groupMode"
+        [groupItems]="groupItems"
+        [groupKeyExpr]="groupKeyExpr"
+        [groupDisplayExpr]="groupDisplayExpr"
+        [disabled]="!!disabled"
+        class="dropdown-items"
+      >
+        <app-iconic
+          icon="plus"
+          class="fs-sm {{ disabled ? 'text-black-50' : 'text-black pointer' }}"
+          ngbTooltip="{{ 'defaults.actions.add' | translate }}"
+          [disableTooltip]="disabled"
+        ></app-iconic>
+      </app-dropdown-select-items>
+    </div>
+  </div>
+</div>
+
+<div class="skills-box-body">
+  <ng-scrollbar class="scrollbar" *ngIf="!!_handledItems?.length">
+    <div class="py-3">
+      <ng-container
+        *ngFor="let groupItem of _handledItems; trackBy: _groupTrackBy"
+      >
+        <div *ngIf="!!groupMode" class="px-5 py-2 d-flex">
+          <ng-template
+            [ngTemplateOutlet]="groupItemContentTpl"
+            [ngTemplateOutletContext]="{
+              text: _extractGroupText(groupItem.data)
+            }"
+          ></ng-template>
+        </div>
+
+        <div
+          *ngFor="let item of groupItem.items; let i = index; trackBy: _trackBy"
+          class="px-5 py-2"
+        >
+          <div class="row g-0">
+            <div class="col-auto">
+              <app-checkbox
+                [value]="_isSelected(item)"
+                (valueChange)="_onItemSelectChanged(item)"
+              ></app-checkbox>
+            </div>
+
+            <div class="col fs-sm ms-3">
+              {{ _extractText(item, i) }}
+
+              <div *ngIf="!!principalMode" class="principal-indicator ms-2">
+                <app-iconic
+                  icon="star"
+                  class="fs-sm pointer {{
+                    _isPrincipal(item) ? 'text-star' : ''
+                  }}"
+                  appHoverClass="text-dark"
+                  appNotHoverClass="text-gray-lighter"
+                  [appHoverClassDisabled]="_isPrincipal(item)"
+                  ngbTooltip="{{
+                    (_isPrincipal(item)
+                      ? 'users-skills-modal.tooltips.remove-principal'
+                      : 'users-skills-modal.tooltips.mark-principal'
+                    ) | translate
+                  }}"
+                  (click)="_onItemPrincipalClick(item)"
+                ></app-iconic>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-scrollbar>
+</div>
+
+<ng-template #groupItemContentTpl let-text="text">
+  <div
+    class="pb-2 fs-sm text-accent text-truncate flex-fill w-0 border-bottom border-accent"
+    [title]="text"
+  >
+    {{ text }}
+  </div>
+</ng-template>

@@ -1,0 +1,44 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="row gy-3 gx-5">
+    <div class="col-12">
+      <app-field
+        label="{{ 'workscale-register-form.form.name.label' | translate }}"
+        class="name-field"
+      >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="{{
+            'workscale-register-form.form.name.placeholder' | translate
+          }}"
+          [formControl]="f.name"
+          [ngClass]="{ 'is-invalid': !!(submitted && f.name.errors) }"
+        />
+
+        <app-field-error-container *ngIf="submitted && f.name.errors">
+          <app-field-error-item *ngIf="f.name.errors.required">
+            {{
+              "workscale-register-form.form.name.validation.required" | translate
+            }}
+          </app-field-error-item>
+        </app-field-error-container>
+      </app-field>
+    </div>
+
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary-accent btn-lg btn-save">
+        {{ "workscale-register-form.actions.save" | translate }}
+      </button>
+    </div>
+
+    <div class="col-auto">
+      <button
+        type="button"
+        class="btn btn-secondary-accent btn-lg btn-cancel"
+        (click)="onCanceled.emit()"
+      >
+        {{ "workscale-register-form.actions.cancel" | translate }}
+      </button>
+    </div>
+  </div>
+</form>

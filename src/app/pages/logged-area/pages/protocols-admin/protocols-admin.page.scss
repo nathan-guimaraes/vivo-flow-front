@@ -1,0 +1,40 @@
+:host {
+  .table-container {
+    position: relative;
+    min-height: 200px;
+    z-index: 1;
+
+    .table-content {
+      overflow-x: auto;
+    }
+
+    .info-icon {
+      float: right;
+    }
+
+    .indicator-sla {
+      display: flex;
+      margin: auto;
+
+      --size: 15px;
+      width: var(--size);
+      height: var(--size);
+      min-width: var(--size);
+      min-height: var(--size);
+      background-color: var(--color);
+      border-radius: 50%;
+
+      &.normal {
+        --color: var(--bs-success);
+      }
+
+      &.warning {
+        --color: var(--bs-warning);
+      }
+
+      &.danger {
+        --color: var(--bs-danger);
+      }
+    }
+  }
+}

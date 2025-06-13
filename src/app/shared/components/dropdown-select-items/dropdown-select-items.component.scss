@@ -1,0 +1,82 @@
+:host {
+  display: block;
+  width: 100%;
+
+  &.search-mode-dropdown {
+    --dropdown-select-items-top-content-height: 49px;
+  }
+
+  --dropdown-select-items-bottom-content-height: 44px;
+
+  &.select-state-dropdown-opened {
+    --dropdown-select-items-input-color: var(
+      --dropdown-select-items-input-opened-color
+    );
+    --dropdown-select-items-input-bg: var(
+      --dropdown-select-items-input-opened-bg
+    );
+    --dropdown-select-items-input-placeholder-color: var(
+      --dropdown-select-items-input-opened-placeholder-color
+    );
+    --dropdown-select-items-input-border-color: var(
+      --dropdown-select-items-input-opened-border-color
+    );
+    --dropdown-select-items-input-box-shadow: var(
+      --dropdown-select-items-input-opened-box-shadow
+    );
+
+    --dropdown-select-items-arrow-indicator-color: var(
+      --dropdown-select-items-arrow-indicator-opened-color
+    );
+  }
+
+  &.select-state-hasvalue {
+    --dropdown-select-items-input-color: var(
+      --dropdown-select-items-input-hasvalue-color
+    );
+    --dropdown-select-items-input-bg: var(
+      --dropdown-select-items-input-hasvalue-bg
+    );
+    --dropdown-select-items-input-placeholder-color: var(
+      --dropdown-select-items-input-hasvalue-placeholder-color
+    );
+    --dropdown-select-items-input-border-color: var(
+      --dropdown-select-items-input-hasvalue-border-color
+    );
+    --dropdown-select-items-input-box-shadow: var(
+      --dropdown-select-items-input-hasvalue-box-shadow
+    );
+
+    --dropdown-select-items-arrow-indicator-color: var(
+      --dropdown-select-items-arrow-indicator-hasvalue-color
+    );
+  }
+
+  .select-content {
+    width: 100%;
+
+    .dropdown-container {
+      width: var(--dropdown-select-items-dropdown-width, 100%);
+      height: calc(
+        130px + var(--dropdown-select-items-top-content-height, 0px) +
+          var(--dropdown-select-items-bottom-content-height, 0px)
+      );
+
+      .dropdown-content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+
+        .list-container {
+          height: 100%;
+          flex: 1;
+
+          .scrollbar {
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}

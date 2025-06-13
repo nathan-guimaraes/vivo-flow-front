@@ -1,0 +1,16 @@
+<div class="modal-body">
+  <div
+    *ngIf="!!closeBtnEnabled"
+    class="modal-close-btn mt-4 me-4 pointer"
+    (click)="activeModal.dismiss()"
+    ngbAutofocus
+  >
+    <app-iconic class="fs-xxs" icon="close"></app-iconic>
+  </div>
+
+  <h2 *ngIf="!!modalTitle" class="modal-title text-accent">
+    {{ modalTitle | translate }}
+  </h2>
+
+  <ng-content></ng-content>
+</div>

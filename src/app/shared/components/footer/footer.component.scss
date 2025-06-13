@@ -1,0 +1,24 @@
+:host {
+  .footer {
+    height: 180px;
+    background-color: var(--white);
+    box-shadow: 0px -5px 9px rgba(129, 129, 129, 0.1);
+
+    .footer-top {
+      gap: 100px;
+      padding-block: 40px;
+
+      .logo-left {
+        height: 42px;
+      }
+
+      .logo-right {
+        height: 44px;
+      }
+    }
+
+    .footer-bottom {
+      color: var(--bs-gray-650);
+    }
+  }
+}

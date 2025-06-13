@@ -1,0 +1,18 @@
+:host {
+  display: contents;
+
+  &.state-opened {
+    .dropdown-instance {
+      .arrow-indicator {
+        transform: rotateX(180deg);
+      }
+    }
+  }
+
+  .dropdown-instance {
+    .dropdown-menu-instance {
+      width: 265px;
+      height: auto;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+/* =============
+   General
+============= */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.custom-theme {
+  a {
+    &.link-primary-light-hover {
+      --bs-link-hover-color: var(--bs-primary-light);
+    }
+
+    &:not(.link-hover-underline) {
+      text-decoration: none !important;
+    }
+
+    &.link-hover-underline {
+      &:not(:hover) {
+        text-decoration: none !important;
+      }
+    }
+  }
+}

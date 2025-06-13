@@ -1,0 +1,209 @@
+<app-modal-template modalTitle="sla-register-modal.title">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="row mt-6">
+      <div class="col-md-3 mb-3">
+        <app-field
+          label="{{ 'sla-register-modal.form.tower.label' | translate }}"
+        >
+          <app-select-box
+            [dataSource]="towerDataSource"
+            valueExpr="id"
+            displayExpr="name"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [formControl]="f.towerId"
+            [invalid]="!!(submitted && f.towerId.errors)"
+          ></app-select-box>
+
+          <app-field-error-container *ngIf="submitted && f.towerId.errors">
+            <app-field-error-item *ngIf="f.towerId.errors.required">
+              {{
+                "sla-register-modal.form.tower.validation.required" | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+      <div class="col-md-3 mb-3">
+        <app-field
+          label="{{ 'sla-register-modal.form.island.label' | translate }}"
+        >
+          <app-select-box
+            [dataSource]="islandDataSource"
+            valueExpr="id"
+            displayExpr="name"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [formControl]="f.islandId"
+            [invalid]="!!(submitted && f.islandId.errors)"
+          ></app-select-box>
+
+          <app-field-error-container *ngIf="submitted && f.islandId.errors">
+            <app-field-error-item *ngIf="f.islandId.errors.required">
+              {{
+                "sla-register-modal.form.island.validation.required" | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+      <div class="col-md-3 mb-3">
+        <app-field
+          label="{{ 'sla-register-modal.form.subisland.label' | translate }}"
+        >
+          <app-select-box
+            [dataSource]="subislandDataSource"
+            valueExpr="id"
+            displayExpr="name"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [formControl]="f.subislandId"
+            [invalid]="!!(submitted && f.subislandId.errors)"
+          ></app-select-box>
+
+          <app-field-error-container *ngIf="submitted && f.subislandId.errors">
+            <app-field-error-item *ngIf="f.subislandId.errors.required">
+              {{
+                "sla-register-modal.form.subisland.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+      <div class="col-md-3 mb-3">
+        <app-field
+          label="{{ 'sla-register-modal.form.subject.label' | translate }}"
+        >
+          <app-select-box
+            [dataSource]="subjectDataSource"
+            valueExpr="id"
+            displayExpr="name"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [formControl]="f.subjectId"
+            [invalid]="!!(submitted && f.subjectId.errors)"
+          ></app-select-box>
+        </app-field>
+      </div>
+      <div class="col-md-3 mb-3">
+        <app-field
+          label="{{
+            'sla-register-modal.form.negotiationType.label' | translate
+          }}"
+        >
+          <app-select-box
+            [dataSource]="negotiationTypeDataSource"
+            valueExpr="id"
+            displayExpr="name"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [formControl]="f.negotiationTypeId"
+            [invalid]="!!(submitted && f.negotiationTypeId.errors)"
+          ></app-select-box>
+
+          <app-field-error-container
+            *ngIf="submitted && f.negotiationTypeId.errors"
+          >
+            <app-field-error-item *ngIf="f.negotiationTypeId.errors.required">
+              {{
+                "sla-register-modal.form.negotiationType.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+      <div class="col-md-3 mb-3">
+        <app-field
+          label="{{ 'sla-register-modal.form.product.label' | translate }}"
+        >
+          <app-select-box
+            [dataSource]="productDataSource"
+            valueExpr="id"
+            displayExpr="name"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [formControl]="f.productId"
+            [invalid]="!!(submitted && f.productId.errors)"
+          ></app-select-box>
+
+          <app-field-error-container *ngIf="submitted && f.productId.errors">
+            <app-field-error-item *ngIf="f.productId.errors.required">
+              {{
+                "sla-register-modal.form.product.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+      <div class="col-md-3 mb-3">
+        <app-field
+          label="{{ 'sla-register-modal.form.segment.label' | translate }}"
+        >
+          <app-select-box
+            [dataSource]="segmentDataSource"
+            valueExpr="id"
+            displayExpr="name"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [formControl]="f.segmentId"
+            [invalid]="!!(submitted && f.segmentId.errors)"
+          ></app-select-box>
+
+          <app-field-error-container *ngIf="submitted && f.segmentId.errors">
+            <app-field-error-item *ngIf="f.segmentId.errors.required">
+              {{
+                "sla-register-modal.form.segment.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+      <div class="col-md-3 mb-3">
+        <app-field
+          label="{{ 'sla-register-modal.form.sla.label' | translate }}"
+        >
+          <input
+            type="number"
+            class="form-control"
+            placeholder="{{ 'defaults.placeholders.input' | translate }}"
+            [formControl]="f.time"
+            [ngClass]="{ 'is-invalid': !!(submitted && f.time.errors) }"
+          />
+
+          <app-field-error-container *ngIf="submitted && f.time.errors">
+            <app-field-error-item *ngIf="f.time.errors.required">
+              {{
+                "sla-register-modal.form.sla.validation.required" | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+      <div class="col-md-3 mb-3">
+        <app-field
+          label="{{ 'sla-register-modal.form.type.label' | translate }}"
+        >
+          <app-select-box
+            [dataSource]="typesDataSource"
+            valueExpr="value"
+            displayExpr="label"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [formControl]="f.type"
+            [invalid]="!!(submitted && f.type.errors)"
+          ></app-select-box>
+
+          <app-field-error-container *ngIf="submitted && f.type.errors">
+            <app-field-error-item *ngIf="f.type.errors.required">
+              {{
+                "sla-register-modal.form.type.validation.required" | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+
+      <div class="col-12 text-center mt-6">
+        <button type="submit" class="btn btn-primary-accent btn-lg">
+          {{ "sla-register-modal.actions.save" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</app-modal-template>

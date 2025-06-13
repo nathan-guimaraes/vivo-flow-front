@@ -1,0 +1,8 @@
+<app-iconic
+  class="{{ disabled ? 'text-muted' : 'pointer' }}"
+  appHoverClass="text-accent"
+  [appHoverClassDisabled]="!!disabled"
+  [icon]="icon"
+  ngbTooltip="{{ tooltip | translate }}"
+  [disableTooltip]="!!disabled"
+></app-iconic>

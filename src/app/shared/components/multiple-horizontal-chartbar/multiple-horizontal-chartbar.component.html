@@ -1,0 +1,15 @@
+<ng-container *ngIf="!!(chartConfiguredList?.length && !loading)">
+  <div
+    class="chart-item mb-5"
+    *ngFor="let chart of chartConfiguredList"
+    style="--chart-height: {{ chart.chartHeight }}"
+  >
+    <div class="title text-black">{{ chart.chartTitle | translate }}</div>
+    <div class="chart w-100" echarts [options]="chart.options"></div>
+  </div>
+</ng-container>
+
+<app-loading-indicator
+  [visible]="!!loading"
+  [showBackdrop]="false"
+></app-loading-indicator>

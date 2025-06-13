@@ -1,0 +1,305 @@
+<app-modal-template
+  [modalTitle]="!userDetailsMode ? 'users-skills-modal.title' : null"
+>
+  <ng-container *ngIf="!!userDetailsMode">
+    <div class="text-black d-flex align-items-center pb-2">
+      <app-iconic class="fs-2 me-3" icon="user-circle"></app-iconic>
+
+      <span class="fs-4">
+        {{ user?.name }}
+      </span>
+    </div>
+  </ng-container>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="row mt-5">
+      <div class="col-xl-9">
+        <div class="row">
+          <div class="col-md-6 col-lg-2 mb-3">
+            <app-field
+              label="{{ 'users-skills-modal.form.status.label' | translate }}"
+            >
+              <app-select-box
+                [dataSource]="statusDataSource"
+                valueExpr="id"
+                displayExpr="name"
+                placeholder="{{ 'defaults.placeholders.select' | translate }}"
+                [formControl]="f.statusId"
+                [invalid]="!!(submitted && f.statusId.errors)"
+              ></app-select-box>
+
+              <app-field-error-container *ngIf="submitted && f.statusId.errors">
+                <app-field-error-item *ngIf="f.statusId.errors.required">
+                  {{
+                    "users-skills-modal.form.status.validation.required"
+                      | translate
+                  }}
+                </app-field-error-item>
+              </app-field-error-container>
+            </app-field>
+          </div>
+
+          <div class="col-md-6 col-lg-2 mb-3">
+            <app-field
+              label="{{
+                'users-skills-modal.form.returnDate.label' | translate
+              }}"
+            >
+              <app-date-box [formControl]="f.returnedAt"></app-date-box>
+
+              <app-field-error-container
+                *ngIf="submitted && f.returnedAt.errors"
+              >
+                <app-field-error-item *ngIf="f.returnedAt.errors.required">
+                  {{
+                    "users-skills-modal.form.returnDate.validation.required"
+                      | translate
+                  }}
+                </app-field-error-item>
+              </app-field-error-container>
+            </app-field>
+          </div>
+
+          <div class="col-md-6 col-lg-2 mb-3">
+            <app-field
+              label="{{
+                'users-skills-modal.form.workscale.label' | translate
+              }}"
+            >
+              <app-select-box
+                [dataSource]="workscaleDataSource"
+                valueExpr="id"
+                displayExpr="name"
+                placeholder="{{ 'defaults.placeholders.select' | translate }}"
+                [formControl]="f.workscaleId"
+                [invalid]="!!(submitted && f.workscaleId.errors)"
+              ></app-select-box>
+
+              <app-field-error-container
+                *ngIf="submitted && f.workscaleId.errors"
+              >
+                <app-field-error-item *ngIf="f.workscaleId.errors.required">
+                  {{
+                    "users-skills-modal.form.workscale.validation.required"
+                      | translate
+                  }}
+                </app-field-error-item>
+              </app-field-error-container>
+            </app-field>
+          </div>
+
+          <div class="col-md-6 col-lg-2 mb-3">
+            <app-field
+              label="{{ 'users-skills-modal.form.workload.label' | translate }}"
+            >
+              <app-select-box
+                [dataSource]="workloadDataSource"
+                valueExpr="id"
+                displayExpr="name"
+                placeholder="{{ 'defaults.placeholders.select' | translate }}"
+                [formControl]="f.workloadId"
+                [invalid]="!!(submitted && f.workloadId.errors)"
+              ></app-select-box>
+
+              <app-field-error-container
+                *ngIf="submitted && f.workloadId.errors"
+              >
+                <app-field-error-item *ngIf="f.workloadId.errors.required">
+                  {{
+                    "users-skills-modal.form.workload.validation.required"
+                      | translate
+                  }}
+                </app-field-error-item>
+              </app-field-error-container>
+            </app-field>
+          </div>
+
+          <div class="col-md-6 col-lg-2 mb-3">
+            <app-field
+              label="{{ 'users-skills-modal.form.worktime.label' | translate }}"
+            >
+              <app-time-interval-box
+                [formControl]="f.worktime"
+                [invalid]="!!(submitted && f.worktime.errors)"
+              ></app-time-interval-box>
+
+              <app-field-error-container *ngIf="submitted && f.worktime.errors">
+                <app-field-error-item *ngIf="f.worktime.errors.required">
+                  {{
+                    "users-skills-modal.form.worktime.validation.required"
+                      | translate
+                  }}
+                </app-field-error-item>
+              </app-field-error-container>
+            </app-field>
+          </div>
+
+          <div class="col-md-6 col-lg-2 mb-3">
+            <app-field
+              label="{{ 'users-skills-modal.form.priority.label' | translate }}"
+            >
+              <app-select-box
+                [dataSource]="priorityDataSource"
+                valueExpr="value"
+                displayExpr="label"
+                placeholder="{{ 'defaults.placeholders.select' | translate }}"
+                [formControl]="f.priority"
+                [invalid]="!!(submitted && f.priority.errors)"
+              ></app-select-box>
+
+              <app-field-error-container *ngIf="submitted && f.priority.errors">
+                <app-field-error-item *ngIf="f.priority.errors.required">
+                  {{
+                    "users-skills-modal.form.priority.validation.required"
+                      | translate
+                  }}
+                </app-field-error-item>
+              </app-field-error-container>
+            </app-field>
+          </div>
+
+          <div class="col-md-6 col-lg-2 mb-3">
+            <app-field
+              label="{{ 'users-skills-modal.form.supplier.label' | translate }}"
+            >
+              <app-select-box
+                [dataSource]="supplierDataSource"
+                valueExpr="id"
+                displayExpr="name"
+                placeholder="{{ 'defaults.placeholders.select' | translate }}"
+                [formControl]="f.supplierId"
+                [invalid]="!!(submitted && f.supplierId.errors)"
+              ></app-select-box>
+
+              <app-field-error-container
+                *ngIf="submitted && f.supplierId.errors"
+              >
+                <app-field-error-item *ngIf="f.supplierId.errors.required">
+                  {{
+                    "users-skills-modal.form.supplier.validation.required"
+                      | translate
+                  }}
+                </app-field-error-item>
+              </app-field-error-container>
+            </app-field>
+          </div>
+
+          <div class="col-md-6 col-lg-2 mb-3">
+            <app-field
+              label="{{
+                'users-skills-modal.form.supervisor.label' | translate
+              }}"
+            >
+              <app-select-box
+                [dataSource]="supervisorDataSource"
+                valueExpr="id"
+                displayExpr="name"
+                placeholder="{{ 'defaults.placeholders.select' | translate }}"
+                [formControl]="f.supervisorId"
+                [invalid]="!!(submitted && f.supervisorId.errors)"
+              ></app-select-box>
+
+              <app-field-error-container
+                *ngIf="submitted && f.supervisorId.errors"
+              >
+                <app-field-error-item *ngIf="f.supervisorId.errors.required">
+                  {{
+                    "users-skills-modal.form.supervisor.validation.required"
+                      | translate
+                  }}
+                </app-field-error-item>
+              </app-field-error-container>
+            </app-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-auto ms-xl-auto pt-7">
+        <app-dropdown-button
+          label="{{ 'users-skills-modal.export-button.label' | translate }}"
+        >
+          <div class="fs-md py-6 px-7 d-flex align-items-center">
+            <app-iconic
+              class="me-4 text-primary-light"
+              icon="download"
+            ></app-iconic>
+
+            <a
+              href="javascript:void(0)"
+              class="link-hover-underline"
+              (click)="onBtnDownloadSkillsTemplateClick()"
+            >
+              {{
+                "users-skills-modal.export-button.items.download" | translate
+              }}
+            </a>
+          </div>
+
+          <div class="px-7">
+            <div class="border-top" style="--bs-border-style: dashed"></div>
+          </div>
+
+          <div class="fs-md py-6 px-7 d-flex align-items-center">
+            <app-iconic
+              class="me-4 text-primary-light"
+              icon="upload"
+            ></app-iconic>
+
+            <input
+              #importSkillsInputEl
+              type="file"
+              accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+              [hidden]="true"
+              (change)="onImportSkillsFileChanged(importSkillsInputEl)"
+            />
+
+            <a
+              href="javascript:void(0)"
+              class="link-hover-underline"
+              (click)="importSkillsInputEl.click()"
+            >
+              {{ "users-skills-modal.export-button.items.upload" | translate }}
+            </a>
+          </div>
+        </app-dropdown-button>
+      </div>
+
+      <div class="col-12">
+        <div class="skills-box-grid">
+          <div
+            class="row g-0 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4"
+          >
+            <div
+              class="col"
+              *ngFor="let itemCfg of multipleOptionsBoxCfgFlatList"
+            >
+              <app-skills-box
+                [title]="itemCfg.data.title"
+                [disabled]="!!itemCfg.data.disabled"
+                [principalMode]="!!itemCfg.data.principalMode"
+                [(principalItemKey)]="itemCfg.data.principalKey"
+                (principalItemKeyChange)="onSkillPrincipalKeyChanged(itemCfg)"
+                [(items)]="itemCfg.data.items"
+                (itemsChange)="onSkillItemsChanged(itemCfg)"
+                [dataSource]="itemCfg.data.dataSource"
+                [keyExpr]="itemCfg.data.keyExpr"
+                [displayExpr]="itemCfg.data.displayExpr"
+                [parentKeyExpr]="itemCfg.data.parentExpr"
+                [groupMode]="!!itemCfg.data.parentExpr"
+                [groupItems]="itemCfg.parent?.data?.items"
+                [groupKeyExpr]="itemCfg.parent?.data?.keyExpr"
+                [groupDisplayExpr]="_getParentDisplayExprFn(itemCfg)"
+              ></app-skills-box>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 text-center mt-6">
+        <button type="submit" class="btn btn-primary-accent btn-lg">
+          {{ "users-skills-modal.actions.save" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</app-modal-template>

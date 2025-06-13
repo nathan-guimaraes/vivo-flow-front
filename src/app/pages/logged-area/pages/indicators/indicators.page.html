@@ -1,0 +1,96 @@
+<div class="container my-10">
+  <div class="row mb-7 align-items-center">
+    <div class="col-auto">
+      <h2 class="text-accent m-0">{{ 'indicators.title' | translate }}</h2>
+    </div>
+  </div>
+
+  <div class="row gy-5 gx-8">
+    <div *ngFor="let itemCfg of indicatorCfgList" class="col-12">
+      <div class="card indicator-card">
+        <div class="card-body p-6">
+          <div class="header mb-3">
+            <div class="card-title">
+              <h2 class="text-black m-0">{{ itemCfg.title | translate }}</h2>
+              <h4 *ngIf="!!itemCfg.subtitle" class="text-black m-0">
+                {{ itemCfg.subtitle | translate }}
+              </h4>
+            </div>
+
+            <ng-container *ngIf="!!itemCfg.filterTemplate">
+              <div class="action-btn me-3" *ngIf="!!itemCfg.dataSource">
+                <app-action-icon
+                  icon="refresh"
+                  tooltip="defaults.actions.refresh"
+                  (click)="onIndicatorRefreshClick(itemCfg)"
+                ></app-action-icon>
+              </div>
+
+              <div class="action-btn">
+                <app-action-icon
+                  icon="filter"
+                  tooltip="defaults.actions.filters"
+                  (click)="onIndicatorFilterClick(itemCfg)"
+                ></app-action-icon>
+              </div>
+            </ng-container>
+          </div>
+
+          <div
+            *ngIf="!!(itemCfg.template && itemCfg.dataSource)"
+            class="template-container"
+            #tplContainerEl
+          >
+            <ng-template
+              [appLazyRendering]="tplContainerEl"
+              (onRendered)="onIndicatorTemplateRendered(itemCfg)"
+            >
+              <ng-template
+                [ngTemplateOutlet]="itemCfg.template"
+                [ngTemplateOutletContext]="{dataSource: itemCfg.dataSource}"
+              ></ng-template>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #chartBarTpl> Barras </ng-template>
+
+<ng-template #protocolsVolumesChartTpl let-dataSource="dataSource">
+  <app-protocols-volumes-chart
+    [data]="dataSource.changes | async"
+    [loading]="dataSource.loadingChanges | async"
+  ></app-protocols-volumes-chart>
+</ng-template>
+
+<ng-template #cutoffDateChartTpl let-dataSource="dataSource">
+  <app-cutoff-date-chart
+    [data]="dataSource.changes | async"
+    [loading]="dataSource.loadingChanges | async"
+  ></app-cutoff-date-chart>
+</ng-template>
+
+<ng-template #productivityChartTpl let-dataSource="dataSource">
+  <app-productivity-chart
+    [data]="dataSource.changes | async"
+    [loading]="dataSource.loadingChanges | async"
+  ></app-productivity-chart>
+</ng-template>
+
+<ng-template #treatmentTimeChartTpl let-dataSource="dataSource">
+  <app-treatment-time-chart
+    [data]="dataSource.changes | async"
+    [loading]="dataSource.loadingChanges | async"
+  ></app-treatment-time-chart>
+</ng-template>
+
+<ng-template #disapprovalTreatmentsChartTpl let-dataSource="dataSource">
+  <app-disapproval-treatments-chart
+    #testTpl
+    [data]="dataSource.changes | async"
+    [loading]="dataSource.loadingChanges | async"
+  ></app-disapproval-treatments-chart>
+</ng-template>

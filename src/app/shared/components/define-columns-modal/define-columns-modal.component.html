@@ -1,0 +1,45 @@
+<app-modal-template [modalTitle]="title ?? 'define-columns-modal.title'">
+  <h4 *ngIf="!!subtitle" class="modal-subtitle text-black">
+    {{ subtitle | translate }}
+  </h4>
+
+  <div class="row g-5 mt-6" *ngIf="!!items?.length">
+    <div class="col-auto" *ngFor="let item of items">
+      <div
+        class="pointer column-item fs-sm py-2 px-3 border rounded"
+        [class.selected]="isSelected(item.name)"
+        (click)="toggleSelect(item.name)"
+      >
+        {{ item.label ?? item.name | translate }}
+
+        <div
+          class="index-indicator d-flex align-items-center justify-content-center fs-xs ms-3 border rounded-circle text-white"
+        >
+          {{ getSelectedPosition(item.name) }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center gx-6 mt-10">
+    <div class="col-auto text-center">
+      <button
+        type="button"
+        class="clear-btn btn btn-secondary-accent btn-lg"
+        (click)="onBtnClearClick()"
+      >
+        {{ "defaults.actions.clear" | translate }}
+      </button>
+    </div>
+
+    <div class="col-auto text-center">
+      <button
+        type="button"
+        class="save-btn btn btn-primary-accent btn-lg"
+        (click)="onBtnSaveClick()"
+      >
+        {{ "define-columns-modal.actions.save" | translate }}
+      </button>
+    </div>
+  </div>
+</app-modal-template>

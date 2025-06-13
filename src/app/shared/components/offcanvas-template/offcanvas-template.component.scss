@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .scroolbar {
+    height: 0;
+    flex: 1;
+
+    ::ng-deep {
+      .ng-scroll-content {
+        min-height: 100%;
+      }
+    }
+  }
+}

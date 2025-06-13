@@ -1,0 +1,39 @@
+$pagination-padding-y: 5.5px;
+$pagination-padding-x: 7.5px;
+$pagination-padding-y-sm: 2.5px;
+$pagination-padding-x-sm: 5px;
+$pagination-padding-y-lg: 7.5px;
+$pagination-padding-x-lg: 15px;
+
+$pagination-font-size: $font-size-base;
+
+$pagination-color: var(--custom-pagination-color);
+$pagination-bg: $white;
+$pagination-border-radius: $border-radius;
+$pagination-border-width: $border-width;
+$pagination-margin-start: ($pagination-border-width * -1);
+$pagination-border-color: $gray-300;
+
+$pagination-focus-color: var(--#{$prefix}link-hover-color);
+$pagination-focus-bg: $gray-200;
+$pagination-focus-box-shadow: $input-btn-focus-box-shadow;
+$pagination-focus-outline: 0;
+
+$pagination-hover-color: var(--custom-pagination-hover-bg);
+$pagination-hover-bg: $gray-200;
+$pagination-hover-border-color: $gray-300;
+
+$pagination-active-color: $component-active-color;
+$pagination-active-bg: var(--custom-pagination-active-bg);
+$pagination-active-border-color: $pagination-active-bg;
+
+$pagination-disabled-color: $gray-600;
+$pagination-disabled-bg: $white;
+$pagination-disabled-border-color: $gray-300;
+
+$pagination-transition: color 0.15s ease-in-out,
+  background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+  box-shadow 0.15s ease-in-out;
+
+$pagination-border-radius-sm: $border-radius-sm;
+$pagination-border-radius-lg: $border-radius-lg;

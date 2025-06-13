@@ -1,0 +1,11 @@
+:host {
+  .table-container {
+    position: relative;
+    min-height: 200px;
+    z-index: 1;
+
+    .table-content {
+      overflow-x: auto;
+    }
+  }
+}

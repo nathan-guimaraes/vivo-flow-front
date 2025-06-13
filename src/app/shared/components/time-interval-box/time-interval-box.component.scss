@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 4px;
+  padding-inline: calc(var(--bs-input-padding-x) / 2);
+
+  .timepicker {
+    display: inline-flex;
+    width: 50px;
+
+    ::ng-deep {
+      .ngb-tp {
+        .ngb-tp-input-container {
+          width: 100%;
+
+          input {
+            padding: 2px 0px;
+            border: none;
+          }
+        }
+
+        .ngb-tp-spacer {
+          width: 20px;
+        }
+      }
+    }
+  }
+}

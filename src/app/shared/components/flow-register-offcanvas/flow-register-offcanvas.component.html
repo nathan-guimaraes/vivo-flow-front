@@ -1,0 +1,258 @@
+<app-offcanvas-template
+  offcanvasTitle="{{ 'flow-register-offcanvas.title' | translate }}"
+>
+  <div class="py-8 px-10">
+    <div class="px-3">
+      <div class="row g-6">
+        <div class="col-12">
+          <h4 class="text-black mb-0">
+            {{ "flow-register-offcanvas.info" | translate }}
+          </h4>
+        </div>
+        <div class="col-12">
+          <div class="row g-6" [formGroup]="formGroup">
+            <div class="col-12">
+              <div class="row">
+                <div class="col">
+                  <app-field>
+                    <app-select-box
+                      [formControl]="f.towerId"
+                      class="filter"
+                      [dataSource]="towerDataSource"
+                      valueExpr="id"
+                      displayExpr="name"
+                      [searchModeEnabled]="true"
+                      [selectedTextExprFn]="selectedTextExpr"
+                      searchMode="dropdown"
+                      placeholder="{{
+                        'flow-register-offcanvas.filters.tower.placeholder'
+                          | translate
+                      }}"
+                    ></app-select-box>
+
+                    <app-field-error-container
+                      *ngIf="!!(submitted && f.towerId.errors)"
+                    >
+                      <app-field-error-item *ngIf="!!f.towerId.errors.required">
+                        {{
+                          "flow-register-offcanvas.form.tower.validation.required"
+                            | translate
+                        }}
+                      </app-field-error-item>
+                    </app-field-error-container>
+                  </app-field>
+                </div>
+                <div class="col">
+                  <app-field>
+                    <app-select-box
+                      [formControl]="f.negotiationTypeIds"
+                      class="filter"
+                      [dataSource]="negotiationTypeDataSource"
+                      valueExpr="id"
+                      displayExpr="name"
+                      [multiple]="true"
+                      [showSelectControls]="true"
+                      [applyButtonEnabled]="true"
+                      [searchModeEnabled]="true"
+                      [selectedTextExprFn]="selectedTextExpr"
+                      searchMode="dropdown"
+                      placeholder="{{
+                        'flow-register-offcanvas.filters.negotiationType.placeholder'
+                          | translate
+                      }}"
+                      [invalid]="!!(submitted && f.negotiationTypeIds.errors)"
+                    ></app-select-box>
+
+                    <app-field-error-container
+                      *ngIf="!!(submitted && f.negotiationTypeIds.errors)"
+                    >
+                      <app-field-error-item
+                        *ngIf="!!f.negotiationTypeIds.errors"
+                      >
+                        {{
+                          "flow-register-offcanvas.form.negotiationType.validation.required"
+                            | translate
+                        }}
+                      </app-field-error-item>
+                    </app-field-error-container>
+                  </app-field>
+                </div>
+                <div class="col">
+                  <app-field>
+                    <app-select-box
+                      [formControl]="f.productIds"
+                      class="filter"
+                      [dataSource]="productDataSource"
+                      valueExpr="id"
+                      displayExpr="name"
+                      [multiple]="true"
+                      [showSelectControls]="true"
+                      [applyButtonEnabled]="true"
+                      [searchModeEnabled]="true"
+                      [selectedTextExprFn]="selectedTextExpr"
+                      searchMode="dropdown"
+                      placeholder="{{
+                        'flow-register-offcanvas.filters.product.placeholder'
+                          | translate
+                      }}"
+                    ></app-select-box>
+
+                    <app-field-error-container
+                      *ngIf="!!(submitted && f.productIds.errors)"
+                    >
+                      <app-field-error-item *ngIf="!!f.productIds.errors">
+                        {{
+                          "flow-register-offcanvas.form.product.validation.required"
+                            | translate
+                        }}
+                      </app-field-error-item>
+                    </app-field-error-container>
+                  </app-field>
+                </div>
+                <div class="col">
+                  <app-field>
+                    <app-select-box
+                      class="filter"
+                      [formControl]="f.segmentIds"
+                      [dataSource]="segmentDataSource"
+                      valueExpr="id"
+                      displayExpr="name"
+                      [multiple]="true"
+                      [showSelectControls]="true"
+                      [applyButtonEnabled]="true"
+                      [searchModeEnabled]="true"
+                      [selectedTextExprFn]="selectedTextExpr"
+                      searchMode="dropdown"
+                      placeholder="{{
+                        'flow-register-offcanvas.filters.segment.placeholder'
+                          | translate
+                      }}"
+                      [invalid]="!!(submitted && f.segmentIds.errors)"
+                    ></app-select-box>
+
+                    <app-field-error-container
+                      *ngIf="!!(submitted && f.segmentIds.errors)"
+                    >
+                      <app-field-error-item *ngIf="!!f.segmentIds.errors">
+                        {{
+                          "flow-register-offcanvas.form.segmentIds.validation.required"
+                            | translate
+                        }}
+                      </app-field-error-item>
+                    </app-field-error-container>
+                  </app-field>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-auto">
+              <button
+                type="button"
+                class="btn btn-primary-accent btn-lg"
+                [disabled]="!!isFormInvalid"
+                (click)="onBtnDownloadTemplateClick()"
+              >
+                {{ "flow-register-offcanvas.actions.download" | translate }}
+
+                <app-iconic icon="download" class="fs-xs ms-2"></app-iconic>
+              </button>
+            </div>
+
+            <div class="col-auto">
+              <input
+                #importFlowInputEl
+                type="file"
+                accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                [hidden]="true"
+                (change)="onImportFlowFileChanged(importFlowInputEl)"
+              />
+
+              <button
+                type="button"
+                class="btn btn-primary-accent btn-lg"
+                (click)="importFlowInputEl.click()"
+                [disabled]="!!isFormInvalid"
+              >
+                {{ "flow-register-offcanvas.actions.upload" | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12" *ngIf="!!error">
+          <ngb-alert type="custom-danger" [dismissible]="false">
+            <div class="row align-items-center justify-content-center">
+              <div
+                class="col-auto d-flex align-items-center justify-content-center"
+              >
+                <app-iconic
+                  class="highlight-icon text-accent"
+                  icon="warning"
+                ></app-iconic>
+              </div>
+
+              <div class="col-auto">
+                {{ error | translate }}
+              </div>
+            </div>
+          </ngb-alert>
+        </div>
+
+        <div class="col-12">
+          <div class="log-list-container">
+            <ul
+              *ngIf="!!(logsObservable | async)?.length"
+              class="list-group list-group-flush border-top border-bottom"
+            >
+              <li
+                class="list-group-item p-3"
+                *ngFor="let item of logsObservable | async"
+              >
+                <div class="row">
+                  <div class="col">
+                    <h4 class="text-primary fw-bold mb-0">
+                      {{ item.fileName }}
+                    </h4>
+
+                    <span>
+                      {{
+                        "flow-register-offcanvas.logs-list.createdBy"
+                          | translate
+                      }}
+                      {{ item.createdBy }} -
+                      {{ item.createdAt | date : "dd/MM/yyyy hh:mm:ss" }}
+                    </span>
+                  </div>
+
+                  <div class="col-auto d-flex align-items-center">
+                    <app-iconic
+                      class="pointer fs-xl"
+                      appHoverClass="text-accent"
+                      icon="download"
+                      ngbTooltip="{{ 'defaults.actions.export' | translate }}"
+                      (click)="onDownloadFlowClick(item.id)"
+                    ></app-iconic>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+            <app-loading-indicator
+              [visible]="logsDataSource.isLoading()"
+              [showBackdrop]="false"
+            ></app-loading-indicator>
+          </div>
+          <div *ngIf="logsDataSource.totalCount > 0" class="mt-2">
+            <app-pagination
+              class="d-flex justify-content-end"
+              [(page)]="logsDataSource.page"
+              (pageChange)="logsDataSource.load()"
+              [collectionSize]="logsDataSource.totalCount"
+              [pageSize]="logsDataSource.pageSize"
+            ></app-pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-offcanvas-template>

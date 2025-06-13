@@ -1,0 +1,39 @@
+<div class="container mt-10 mb-3">
+  <div class="row gy-3 gx-7 justify-content-center">
+    <div
+      *ngFor="let menuItem of menuItems"
+      class="col-sm-auto d-flex justify-content-center"
+    >
+      <div class="card menu-item">
+        <div
+          *ngIf="!!menuItem.image"
+          class="card-img-top menu-thumb d-flex align-items-center justify-content-center"
+        >
+          <img [src]="menuItem.image" />
+        </div>
+
+        <div class="card-body menu-item-body p-6">
+          <h2 class="card-title text-accent">
+            {{ menuItem.title | translate }}
+          </h2>
+
+          <div class="chart-info-container">
+            <app-multiple-horizontal-chartbar
+              *ngIf="!!menuItem.chartListDataSource"
+              [chartList]="menuItem.chartListDataSource.changes | async"
+              [loading]="menuItem.chartListDataSource.loadingChanges | async"
+            ></app-multiple-horizontal-chartbar>
+          </div>
+
+          <div class="p-6 d-flex justify-content-center">
+            <a [routerLink]="menuItem.path">
+              <button type="button" class="btn btn-secondary-accent btn-lg">
+                {{ 'home.actions.open-page' | translate }}
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

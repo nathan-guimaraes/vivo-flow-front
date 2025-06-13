@@ -1,0 +1,25 @@
+:host {
+  display: contents;
+
+  .indicator-card {
+    --bs-card-border-radius: 10px;
+
+    .header {
+      display: flex;
+
+      .card-title {
+        flex: 1;
+      }
+
+      .action-btn {
+        display: inline-flex;
+        align-items: center;
+        font-size: 15px;
+      }
+    }
+
+    .template-container {
+      min-height: 400px;
+    }
+  }
+}

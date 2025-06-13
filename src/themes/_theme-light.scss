@@ -1,0 +1,72 @@
+:root {
+  // #region Bootstrap Variables
+  --#{$prefix}font-family: "Roboto", "Public Sans", sans-serif;
+
+  --primary-color: #{$primary};
+  --accent-color: #{$accent};
+  // #endregion
+
+  // #region Utility
+  --white: #{$white};
+  --black: #{$black};
+  --dark: #{$dark};
+
+  --danger: #{$danger};
+  --warning: #{$warning};
+  --info: #{$info};
+  --success: #{$success};
+
+  --font-weight-medium: #{$font-weight-medium};
+  --font-weight-semibold: #{$font-weight-semibold};
+  // #endregion
+
+  // #region Links
+  --#{$prefix}link-color: currentColor;
+  // #endregion
+
+  // #region Components
+
+  // #region Forms
+  --#{$prefix}input-padding-x: 7.5px;
+
+  // #region Input
+  --#{$prefix}input-bg: #{$body-bg};
+  --#{$prefix}input-color: #{$body-color};
+  --#{$prefix}input-placeholder-color: #{$gray-600};
+  --#{$prefix}input-border-color: #{$gray-400};
+  --#{$prefix}input-box-shadow: #{$box-shadow-inset};
+  --#{$prefix}input-disabled-bg: #{$gray-200};
+  --#{$prefix}input-focus-border-color: #{tint-color($component-active-bg, 50%)};
+  --#{$prefix}input-focus-box-shadow: #{$input-btn-focus-box-shadow};
+  // #endregion
+
+  // #endregion
+
+  // #region Table
+  --#{$prefix}table-header-color: var(--bs-primary-light);
+  // #endregion
+
+  // #region Nav
+  --#{$prefix}link-hover-color: var(--accent-color);
+  // #endregion
+
+  // #endregion
+
+  // #region Custom Components
+
+  // #region Loading Indicator
+  --field-color: var(--black);
+  // #endregion
+
+  // #region Loading Indicator
+  --loading-indicator-color: var(--primary-color);
+  // #endregion
+
+  // #region Pagination
+  --custom-pagination-color: var(--primary-color);
+  --custom-pagination-hover-bg: var(--primary-color);
+  --custom-pagination-active-bg: var(--primary-color);
+  // #endregion
+
+  // #endregion
+}

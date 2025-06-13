@@ -1,0 +1,123 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="row gy-3 gx-5">
+    <div class="col">
+      <app-field
+        label="{{ 'subject-register-form.form.tower.label' | translate }}"
+      >
+        <app-select-box
+          [formControl]="f.towerId"
+          [dataSource]="towerDataSource"
+          valueExpr="id"
+          displayExpr="name"
+          [searchModeEnabled]="true"
+          searchMode="dropdown"
+          placeholder="{{
+            'subject-register-form.form.tower.placeholder' | translate
+          }}"
+          [invalid]="!!(submitted && f.towerId.errors)"
+        ></app-select-box>
+
+        <app-field-error-container *ngIf="submitted && f.towerId.errors">
+          <app-field-error-item *ngIf="f.towerId.errors.required">
+            {{
+              "subject-register-form.form.tower.validation.required" | translate
+            }}
+          </app-field-error-item>
+        </app-field-error-container>
+      </app-field>
+    </div>
+    <div class="col">
+      <app-field
+        label="{{ 'subject-register-form.form.island.label' | translate }}"
+      >
+        <app-select-box
+          [formControl]="f.islandId"
+          [dataSource]="islandDataSource"
+          valueExpr="id"
+          displayExpr="name"
+          [searchModeEnabled]="true"
+          searchMode="dropdown"
+          placeholder="{{
+            'subject-register-form.form.island.placeholder' | translate
+          }}"
+          [invalid]="!!(submitted && f.islandId.errors)"
+        ></app-select-box>
+
+        <app-field-error-container *ngIf="submitted && f.islandId.errors">
+          <app-field-error-item *ngIf="f.islandId.errors.required">
+            {{
+              "subject-register-form.form.island.validation.required"
+                | translate
+            }}
+          </app-field-error-item>
+        </app-field-error-container>
+      </app-field>
+    </div>
+    <div class="col">
+      <app-field
+        label="{{ 'subject-register-form.form.subisland.label' | translate }}"
+      >
+        <app-select-box
+          [formControl]="f.subislandId"
+          [dataSource]="subislandDataSource"
+          valueExpr="id"
+          displayExpr="name"
+          [searchModeEnabled]="true"
+          searchMode="dropdown"
+          placeholder="{{
+            'subject-register-form.form.subisland.placeholder' | translate
+          }}"
+          [invalid]="!!(submitted && f.subislandId.errors)"
+        ></app-select-box>
+
+        <app-field-error-container *ngIf="submitted && f.subislandId.errors">
+          <app-field-error-item *ngIf="f.subislandId.errors.required">
+            {{
+              "subject-register-form.form.subisland.validation.required"
+                | translate
+            }}
+          </app-field-error-item>
+        </app-field-error-container>
+      </app-field>
+    </div>
+    <div class="col-12">
+      <app-field
+        label="{{ 'subject-register-form.form.name.label' | translate }}"
+      >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="{{
+            'subject-register-form.form.name.placeholder' | translate
+          }}"
+          [formControl]="f.name"
+          [ngClass]="{ 'is-invalid': !!(submitted && f.name.errors) }"
+        />
+
+        <app-field-error-container *ngIf="submitted && f.name.errors">
+          <app-field-error-item *ngIf="f.name.errors.required">
+            {{
+              "subject-register-form.form.name.validation.required" | translate
+            }}
+          </app-field-error-item>
+        </app-field-error-container>
+      </app-field>
+    </div>
+
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary-accent btn-lg btn-save">
+        {{ "subject-register-form.actions.save" | translate }}
+      </button>
+    </div>
+
+    <div class="col-auto">
+      <button
+        type="button"
+        class="btn btn-secondary-accent btn-lg btn-cancel"
+        (click)="onCanceled.emit()"
+      >
+        {{ "subject-register-form.actions.cancel" | translate }}
+      </button>
+    </div>
+  </div>
+</form>

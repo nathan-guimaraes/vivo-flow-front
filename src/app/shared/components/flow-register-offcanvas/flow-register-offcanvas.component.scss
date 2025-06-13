@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  height: 100%;
+
+  .log-list-container {
+    position: relative;
+
+    .list-group {
+      --bs-list-group-color: var(--bs-body-color);
+    }
+  }
+
+  .filter {
+    --select-box-input-hasvalue-color: var(--white);
+    --select-box-input-hasvalue-placeholder-color: var(--white);
+    --select-box-input-hasvalue-bg: var(--accent-color);
+    --select-box-input-hasvalue-border-color: var(--accent-color);
+    --select-box-arrow-indicator-hasvalue-color: var(--white);
+
+    --select-box-input-opened-color: var(--accent-color);
+    --select-box-input-opened-placeholder-color: var(--accent-color);
+    --select-box-input-opened-border-color: var(--accent-color);
+    --select-box-input-opened-box-shadow: 0 0 0 2.5px var(--accent-color);
+
+    --select-box-dropdown-width: 200px;
+  }
+}

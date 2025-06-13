@@ -1,0 +1,38 @@
+<app-modal-template modalTitle="finish-work-modal.title">
+  <h4 class="fs-lg mt-3 mb-6">
+    {{ "finish-work-modal.info" | translate }}
+  </h4>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-5 mb-3">
+        <app-field
+          label="{{ 'finish-work-modal.form.reason.label' | translate }}"
+        >
+          <app-select-box
+            [dataSource]="reasonDataSource"
+            valueExpr="id"
+            displayExpr="name"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [formControl]="f.reason"
+            [invalid]="!!(submitted && f.reason.errors)"
+          ></app-select-box>
+
+          <app-field-error-container *ngIf="submitted && f.reason.errors">
+            <app-field-error-item *ngIf="f.reason.errors.required">
+              {{
+                "finish-work-modal.form.reason.validation.required" | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+
+      <div class="col-auto text-center mt-6">
+        <button type="submit" class="btn btn-primary-accent btn-lg">
+          {{ "finish-work-modal.actions.finish" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</app-modal-template>

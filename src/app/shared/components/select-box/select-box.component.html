@@ -1,0 +1,137 @@
+<div
+  class="select-box-content"
+  ngbDropdown
+  [autoClose]="applyButtonEnabled ? 'outside' : true"
+  (openChange)="_onDropdownOpenChanged($event)"
+  #dropdown="ngbDropdown"
+>
+  <input
+    ngbDropdownAnchor
+    type="text"
+    class="input-text form-control"
+    [formControl]="textControl"
+    [placeholder]="placeholder"
+    [readOnly]="!(searchModeEnabled && !isSearchInDropdown)"
+    [ngClass]="{ 'is-invalid': !!invalid }"
+    (focus)="_onInputFocus()"
+  />
+
+  <div class="arrow-indicator">
+    <app-iconic icon="arrow-down1"></app-iconic>
+  </div>
+
+  <div ngbDropdownMenu class="dropdown-container">
+    <div class="dropdown-content">
+      <div
+        class="input-group pt-2 pb-3 px-3"
+        *ngIf="!!(searchModeEnabled && isSearchInDropdown)"
+      >
+        <input
+          type="text"
+          class="form-control"
+          [formControl]="searchTextControl"
+          placeholder="{{ 'defaults.placeholders.input' | translate }}"
+        />
+
+        <span class="input-group-text">
+          <app-iconic icon="search"></app-iconic>
+        </span>
+      </div>
+
+      <div class="list-container">
+        <ng-scrollbar *appDeferRendering="dropdown.isOpen()" class="scrollbar">
+          <div
+            scrollViewport
+            infiniteScroll
+            [infiniteScrollDistance]="3"
+            [infiniteScrollThrottle]="50"
+            [scrollWindow]="false"
+            [immediateCheck]="true"
+            [alwaysCallback]="true"
+            (scrolled)="loadMoreItems()"
+          >
+            <div>
+              <ng-template
+                *ngFor="
+                  let item of _handledDataItems;
+                  let i = index;
+                  trackBy: _trackBy
+                "
+                [ngTemplateOutlet]="itemListContainerTpl"
+                [ngTemplateOutletContext]="{item, index: i, selected: isSelected(item, i)}"
+              ></ng-template>
+            </div>
+          </div>
+        </ng-scrollbar>
+
+        <app-loading-indicator
+          [visible]="loadingChanges | async"
+          [showBackdrop]="false"
+        ></app-loading-indicator>
+      </div>
+
+      <div
+        *ngIf="!!applyButtonEnabled"
+        class="row justify-content-between pt-3 px-2"
+      >
+        <div class="col-auto">
+          <button
+            type="button"
+            class="btn btn-light"
+            (click)="_onBtnClearClick()"
+          >
+            {{ "defaults.actions.clear" | translate }}
+          </button>
+        </div>
+        <div class="col-auto">
+          <button
+            type="button"
+            class="btn btn-light"
+            (click)="_onBtnAppyClick()"
+          >
+            {{ "defaults.actions.apply" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template
+  #itemListContainerTpl
+  let-item="item"
+  let-index="index"
+  let-selected="selected"
+>
+  <div
+    ngbDropdownItem
+    class="pointer"
+    [ngClass]="{ active: selected }"
+    (click)="_onItemClickInternal(item, index)"
+    [title]="extractDisplayText(item, index)"
+  >
+    <ng-template
+      [ngTemplateOutlet]="itemTplRef?.templateRef ?? itemListDefaultTpl"
+      [ngTemplateOutletContext]="{
+        item,
+        index,
+        selected
+      }"
+    ></ng-template>
+  </div>
+</ng-template>
+
+<ng-template
+  #itemListDefaultTpl
+  let-item="item"
+  let-index="index"
+  let-selected="selected"
+>
+  <app-checkbox
+    *ngIf="!!showSelectControls"
+    class="me-2"
+    [value]="selected"
+  ></app-checkbox>
+
+  {{ extractDisplayText(item, index) }}
+</ng-template>

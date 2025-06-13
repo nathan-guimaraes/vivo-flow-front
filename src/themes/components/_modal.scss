@@ -1,0 +1,78 @@
+$modal-inner-padding: 40px;
+
+$modal-footer-margin-between: 5px;
+
+$modal-dialog-margin: 5px;
+$modal-dialog-margin-y-sm-up: 17.5px;
+
+$modal-title-line-height: $line-height-base;
+
+$modal-content-color: null;
+$modal-content-bg: $white;
+$modal-content-border-color: var(--#{$prefix}green);
+$modal-content-border-width: 2px;
+$modal-content-border-radius: $border-radius-xl;
+$modal-content-inner-border-radius: subtract(
+  $modal-content-border-radius,
+  $modal-content-border-width
+);
+$modal-content-box-shadow-xs: $box-shadow-sm;
+$modal-content-box-shadow-sm-up: $box-shadow;
+
+$modal-backdrop-bg: $black;
+$modal-backdrop-opacity: 0.5;
+
+$modal-header-border-color: var(--#{$prefix}border-color);
+$modal-header-border-width: $modal-content-border-width;
+$modal-header-padding-y: $modal-inner-padding;
+$modal-header-padding-x: $modal-inner-padding;
+$modal-header-padding: $modal-header-padding-y $modal-header-padding-x; // Keep this for backwards compatibility
+
+$modal-footer-bg: null;
+$modal-footer-border-color: $modal-header-border-color;
+$modal-footer-border-width: $modal-header-border-width;
+
+$modal-xs: 280px;
+$modal-sm: 380px;
+$modal-md: 490px;
+$modal-lg: 620px;
+$modal-xl: 870px;
+$modal-xxl: 1330px;
+
+$modal-fade-transform: translate(0, -50px);
+$modal-show-transform: none;
+$modal-transition: transform 0.3s ease-out;
+$modal-scale-transform: scale(1.02);
+
+.custom-theme {
+  .modal-content {
+    .modal-close-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: 2px solid var(--bs-gray-550);
+      border-radius: 50%;
+
+      --size: 25px;
+      width: var(--size);
+      height: var(--size);
+
+      &:hover {
+        border-color: var(--bs-green);
+      }
+    }
+  }
+
+  .modal-dialog {
+    &.modal-xs {
+      --bs-modal-width: #{$modal-xs};
+    }
+
+    &.modal-xxl {
+      --bs-modal-width: #{$modal-xxl};
+    }
+  }
+}

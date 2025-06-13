@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  height: 100%;
+
+  .list-container {
+    position: relative;
+    min-height: 200px;
+
+    .group {
+      .group-header {
+        background-color: var(--bs-gray-100);
+      }
+    }
+
+    .list-group {
+      .list-group-item {
+        .title {
+          line-height: 20px;
+        }
+      }
+    }
+  }
+}

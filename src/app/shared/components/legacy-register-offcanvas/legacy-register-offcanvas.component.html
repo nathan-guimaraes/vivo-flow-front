@@ -1,0 +1,64 @@
+<app-offcanvas-template
+  offcanvasTitle="{{ 'legacy-register-offcanvas.title' | translate }}"
+>
+  <div class="py-8 px-10">
+    <div class="px-3">
+      <div class="row gy-5">
+        <div class="col-12">
+          <app-legacy-register-form
+            *ngIf="registerFormModeEnabled"
+            [@enter]
+            [@leave]
+            (onSaved)="onLegacySaved()"
+            (onCanceled)="registerFormModeEnabled = false"
+          ></app-legacy-register-form>
+
+          <button
+            *ngIf="!registerFormModeEnabled"
+            [@enter]
+            [@leave]
+            type="button"
+            class="btn btn-primary-accent btn-lg"
+            (click)="registerFormModeEnabled = true"
+          >
+            {{ "legacy-register-offcanvas.actions.new-register" | translate }}
+          </button>
+        </div>
+
+        <div class="col-12">
+          <div class="list-container">
+            <ul
+              *ngIf="!!(listObservable | async)?.length"
+              class="list-group list-group-flush border-top"
+            >
+              <li
+                class="list-group-item px-5 py-3 d-flex"
+                *ngFor="
+                  let item of listObservable | async;
+                  trackBy: listTrackBy
+                "
+              >
+                <div class="title text-black mb-0 fs-lg">
+                  {{ item.name | translate }}
+                </div>
+
+                <div class="ms-auto d-flex align-items-center">
+                  <app-checkbox
+                    [(value)]="item.active"
+                    (valueChange)="setActive(item, $event)"
+                    styleType="switch"
+                  ></app-checkbox>
+                </div>
+              </li>
+            </ul>
+
+            <app-loading-indicator
+              [visible]="listDataSource.isLoading()"
+              [showBackdrop]="false"
+            ></app-loading-indicator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-offcanvas-template>

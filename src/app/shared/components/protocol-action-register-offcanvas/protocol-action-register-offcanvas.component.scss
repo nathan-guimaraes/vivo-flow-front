@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  height: 100%;
+
+  .list-container {
+    position: relative;
+    min-height: 200px;
+
+    .list-group {
+      .list-group-item {
+        .title {
+          line-height: 20px;
+        }
+      }
+    }
+  }
+}

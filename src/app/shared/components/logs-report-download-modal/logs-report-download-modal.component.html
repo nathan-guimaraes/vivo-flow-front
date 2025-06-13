@@ -1,0 +1,86 @@
+<app-modal-template modalTitle="logs-report-download-modal.title">
+  <h4 class="text-black fs-lg my-6">
+    {{ "logs-report-download-modal.info" | translate }}
+  </h4>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col mb-3">
+        <app-field
+          label="{{
+            'logs-report-download-modal.form.startDate.label' | translate
+          }}"
+        >
+          <app-date-box [formControl]="f.startDate"></app-date-box>
+
+          <app-field-error-container *ngIf="submitted && f.startDate.errors">
+            <app-field-error-item *ngIf="f.startDate.errors.required">
+              {{
+                "logs-report-download-modal.form.startDate.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+
+      <div class="col mb-3">
+        <app-field
+          label="{{
+            'logs-report-download-modal.form.endDate.label' | translate
+          }}"
+        >
+          <app-date-box [formControl]="f.endDate"></app-date-box>
+
+          <app-field-error-container *ngIf="submitted && f.endDate.errors">
+            <app-field-error-item *ngIf="f.endDate.errors.required">
+              {{
+                "logs-report-download-modal.form.endDate.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+
+      <div class="col mb-3">
+        <app-field
+          label="{{
+            'logs-report-download-modal.form.actions.label' | translate
+          }}"
+        >
+          <app-select-box
+            formControlName="actions"
+            class="filter tower-filter"
+            [dataSource]="repostTypeDataSource"
+            valueExpr="id"
+            displayExpr="name"
+            [selectedTextExprFn]="selectedTextExpr"
+            [multiple]="true"
+            [searchModeEnabled]="true"
+            searchMode="dropdown"
+            [applyButtonEnabled]="true"
+            [showSelectControls]="true"
+            placeholder="{{
+              'logs-report-download-modal.form.actions.placeholder' | translate
+            }}"
+          ></app-select-box>
+          <app-field-error-container *ngIf="submitted && f.actions.errors">
+            <app-field-error-item *ngIf="f.actions.errors.required">
+              {{
+                "logs-report-download-modal.form.actions.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+
+      <div class="col-12 text-center mt-6">
+        <button type="submit" class="btn btn-primary-accent btn-lg">
+          {{ "logs-report-download-modal.actions.save" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</app-modal-template>

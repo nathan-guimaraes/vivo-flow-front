@@ -1,0 +1,34 @@
+:host {
+  .label {
+    color: var(--bs-primary);
+    font-weight: 700;
+    line-height: 20px;
+  }
+
+  .value {
+    color: var(--bs-black);
+    line-height: 20px;
+  }
+
+  .btn-start-work {
+    width: 130px;
+  }
+
+  .infos-section {
+    background-color: var(--bs-gray-100);
+
+    .protocols-running-col {
+      width: 220px;
+    }
+
+    .status-col {
+      width: 200px;
+    }
+  }
+
+  .protocol-infos {
+    .info-label {
+      line-height: 20px;
+    }
+  }
+}

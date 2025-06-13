@@ -1,0 +1,578 @@
+<div class="container mt-10">
+  <div class="row mb-5 align-items-center">
+    <div class="col-auto">
+      <h2 class="text-accent m-0">
+        {{ 'protocol-dealings.title' | translate }}
+      </h2>
+    </div>
+
+    <div class="col-auto ms-auto">
+      <div class="row gx-7 align-items-center">
+        <div class="col-auto">
+          <button
+            *ngIf="!workHasStarted"
+            type="button"
+            class="btn-start-work btn btn-primary-accent btn-lg"
+            (click)="onBtnStartWorkClick()"
+          >
+            {{ 'protocol-dealings.actions.start-work' | translate }}
+          </button>
+
+          <button
+            *ngIf="workHasStarted"
+            type="button"
+            class="btn-start-work btn btn-secondary-accent btn-lg"
+            (click)="onBtnRequestFinishWorkClick()"
+          >
+            {{ 'protocol-dealings.actions.finish-work' | translate }}
+          </button>
+        </div>
+
+        <div class="col-auto d-flex">
+          <div class="timer-container me-6">
+            <div class="label fs-md mb-2">
+              {{ 'protocol-dealings.labels.timer' | translate }}
+            </div>
+
+            <div class="value fs-lg">{{ timeSpendObservable | async }}</div>
+          </div>
+
+          <app-iconic class="text-black fs-2" icon="clock"></app-iconic>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="infos-section border-top border-bottom">
+  <div class="container">
+    <div class="row gx-7">
+      <div class="col border-end">
+        <div class="py-3">
+          <div class="label fs-md mb-2">
+            {{ 'protocol-dealings.labels.analyst-name' | translate }}
+          </div>
+
+          <div class="value fs-lg">{{ userName }}</div>
+        </div>
+      </div>
+
+      <div class="col-3 border-end">
+        <div class="py-3">
+          <div class="label fs-md mb-2">
+            {{ 'protocol-dealings.labels.activity-name' | translate }}
+          </div>
+
+          <div class="value fs-lg">{{ treatmentStep?.subisland }}</div>
+        </div>
+      </div>
+
+      <div class="col-auto border-end">
+        <div class="py-3">
+          <div class="label fs-md mb-2">
+            {{ 'protocol-dealings.labels.protocols-met' | translate }}
+          </div>
+
+          <div class="value fs-lg">{{ protocolsMetCount }}</div>
+        </div>
+      </div>
+
+      <div class="col-auto protocols-running-col border-end">
+        <div class="py-3 d-flex">
+          <div class="me-auto">
+            <div class="label fs-md mb-2">
+              {{ 'protocol-dealings.labels.protocols-running' | translate }}
+            </div>
+
+            <div class="value fs-lg">{{ protocolsRunningCount }}</div>
+          </div>
+
+          <div *ngIf="workHasStarted" class="d-flex align-items-center">
+            <button
+              type="button"
+              class="btn btn-secondary-accent"
+              (click)="onBtnVerifyClick()"
+            >
+              {{ 'protocol-dealings.actions.verify' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-auto status-col">
+        <div class="py-3 d-flex">
+          <div class="me-auto">
+            <div class="label fs-md mb-2">
+              {{ 'protocol-dealings.labels.protocol-status' | translate }}
+            </div>
+
+            <div class="value fs-lg">{{ protocolStatus }}</div>
+          </div>
+
+          <app-iconic
+            *ngIf="isInTreatment()"
+            class="text-primary fs-2"
+            icon="play-fill"
+          ></app-iconic>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="protocolInfosVisible">
+  <div class="container mb-10">
+    <div class="row gy-9">
+      <div class="col-12">
+        <div class="row gx-13 align-items-center mt-10 protocol-infos">
+          <div class="col-auto py-2 border-end">
+            <span class="fs-lg">
+              <span class="info-label">
+                {{ 'protocol-dealings.labels.protocol-startedat' | translate }}
+              </span>
+              <span class="value">
+                {{ treatmentStep?.createdAt | date:'dd/MM/yyyy HH:mm:ss' }}
+              </span>
+            </span>
+          </div>
+
+          <div class="col-auto py-2 border-end">
+            <span class="fs-lg">
+              <span class="info-label">
+                {{ 'protocol-dealings.labels.protocol-status' | translate }}
+              </span>
+              <span class="value"> {{ protocolStatus }} </span>
+            </span>
+          </div>
+
+          <div class="col-auto py-2">
+            <div class="row">
+              <div class="col-auto" *ngIf="isInTreatment()">
+                <button
+                  type="button"
+                  class="btn btn-secondary-accent"
+                  (click)="onBtnRequestPauseProtocolClick()"
+                >
+                  {{ 'protocol-dealings.actions.pause' | translate }}
+                </button>
+              </div>
+
+              <div class="col-auto" *ngIf="isTreatmentPaused()">
+                <button
+                  type="button"
+                  class="btn btn-secondary-accent"
+                  (click)="onBtnPlayProtocolClick()"
+                >
+                  {{ 'protocol-dealings.actions.continue' | translate }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12" *ngIf="!!treatmentStep?.protocolId">
+        <app-protocol-treatments-diagram
+          [protocolId]="treatmentStep?.protocolId"
+        ></app-protocol-treatments-diagram>
+      </div>
+
+      <div class="col-11">
+        <form [formGroup]="protocolFormGroup" (ngSubmit)="onSubmit()">
+          <div class="row" [formGroup]="f.automatic">
+            <div class="col-2 mb-3">
+              <app-field
+                label="{{ 'protocol-dealings.form.id.label' | translate }}"
+              >
+                <input
+                  [formControl]="fAutomatic.id"
+                  type="text"
+                  class="form-control"
+                />
+              </app-field>
+            </div>
+            <div class="col-2 mb-3">
+              <app-field
+                label="{{ 'protocol-dealings.form.number.label' | translate }}"
+              >
+                <input
+                  [formControl]="fAutomatic.number"
+                  type="text"
+                  class="form-control"
+                />
+              </app-field>
+            </div>
+
+            <div class="col-4 mb-3">
+              <app-field
+                label="{{ 'protocol-dealings.form.customerName.label' | translate }}"
+              >
+                <input
+                  [formControl]="fAutomatic.customer"
+                  type="text"
+                  class="form-control"
+                />
+              </app-field>
+            </div>
+            <div class="col-2 mb-3">
+              <app-field
+                label="{{ 'protocol-dealings.form.document.label' | translate }}"
+              >
+                <input
+                  [formControl]="fAutomatic.document"
+                  type="text"
+                  class="form-control"
+                />
+              </app-field>
+            </div>
+            <div class="col-4 mb-3">
+              <app-field
+                label="{{ 'protocol-dealings.form.segment.label' | translate }}"
+              >
+                <app-select-box
+                  [formControl]="fAutomatic.segmentId"
+                  [dataSource]="segmentDataSource"
+                  valueExpr="id"
+                  displayExpr="name"
+                ></app-select-box>
+              </app-field>
+            </div>
+            <div class="col-4 mb-3">
+              <app-field
+                label="{{ 'protocol-dealings.form.stepLegacy.label' | translate }}"
+              >
+                <input
+                  [formControl]="fAutomatic.stepLegacy"
+                  type="text"
+                  class="form-control"
+                />
+              </app-field>
+            </div>
+            <div class="col-2 mb-3">
+              <app-field
+                label="{{ 'protocol-dealings.form.createdAt.label' | translate }}"
+              >
+                <app-date-box
+                  [formControl]="fAutomatic.createdAt"
+                ></app-date-box>
+              </app-field>
+            </div>
+
+            <ng-template
+              [ngTemplateOutlet]="fieldListTpl"
+              [ngTemplateOutletContext]="{formGroup: fAutomatic.dynamicFields,manual: false,fields: dynamicAutomaticFields}"
+            ></ng-template>
+          </div>
+
+          <div class="row" [formGroup]="f.manual">
+            <ng-template
+              [ngTemplateOutlet]="fieldListTpl"
+              [ngTemplateOutletContext]="{formGroup: fManual.dynamicFields,manual: true,fields: dynamicManualFields}"
+            ></ng-template>
+
+            <div class="col-8">
+              <div class="row">
+                <div class="col mb-3">
+                  <app-field
+                    label="{{ 'protocol-dealings.form.action.label' | translate }}"
+                  >
+                    <app-select-box
+                      [formControl]="fManual.actionId"
+                      [dataSource]="protocolActionDataSource"
+                      valueExpr="id"
+                      displayExpr="name"
+                      placeholder="{{ 'defaults.placeholders.select' | translate }}"
+                      [invalid]="!!(submitted && fManual.actionId.errors)"
+                    ></app-select-box>
+
+                    <app-field-error-container
+                      *ngIf="!!(submitted && fManual.actionId.errors)"
+                    >
+                      <app-field-error-item
+                        *ngIf="!!fManual.actionId.errors.required"
+                      >
+                        {{ 'defaults.form.validation.required' | translate }}
+                      </app-field-error-item>
+                    </app-field-error-container>
+                  </app-field>
+                </div>
+                <div class="col mb-3">
+                  <app-field
+                    label="{{ 'protocol-dealings.form.reason.label' | translate }}"
+                  >
+                    <app-select-box
+                      [formControl]="fManual.reason"
+                      [dataSource]="dealingReasonDataSource"
+                      valueExpr="id"
+                      displayExpr="name"
+                      placeholder="{{ 'defaults.placeholders.select' | translate }}"
+                      [invalid]="!!(submitted && fManual.reason.errors)"
+                    ></app-select-box>
+
+                    <app-field-error-container
+                      *ngIf="!!(submitted && fManual.reason.errors)"
+                    >
+                      <app-field-error-item
+                        *ngIf="!!fManual.reason.errors.required"
+                      >
+                        {{ 'defaults.form.validation.required' | translate }}
+                      </app-field-error-item>
+                    </app-field-error-container>
+                  </app-field>
+                </div>
+                <div class="col mb-3">
+                  <app-field
+                    label="{{ 'protocol-dealings.form.subreason.label' | translate }}"
+                  >
+                    <app-select-box
+                      [formControl]="fManual.subreason"
+                      [dataSource]="dealingSubreasonDataSource"
+                      valueExpr="id"
+                      displayExpr="name"
+                      placeholder="{{ 'defaults.placeholders.select' | translate }}"
+                      [invalid]="!!(submitted && fManual.subreason.errors)"
+                    ></app-select-box>
+
+                    <app-field-error-container
+                      *ngIf="!!(submitted && fManual.subreason.errors)"
+                    >
+                      <app-field-error-item
+                        *ngIf="!!fManual.subreason.errors.required"
+                      >
+                        {{ 'defaults.form.validation.required' | translate }}
+                      </app-field-error-item>
+                    </app-field-error-container>
+                  </app-field>
+                </div>
+                <div class="col mb-3">
+                  <app-field
+                    label="{{ 'protocol-dealings.form.subreason2.label' | translate }}"
+                  >
+                    <app-select-box
+                      [formControl]="fManual.subreason2"
+                      [dataSource]="dealingSubreason2DataSource"
+                      valueExpr="id"
+                      displayExpr="name"
+                      placeholder="{{ 'defaults.placeholders.select' | translate }}"
+                      [invalid]="!!(submitted && fManual.subreason2.errors)"
+                    ></app-select-box>
+
+                    <app-field-error-container
+                      *ngIf="!!(submitted && fManual.subreason2.errors)"
+                    >
+                      <app-field-error-item
+                        *ngIf="!!fManual.subreason2.errors.required"
+                      >
+                        {{ 'defaults.form.validation.required' | translate }}
+                      </app-field-error-item>
+                    </app-field-error-container>
+                  </app-field>
+                </div>
+                <div class="col-12 mb-3">
+                  <app-field
+                    label="{{ 'protocol-dealings.form.observation.label' | translate }}"
+                  >
+                    <textarea
+                      [formControl]="fManual.observation"
+                      class="form-control"
+                      placeholder="{{ 'defaults.placeholders.textarea' | translate }}"
+                      [ngClass]="{
+                        'is-invalid': !!(submitted && fManual.observation.errors)
+                      }"
+                    ></textarea>
+
+                    <app-field-error-container
+                      *ngIf="!!(submitted && fManual.observation.errors)"
+                    >
+                      <app-field-error-item
+                        *ngIf="!!fManual.observation.errors.required"
+                      >
+                        {{ 'defaults.form.validation.required' | translate }}
+                      </app-field-error-item>
+                    </app-field-error-container>
+                  </app-field>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 mt-5">
+              <button
+                type="submit"
+                class="btn btn-primary-accent btn-lg"
+                [disabled]="!isInTreatment()"
+              >
+                {{ 'protocol-dealings.actions.conclude-protocol' | translate }}
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template
+  #fieldListTpl
+  let-manual="manual"
+  let-fields="fields"
+  let-formGroup="formGroup"
+  let-col="col"
+>
+  <div class="col-12">
+    <div class="row" [formGroup]="formGroup">
+      <div class="col-2" *ngFor="let field of fields">
+        <app-field label="{{ field.label }}">
+          <ng-template
+            [ngTemplateOutlet]="getFormControlTemplate(field.name)"
+            [ngTemplateOutletContext]="{
+              field,
+              control: getFormControl(field.name, manual),
+              length: getFormControlLength(field.name)}"
+          ></ng-template>
+
+          <app-field-error-container
+            *ngIf="!!(submitted && getFormControl(field.name, manual).errors)"
+          >
+            <app-field-error-item
+              *ngIf="!!getFormControl(field.name, manual).errors.required"
+            >
+              {{ 'defaults.form.validation.required' | translate }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #textFieldTpl let-control="control" let-length="length">
+  <input
+    [formControl]="control"
+    class="form-control"
+    [maxlength]="length"
+    [ngClass]="{
+    'is-invalid': !!(submitted && control.errors)
+  }"
+  />
+</ng-template>
+
+<ng-template #numericFieldTpl let-control="control" let-length="length">
+  <input
+    [formControl]="control"
+    class="form-control"
+    [mask]="'9{' + length + '}'"
+    [maxlength]="length"
+    [ngClass]="{
+      'is-invalid': !!(submitted && control.errors)
+    }"
+  />
+</ng-template>
+
+<ng-template
+  #numberFieldTpl
+  let-field="field"
+  let-control="control"
+  let-length="length"
+>
+  <input
+    type="number"
+    [formControl]="control"
+    class="form-control"
+    [maxlength]="length"
+    [max]="calculateFormControlMaxNumber(length)"
+    (change)="_onInputNumberChange(control, field.name)"
+    [ngClass]="{
+      'is-invalid': !!(submitted && control.errors)
+    }"
+  />
+</ng-template>
+
+<ng-template #currencyFieldTpl let-control="control">
+  <input
+    [formControl]="control"
+    class="form-control"
+    prefix="R$ "
+    mask="separator.2"
+    thousandSeparator="."
+    [allowNegativeNumbers]="false"
+    [ngClass]="{
+      'is-invalid': !!(submitted && control.errors)
+    }"
+  />
+</ng-template>
+
+<ng-template #towerFieldTpl let-control="control">
+  <app-select-box
+    [formControl]="control"
+    [dataSource]="towerDataSource"
+    valueExpr="id"
+    displayExpr="name"
+    [invalid]="!!(submitted && control.errors)"
+  ></app-select-box>
+</ng-template>
+
+<ng-template #islandFieldTpl let-control="control">
+  <app-select-box
+    [formControl]="control"
+    [dataSource]="islandDataSource"
+    valueExpr="id"
+    displayExpr="name"
+    [invalid]="!!(submitted && control.errors)"
+  ></app-select-box>
+</ng-template>
+
+<ng-template #subislandFieldTpl let-control="control">
+  <app-select-box
+    [formControl]="control"
+    [dataSource]="subislandDataSource"
+    valueExpr="id"
+    displayExpr="name"
+    [invalid]="!!(submitted && control.errors)"
+  ></app-select-box>
+</ng-template>
+
+<ng-template #subjectFieldTpl let-control="control">
+  <app-select-box
+    [formControl]="control"
+    [dataSource]="subjectDataSource"
+    valueExpr="id"
+    displayExpr="name"
+    [invalid]="!!(submitted && control.errors)"
+  ></app-select-box>
+</ng-template>
+
+<ng-template #negotiationTypeFieldTpl let-control="control">
+  <app-select-box
+    [formControl]="control"
+    [dataSource]="negotiationTypeDataSource"
+    valueExpr="id"
+    displayExpr="name"
+    [invalid]="!!(submitted && control.errors)"
+  ></app-select-box>
+</ng-template>
+
+<ng-template #legacyFieldTpl let-control="control">
+  <app-select-box
+    [formControl]="control"
+    [dataSource]="legacyDataSource"
+    valueExpr="id"
+    displayExpr="name"
+    [invalid]="!!(submitted && control.errors)"
+  ></app-select-box>
+</ng-template>
+
+<ng-template #yesNotFieldTpl let-control="control">
+  <app-select-box
+    [formControl]="control"
+    [dataSource]="yesNotDataSource"
+    valueExpr="value"
+    displayExpr="label"
+    [invalid]="!!(submitted && control.errors)"
+  ></app-select-box>
+</ng-template>
+
+<ng-template #dateFieldTpl let-control="control">
+  <app-date-box [formControl]="control"></app-date-box>
+</ng-template>

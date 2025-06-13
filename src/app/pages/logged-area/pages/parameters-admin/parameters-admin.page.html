@@ -1,0 +1,46 @@
+<div class="container my-10">
+  <div class="row mb-6 align-items-center">
+    <div class="col-auto">
+      <h2 class="text-accent m-0">
+        {{ 'parameters-admin.title' | translate }}
+      </h2>
+    </div>
+
+    <!-- <div class="col-auto ms-auto d-flex align-items-center">
+      <app-iconic
+        class="pointer fs-xl"
+        appHoverClass="text-accent"
+        icon="download"
+        ngbTooltip="{{ 'defaults.actions.export' | translate }}"
+      ></app-iconic>
+    </div> -->
+  </div>
+
+  <div class="parameters-box-list">
+    <div class="row g-0 row-cols-6">
+      <div class="col" *ngFor="let itemCfg of parameterBoxCfgList">
+        <div class="parameters-box">
+          <div class="box-header py-2 px-5">
+            <div class="row g-0 align-items-center">
+              <div class="col">
+                <span class="fw-bold text-primary-light">
+                  {{ itemCfg.title | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="box-body p-5">
+            <button
+              type="button"
+              class="btn btn-secondary-accent"
+              (click)="onBtnBoxClick(itemCfg)"
+            >
+              {{ 'parameters-admin.actions.new-edit-parameters' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

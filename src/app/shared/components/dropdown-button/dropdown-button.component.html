@@ -1,0 +1,22 @@
+<div class="dropdown-instance" ngbDropdown #dropdown="ngbDropdown">
+  <button
+    type="button"
+    class="btn border-0 fs-md"
+    [class.text-accent]="dropdown.isOpen()"
+    ngbDropdownToggle
+  >
+    {{ label }}
+
+    <app-iconic
+      class="arrow-indicator ms-3 fs-xs"
+      icon="arrow-down1"
+    ></app-iconic>
+  </button>
+
+  <div
+    class="dropdown-menu-instance border border-2 border-success"
+    ngbDropdownMenu
+  >
+    <ng-content></ng-content>
+  </div>
+</div>

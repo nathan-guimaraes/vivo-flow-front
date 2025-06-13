@@ -1,0 +1,42 @@
+<app-modal-template modalTitle="productivity-update-modal.title">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="row mt-6">
+      <div class="col mb-3">
+        <app-field
+          label="{{
+            'productivity-update-modal.form.productivity.label' | translate
+          }}"
+        >
+          <input
+            type="number"
+            class="form-control"
+            placeholder="{{ 'defaults.placeholders.input' | translate }}"
+            [formControl]="f.quantityProductivity"
+            [ngClass]="{
+              'is-invalid': !!(submitted && f.quantityProductivity.errors)
+            }"
+          />
+
+          <app-field-error-container
+            *ngIf="submitted && f.quantityProductivity.errors"
+          >
+            <app-field-error-item
+              *ngIf="f.quantityProductivity.errors.required"
+            >
+              {{
+                "productivity-update-modal.form.productivity.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary-accent btn-lg mt-6">
+          {{ "productivity-update-modal.actions.save" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</app-modal-template>

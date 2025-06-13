@@ -1,0 +1,8 @@
+:host {
+  .skills-box-grid {
+    --border: var(--bs-border-width) solid var(--bs-border-color);
+
+    border-top: var(--border);
+    border-left: var(--border);
+  }
+}

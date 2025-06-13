@@ -1,0 +1,35 @@
+<ng-container *ngIf="!!steps?.length">
+  <ng-container *ngFor="let item of steps; let i = index; trackBy: trackBy">
+    <div class="step-item px-3" [class.disabled]="!!item.disabled">
+      <div *ngIf="i > 0" class="step-item-horizontal-line-left"></div>
+      <div
+        *ngIf="i < steps.length - 1"
+        class="step-item-horizontal-line-right"
+      ></div>
+
+      <div
+        class="step-icon mb-2"
+        style="--stepper-icon-color: {{
+          item.iconColor ?? 'var(--bs-success)'
+        }} "
+      >
+        <app-iconic
+          *ngIf="!item.disabled"
+          class="icon"
+          [icon]="item.icon"
+        ></app-iconic>
+      </div>
+
+      <ng-template
+        [ngTemplateOutlet]="item.textTemplate ?? textDefaultTpl"
+        [ngTemplateOutletContext]="{item}"
+      ></ng-template>
+    </div>
+  </ng-container>
+</ng-container>
+
+<ng-template #textDefaultTpl let-item="item">
+  <span>
+    {{ item.text | translate }}
+  </span>
+</ng-template>

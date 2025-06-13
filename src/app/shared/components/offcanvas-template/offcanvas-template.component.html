@@ -1,0 +1,18 @@
+<div class="offcanvas-header d-flex bg-success">
+  <h5 class="offcanvas-title fs-xl text-black">
+    <app-iconic
+      class="pointer fs-md p-3"
+      icon="arrow-left"
+      (click)="offcanvas.dismiss()"
+      ngbAutofocus
+    ></app-iconic>
+
+    {{ offcanvasTitle | translate }}
+  </h5>
+</div>
+
+<ng-scrollbar class="scrollbar">
+  <div class="h-100">
+    <ng-content></ng-content>
+  </div>
+</ng-scrollbar>

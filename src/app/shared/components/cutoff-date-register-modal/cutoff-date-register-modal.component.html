@@ -1,0 +1,183 @@
+<app-modal-template modalTitle="cutoff-date-register-modal.title">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="row mt-6">
+      <div class="col mb-3">
+        <app-field
+          label="{{
+            'cutoff-date-register-modal.form.tower.label' | translate
+          }}"
+        >
+          <app-select-box
+            [dataSource]="towerDataSource"
+            valueExpr="id"
+            displayExpr="name"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [formControl]="f.towerId"
+            [invalid]="!!(submitted && f.towerId.errors)"
+          ></app-select-box>
+
+          <app-field-error-container *ngIf="submitted && f.towerId.errors">
+            <app-field-error-item *ngIf="f.towerId.errors.required">
+              {{
+                "cutoff-date-register-modal.form.tower.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+      <div class="col mb-3">
+        <app-field
+          label="{{
+            'cutoff-date-register-modal.form.negotiationType.label' | translate
+          }}"
+        >
+          <app-select-box
+            [dataSource]="negotiationTypeDataSource"
+            valueExpr="id"
+            displayExpr="name"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [formControl]="f.negotiationTypeId"
+            [invalid]="!!(submitted && f.negotiationTypeId.errors)"
+          ></app-select-box>
+
+          <app-field-error-container
+            *ngIf="submitted && f.negotiationTypeId.errors"
+          >
+            <app-field-error-item *ngIf="f.negotiationTypeId.errors.required">
+              {{
+                "cutoff-date-register-modal.form.negotiationType.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+      <div class="col mb-3">
+        <app-field
+          label="{{
+            'cutoff-date-register-modal.form.product.label' | translate
+          }}"
+        >
+          <app-select-box
+            [dataSource]="productDataSource"
+            valueExpr="id"
+            displayExpr="name"
+            placeholder="{{ 'defaults.placeholders.select' | translate }}"
+            [formControl]="f.productId"
+            [invalid]="!!(submitted && f.productId.errors)"
+          ></app-select-box>
+
+          <app-field-error-container *ngIf="submitted && f.productId.errors">
+            <app-field-error-item *ngIf="f.productId.errors.required">
+              {{
+                "cutoff-date-register-modal.form.product.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+
+      <div class="col mb-3">
+        <app-field
+          label="{{ 'cutoff-date-register-modal.form.date.label' | translate }}"
+        >
+          <app-date-box [formControl]="f.date"></app-date-box>
+
+          <app-field-error-container *ngIf="submitted && f.date.errors">
+            <app-field-error-item *ngIf="f.date.errors.required">
+              {{
+                "cutoff-date-register-modal.form.date.validation.required"
+                  | translate
+              }}
+            </app-field-error-item>
+          </app-field-error-container>
+        </app-field>
+      </div>
+
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary-accent btn-lg mt-6">
+          {{ "cutoff-date-register-modal.actions.save" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="row mt-6">
+    <div class="col-12">
+      <div class="table-container">
+        <div class="table-content">
+          <table
+            class="table-users table table-striped table-bordered"
+            cdk-table
+            [dataSource]="dataSource"
+          >
+            <ng-container
+              *ngFor="let column of displayedColumnInfoList"
+              cdkColumnDef="{{ column.name }}"
+            >
+              <th
+                cdk-header-cell
+                *cdkHeaderCellDef
+                [width]="column.width ?? ''"
+              >
+                {{ column.label ?? column.name | translate }}
+              </th>
+
+              <td cdk-cell *cdkCellDef="let element">
+                <ng-container [ngSwitch]="column.dataType">
+                  <ng-container *ngSwitchCase="TableColumnType.Date">
+                    {{ element?.[column.name] | date:"dd/MM/yyyy" }}
+                  </ng-container>
+
+                  <ng-container *ngSwitchDefault>
+                    {{ element?.[column.name] }}
+                  </ng-container>
+                </ng-container>
+              </td>
+            </ng-container>
+
+            <ng-container cdkColumnDef="actions">
+              <th cdk-header-cell *cdkHeaderCellDef width="auto">
+                {{
+                  "cutoff-date-register-modal.table.headers.actions" | translate
+                }}
+              </th>
+
+              <td cdk-cell *cdkCellDef="let element">
+                <div class="d-flex justify-content-center">
+                  <app-iconic
+                    class="pointer fs-xl"
+                    appHoverClass="text-accent"
+                    icon="trash"
+                    ngbTooltip="{{ 'defaults.actions.delete' | translate }}"
+                    (click)="onBtnDeleteClick(element)"
+                  ></app-iconic>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+            <tr cdk-row *cdkRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+
+        <app-loading-indicator
+          [visible]="dataSource.isLoading()"
+          [showBackdrop]="false"
+        ></app-loading-indicator>
+      </div>
+
+      <div class="mt-2">
+        <app-pagination
+          class="d-flex justify-content-end"
+          [(page)]="dataSource.page"
+          (pageChange)="dataSource.load()"
+          [collectionSize]="dataSource.totalCount"
+          [pageSize]="dataSource.pageSize"
+        ></app-pagination>
+      </div>
+    </div>
+  </div>
+</app-modal-template>

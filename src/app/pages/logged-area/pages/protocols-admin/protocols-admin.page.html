@@ -1,0 +1,229 @@
+<div class="container my-10">
+  <div class="row mb-7 align-items-center">
+    <div class="col-auto">
+      <h2 class="text-accent m-0">{{ 'protocols-admin.title' | translate }}</h2>
+    </div>
+
+    <div class="col-auto ms-auto">
+      <div class="row gx-5">
+        <div class="col-auto d-flex align-items-center">
+          <div class="row gx-7 align-items-center">
+            <div class="col-auto d-flex align-items-center">
+              <app-action-icon
+                class="fs-xl"
+                icon="filter"
+                tooltip="defaults.actions.filters"
+                (click)="onBtnFiltersClick(filtersTpl)"
+              ></app-action-icon>
+            </div>
+
+            <div class="col-auto d-flex align-items-center">
+              <app-action-icon
+                class="fs-xl"
+                icon="download"
+                tooltip="defaults.actions.export"
+                (click)="onBtnExportClick()"
+              ></app-action-icon>
+            </div>
+
+            <div class="col-auto d-flex align-items-center">
+              <app-action-icon
+                class="fs-xl"
+                icon="refresh"
+                tooltip="defaults.actions.refresh"
+                (click)="onBtnRefreshClick()"
+              ></app-action-icon>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <div class="row">
+            <div class="col-auto">
+              <button
+                class="btn btn-secondary-accent"
+                (click)="onBtnDefineColumnsClick()"
+              >
+                {{ 'protocols-admin.actions.define-columns' | translate }}
+              </button>
+            </div>
+
+            <div class="col-auto">
+              <button
+                class="btn btn-secondary-accent"
+                (click)="onBtnAssignClick()"
+                [disabled]="!(canDistributeObservable | async) || !isAnySelected"
+              >
+                {{ 'protocols-admin.actions.assign' | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="table-container">
+        <div class="table-content">
+          <table
+            class="table-users table table-striped table-bordered"
+            cdk-table
+            appTableSort
+            [dataSource]="dataSource"
+          >
+            <ng-container cdkColumnDef="selection">
+              <th cdk-header-cell *cdkHeaderCellDef width="auto" class="px-2">
+                <app-checkbox
+                  [value]="isAllSelected()"
+                  (valueChange)="toggleAllSelect()"
+                ></app-checkbox>
+              </th>
+
+              <td cdk-cell *cdkCellDef="let element" class="px-2">
+                <app-checkbox
+                  [value]="isSelected(element)"
+                  (valueChange)="toggleSelect(element)"
+                ></app-checkbox>
+              </td>
+            </ng-container>
+
+            <ng-container cdkColumnDef="priority">
+              <th
+                cdk-header-cell
+                *cdkHeaderCellDef
+                width="auto"
+                class="px-2"
+                tableSortHeader
+              >
+                <app-iconic icon="star"></app-iconic>
+              </th>
+
+              <td cdk-cell *cdkCellDef="let element" class="px-2">
+                <app-iconic
+                  icon="star"
+                  class="{{ element.priority ? 'text-star' : (canDistributeObservable | async) ? '' : 'text-gray-light' }}"
+                  [class.pointer]="canDistributeObservable | async"
+                  appHoverClass="text-star"
+                  appNotHoverClass="text-gray-light"
+                  [appHoverClassDisabled]="!(canDistributeObservable | async) || element.priority"
+                  ngbTooltip="{{ (!element.priority ? 'protocols-admin.actions.priorize' : 'protocols-admin.actions.deprioritize') | translate }}"
+                  [disableTooltip]="!(canDistributeObservable | async)"
+                  (click)="togglePriority(element)"
+                ></app-iconic>
+              </td>
+            </ng-container>
+
+            <ng-container
+              *ngFor="let column of displayedColumnInfoListObservable | async"
+              cdkColumnDef="{{ column.name }}"
+            >
+              <th
+                cdk-header-cell
+                *cdkHeaderCellDef
+                tableSortHeader
+                [width]="column.width ?? ''"
+              >
+                {{ (column.label ?? column.name) | translate }}
+              </th>
+
+              <td cdk-cell *cdkCellDef="let item">
+                <ng-template
+                  [ngTemplateOutlet]="column.template ?? cellDefaultTpl"
+                  [ngTemplateOutletContext]="{column, item}"
+                ></ng-template>
+              </td>
+            </ng-container>
+
+            <tr
+              cdk-header-row
+              *cdkHeaderRowDef="displayedColumnsObservable | async"
+            ></tr>
+            <tr
+              cdk-row
+              *cdkRowDef="let row; columns: displayedColumnsObservable | async"
+            ></tr>
+          </table>
+        </div>
+
+        <app-loading-indicator
+          [visible]="dataSource.isLoading()"
+          [showBackdrop]="false"
+        ></app-loading-indicator>
+      </div>
+
+      <div class="mt-2">
+        <app-pagination
+          class="d-flex justify-content-end"
+          [(page)]="dataSource.page"
+          (pageChange)="dataSource.load()"
+          [collectionSize]="dataSource.totalCount"
+          [pageSize]="dataSource.pageSize"
+        ></app-pagination>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #cellDefaultTpl let-column="column" let-item="item">
+  <ng-container [ngSwitch]="column.dataType">
+    <ng-container *ngSwitchCase="TableColumnType.Date">
+      {{ item?.[column.name] | date:"dd/MM/yyyy" }}
+    </ng-container>
+
+    <ng-container *ngSwitchDefault> {{ item?.[column.name] }} </ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-template #cellNumberTpl let-column="column" let-item="item">
+  <a href="javascript:void(0)" (click)="openDiagramSteps(item.id)">
+    {{ item?.[column.name] }}
+  </a>
+</ng-template>
+
+<ng-template #cellStatusTpl let-column="column" let-item="item">
+  {{ item?.[column.name] }}
+
+  <app-iconic
+    *ngIf="!!item.transferError"
+    class="info-icon"
+    icon="info"
+    [ngbTooltip]="item.transferError"
+  ></app-iconic>
+</ng-template>
+
+<ng-template #cellIindicatorSlaTpl let-column="column" let-item="item">
+  <div
+    class="indicator-sla"
+    [ngClass]="{
+      normal: item.indicatorSla === IndicatorSLA.Normal,
+      warning: item.indicatorSla === IndicatorSLA.Warning,
+      danger: item.indicatorSla === IndicatorSLA.Danger
+    }"
+    ngbTooltip="{{ ('sla.indicators.' + (item.indicatorSla === IndicatorSLA.Normal ? 'normal' : item.indicatorSla === IndicatorSLA.Warning ? 'warning' : 'danger')) | translate }}"
+  ></div>
+</ng-template>
+
+<ng-template #filtersTpl let-offcanvas>
+  <app-offcanvas-template
+    [offcanvas]="offcanvas"
+    offcanvasTitle="protocols-admin.filters-offcanvas.title"
+  >
+    <div class="px-10">
+      <div class="px-3 py-8">
+        <ng-template
+          [cdkPortalOutlet]="protocolsFilterFormContentPortal"
+        ></ng-template>
+      </div>
+    </div>
+  </app-offcanvas-template>
+</ng-template>
+
+<div class="d-none">
+  <div #protocolsFilterFormContentEl>
+    <app-protocols-filter-form
+      (filtersChange)="onFiltersChanged($event)"
+    ></app-protocols-filter-form>
+  </div>
+</div>

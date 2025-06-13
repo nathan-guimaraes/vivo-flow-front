@@ -1,0 +1,136 @@
+<div
+  class="select-content"
+  ngbDropdown
+  [autoClose]="'outside'"
+  #dropdown="ngbDropdown"
+>
+  <div ngbDropdownAnchor (click)="!disabled && dropdown.toggle()">
+    <ng-content></ng-content>
+  </div>
+
+  <div ngbDropdownMenu class="dropdown-container">
+    <div class="dropdown-content">
+      <div class="input-group pt-2 pb-3 px-3" *ngIf="!!searchModeEnabled">
+        <input
+          type="text"
+          class="form-control"
+          [formControl]="searchTextControl"
+          placeholder="{{ 'defaults.placeholders.input' | translate }}"
+        />
+
+        <span class="input-group-text">
+          <app-iconic icon="search"></app-iconic>
+        </span>
+      </div>
+
+      <div class="list-container">
+        <ng-scrollbar *appDeferRendering="dropdown.isOpen()" class="scrollbar">
+          <div
+            scrollViewport
+            infiniteScroll
+            [infiniteScrollDistance]="3"
+            [infiniteScrollThrottle]="50"
+            [scrollWindow]="false"
+            [immediateCheck]="true"
+            [alwaysCallback]="true"
+            (scrolled)="loadMoreItems()"
+          >
+            <div>
+              <ng-container
+                *ngFor="
+                  let groupItem of _handledDataGroupedItems;
+                  trackBy: _groupTrackBy
+                "
+              >
+                <div *ngIf="!!groupMode" class="px-4 py-2 d-flex">
+                  <ng-template
+                    [ngTemplateOutlet]="groupItemContentTpl"
+                    [ngTemplateOutletContext]="{
+                      text: _extractGroupText(groupItem.data)
+                    }"
+                  ></ng-template>
+                </div>
+
+                <ng-template
+                  *ngFor="let item of groupItem.items; trackBy: _trackBy"
+                  [ngTemplateOutlet]="itemListContainerTpl"
+                  [ngTemplateOutletContext]="{item, index: _getIndex(item), selected: isSelected(item, _getIndex(item))}"
+                ></ng-template>
+              </ng-container>
+            </div>
+          </div>
+        </ng-scrollbar>
+
+        <app-loading-indicator
+          [visible]="loadingChanges | async"
+          [showBackdrop]="false"
+        ></app-loading-indicator>
+      </div>
+
+      <div class="row justify-content-between pt-3 px-2">
+        <div class="col-auto">
+          <button
+            type="button"
+            class="btn btn-light"
+            (click)="_onBtnClearClick()"
+          >
+            {{ "defaults.actions.clear" | translate }}
+          </button>
+        </div>
+        <div class="col-auto">
+          <button
+            type="button"
+            class="btn btn-light"
+            (click)="_onBtnAppyClick()"
+          >
+            {{ "defaults.actions.apply" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #groupItemContentTpl let-text="text">
+  <div
+    class="pb-2 fs-sm text-accent text-truncate flex-fill w-0 border-bottom border-accent"
+    [title]="text"
+  >
+    {{ text }}
+  </div>
+</ng-template>
+
+<ng-template
+  #itemListContainerTpl
+  let-item="item"
+  let-index="index"
+  let-selected="selected"
+>
+  <div
+    ngbDropdownItem
+    class="pointer"
+    [ngClass]="{ active: selected }"
+    (click)="_onItemClickInternal(item, index)"
+    [title]="_extractDisplayText(item, index)"
+  >
+    <ng-template
+      [ngTemplateOutlet]="itemListDefaultTpl"
+      [ngTemplateOutletContext]="{
+        item,
+        index,
+        selected
+      }"
+    ></ng-template>
+  </div>
+</ng-template>
+
+<ng-template
+  #itemListDefaultTpl
+  let-item="item"
+  let-index="index"
+  let-selected="selected"
+>
+  <app-checkbox class="me-2" [value]="selected"></app-checkbox>
+
+  {{ _extractDisplayText(item, index) }}
+</ng-template>

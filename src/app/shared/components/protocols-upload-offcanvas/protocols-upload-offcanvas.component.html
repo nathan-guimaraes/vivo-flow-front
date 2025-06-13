@@ -1,0 +1,161 @@
+<app-offcanvas-template
+  offcanvasTitle="{{ 'protocols-upload-offcanvas.title' | translate }}"
+>
+  <div class="py-8 px-10">
+    <div class="px-3">
+      <div class="row g-6">
+        <div class="col-12">
+          <h4 class="text-black mb-0">
+            {{ "protocols-upload-offcanvas.info" | translate }}
+          </h4>
+        </div>
+
+        <div class="col-auto">
+          <button
+            type="button"
+            class="btn btn-primary-accent btn-lg"
+            (click)="onBtnDownloadTemplateClick()"
+          >
+            {{ "protocols-upload-offcanvas.actions.download" | translate }}
+
+            <app-iconic icon="download" class="fs-xs ms-2"></app-iconic>
+          </button>
+        </div>
+
+        <div class="col-auto">
+          <input
+            #importProtocolsInputEl
+            type="file"
+            accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            [hidden]="true"
+            (change)="onImportProtocolsFileChanged(importProtocolsInputEl)"
+          />
+
+          <button
+            type="button"
+            class="btn btn-primary-accent btn-lg"
+            (click)="importProtocolsInputEl.click()"
+          >
+            {{ "protocols-upload-offcanvas.actions.upload" | translate }}
+          </button>
+        </div>
+
+        <div class="col-12" *ngIf="!!error">
+          <ngb-alert type="custom-danger" [dismissible]="false">
+            <div class="row align-items-center justify-content-center">
+              <div
+                class="col-auto d-flex align-items-center justify-content-center"
+              >
+                <app-iconic
+                  class="highlight-icon text-accent"
+                  icon="warning"
+                ></app-iconic>
+              </div>
+
+              <div class="col-auto">
+                {{ error | translate }}
+              </div>
+            </div>
+          </ngb-alert>
+        </div>
+
+        <div class="col-12">
+          <div class="log-list-container">
+            <ul
+              *ngIf="!!(logsObservable | async)?.length"
+              class="list-group list-group-flush border-top border-bottom"
+            >
+              <li
+                class="list-group-item p-3"
+                *ngFor="let item of logsObservable | async"
+              >
+                <div class="row">
+                  <div
+                    class="col-auto d-flex align-items-center"
+                    [ngSwitch]="item.status"
+                  >
+                    <app-iconic
+                      *ngSwitchCase="protocolImportStatus.Success"
+                      class="text-success fs-2"
+                      icon="check-circle-fill"
+                      ngbTooltip="{{
+                        'protocols-upload-offcanvas.logs-list.success'
+                          | translate
+                      }}"
+                    ></app-iconic>
+                    <app-iconic
+                      *ngSwitchCase="protocolImportStatus.Warning"
+                      class="text-star fs-2"
+                      icon="warning"
+                      ngbTooltip="{{
+                        'protocols-upload-offcanvas.logs-list.warning'
+                          | translate
+                      }}"
+                    ></app-iconic>
+                    <app-iconic
+                      *ngSwitchCase="protocolImportStatus.Error"
+                      class="highlight-icon text-accent fs-2"
+                      icon="warning"
+                      ngbTooltip="{{
+                        'protocols-upload-offcanvas.logs-list.error' | translate
+                      }}"
+                    ></app-iconic>
+                    <app-iconic
+                      *ngSwitchCase="protocolImportStatus.Processing"
+                      class="highlight-icon text-muted fs-2"
+                      icon="loading"
+                      ngbTooltip="{{
+                        'protocols-upload-offcanvas.logs-list.processing'
+                          | translate
+                      }}"
+                    ></app-iconic>
+                  </div>
+
+                  <div class="col">
+                    <h4 class="text-primary fw-bold mb-0">
+                      {{ item.fileName }}
+                    </h4>
+
+                    <span>
+                      {{
+                        "protocols-upload-offcanvas.logs-list.createdBy"
+                          | translate
+                      }}
+                      {{ item.createdBy }} -
+                      {{ item.createdAt | date : "dd/MM/yyyy hh:mm:ss" }}
+                    </span>
+                  </div>
+
+                  <div class="col-auto d-flex align-items-center">
+                    <app-iconic
+                      *ngIf="item.status != protocolImportStatus.Processing"
+                      class="pointer fs-xl"
+                      appHoverClass="text-accent"
+                      icon="download"
+                      ngbTooltip="{{ 'defaults.actions.export' | translate }}"
+                      (click)="onDownloadProtocolClick(item.id)"
+                    ></app-iconic>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+            <app-loading-indicator
+              [visible]="logsDataSource.isLoading()"
+              [showBackdrop]="false"
+            ></app-loading-indicator>
+          </div>
+          <div *ngIf="logsDataSource.totalCount > 0" class="mt-2">
+            <app-pagination
+              class="d-flex justify-content-end"
+              [(page)]="logsDataSource.page"
+              (pageChange)="logsDataSource.load()"
+              [collectionSize]="logsDataSource.totalCount"
+              [pageSize]="logsDataSource.pageSize"
+            ></app-pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-offcanvas-template>

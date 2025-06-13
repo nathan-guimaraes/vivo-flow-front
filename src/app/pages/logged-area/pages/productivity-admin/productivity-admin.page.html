@@ -1,0 +1,158 @@
+<div class="container my-10">
+  <div class="row mb-6 align-items-center">
+    <div class="col-auto">
+      <h2 class="text-accent m-0">
+        {{ 'productivity-admin.title' | translate }}
+      </h2>
+    </div>
+
+    <div class="col-auto ms-auto">
+      <div class="row gx-5">
+        <div class="col-auto d-flex align-items-center">
+          <div class="row gx-7 align-items-center">
+            <div class="col-auto d-flex align-items-center">
+              <app-iconic
+                class="pointer fs-xl"
+                appHoverClass="text-accent"
+                icon="filter"
+                ngbTooltip="{{ 'defaults.actions.filters' | translate }}"
+                (click)="onBtnFiltersClick(filtersTpl)"
+              ></app-iconic>
+            </div>
+
+            <!-- <div class="col-auto d-flex align-items-center">
+              <app-iconic
+                class="pointer fs-xl"
+                appHoverClass="text-accent"
+                icon="download"
+                ngbTooltip="{{ 'defaults.actions.export' | translate }}"
+              ></app-iconic>
+            </div> -->
+
+            <div class="col-auto d-flex align-items-center">
+              <app-iconic
+                class="pointer fs-xl"
+                appHoverClass="text-accent"
+                icon="refresh"
+                ngbTooltip="{{ 'defaults.actions.refresh' | translate }}"
+                (click)="onBtnRefreshClick()"
+              ></app-iconic>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <div class="row">
+            <div class="col-auto">
+              <button
+                class="btn btn-secondary-accent"
+                (click)="onBtnNewRegisterClick()"
+              >
+                {{ 'productivity-admin.actions.new-register' | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="table-container">
+        <div class="table-content">
+          <table
+            class="table-users table table-striped table-bordered"
+            cdk-table
+            [dataSource]="dataSource"
+          >
+            <ng-container
+              *ngFor="let item of displayedColumnInfoList"
+              cdkColumnDef="{{ item.name }}"
+            >
+              <th
+                cdk-header-cell
+                *cdkHeaderCellDef
+                tableSortHeader
+                [width]="item.width ?? ''"
+              >
+                {{ item.label ?? item.name | translate }}
+              </th>
+
+              <td cdk-cell *cdkCellDef="let element">
+                {{ element?.[item.name] }}
+              </td>
+            </ng-container>
+
+            <ng-container cdkColumnDef="actions">
+              <th cdk-header-cell *cdkHeaderCellDef width="auto">
+                {{ 'productivity-admin.table.headers.actions' | translate}}
+              </th>
+
+              <td cdk-cell *cdkCellDef="let element">
+                <div class="table-column-actions">
+                  <app-iconic
+                    class="pointer fs-xl"
+                    appHoverClass="text-accent"
+                    icon="trash"
+                    ngbTooltip="{{ 'defaults.actions.delete' | translate }}"
+                    (click)="onBtnDeleteClick(element)"
+                  ></app-iconic>
+
+                  <app-iconic
+                    class="pointer fs-xl"
+                    appHoverClass="text-accent"
+                    icon="edit"
+                    ngbTooltip="{{ 'defaults.actions.edit' | translate }}"
+                    (click)="onBtnEditClick(element)"
+                  ></app-iconic>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+            <tr cdk-row *cdkRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+
+        <app-loading-indicator
+          [visible]="dataSource.isLoading()"
+          [showBackdrop]="false"
+        ></app-loading-indicator>
+      </div>
+
+      <div class="mt-2">
+        <app-pagination
+          class="d-flex justify-content-end"
+          [(page)]="dataSource.page"
+          (pageChange)="dataSource.load()"
+          [collectionSize]="dataSource.totalCount"
+          [pageSize]="dataSource.pageSize"
+        ></app-pagination>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #filtersTpl let-offcanvas>
+  <app-offcanvas-template
+    [offcanvas]="offcanvas"
+    offcanvasTitle="{{ 'productivity-admin.filters-offcanvas.title' | translate }}"
+  >
+    <div class="px-10">
+      <div class="px-3 py-8">
+        <ng-template
+          [cdkPortalOutlet]="productivityFilterFormContentPortal"
+        ></ng-template>
+      </div>
+    </div>
+  </app-offcanvas-template>
+</ng-template>
+
+<div class="d-none">
+  <div #productivityFilterFormContentEl>
+    <app-productivity-filter-form
+      (filtersChange)="onFiltersChanged($event)"
+    ></app-productivity-filter-form>
+  </div>
+</div>

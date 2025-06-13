@@ -1,0 +1,18 @@
+<ng-container [ngSwitch]="iconType" *ngIf="!!iconValue">
+  <svg-icon
+    class="icon-instance"
+    [src]="iconValue"
+    *ngSwitchCase="iconTypes.Svg"
+  ></svg-icon>
+
+  <img
+    class="icon-instance"
+    [src]="iconValue"
+    *ngSwitchCase="iconTypes.Image"
+  />
+
+  <i
+    class="icon-instance {{ iconValue }}"
+    *ngSwitchCase="iconTypes.Css"
+  ></i>
+</ng-container>

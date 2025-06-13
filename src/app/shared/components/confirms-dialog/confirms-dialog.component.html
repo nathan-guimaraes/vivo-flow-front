@@ -1,0 +1,29 @@
+<app-modal-template [modalTitle]="modalTitle" [closeBtnEnabled]="false">
+  <div class="row g-3 mt-3">
+    <div class="col-12">
+      <p>
+        {{ message | translate }}
+      </p>
+    </div>
+
+    <div class="col-auto ms-auto">
+      <button
+        type="button"
+        class="btn btn-secondary px-4"
+        (click)="onBtnNegativeClick()"
+      >
+        {{ "defaults.not" | translate }}
+      </button>
+    </div>
+
+    <div class="col-auto">
+      <button
+        type="button"
+        class="btn btn-primary-accent px-4"
+        (click)="onBtnPositiveClick()"
+      >
+        {{ "defaults.yes" | translate }}
+      </button>
+    </div>
+  </div>
+</app-modal-template>

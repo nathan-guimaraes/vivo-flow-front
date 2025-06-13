@@ -1,0 +1,25 @@
+<ng-container *ngIf="!!label; else checkInputTpl">
+  <div class="form-check">
+    <ng-template [ngTemplateOutlet]="checkInputTpl"></ng-template>
+
+    <label
+      class="form-check-label"
+      [attr.for]="labelClickEnabled ? componentId : null"
+    >
+      {{ label }}
+    </label>
+  </div>
+</ng-container>
+
+<ng-template #checkInputTpl>
+  <input
+    #input
+    class="form-check-input"
+    [ngClass]="{ 'has-no-label': !label }"
+    type="checkbox"
+    [attr.role]="styleType === 'switch' ? 'switch' : ''"
+    (change)="onInputChange($event)"
+    (blur)="onTouched?.()"
+    [id]="componentId"
+  />
+</ng-template>

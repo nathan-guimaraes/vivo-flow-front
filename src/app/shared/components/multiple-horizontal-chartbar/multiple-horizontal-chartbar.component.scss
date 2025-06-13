@@ -1,0 +1,18 @@
+:host {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .chart-item {
+    .title {
+      line-height: 20px;
+    }
+
+    .chart {
+      height: var(--chart-height);
+      min-height: var(--chart-height);
+      max-height: var(--chart-height);
+    }
+  }
+}

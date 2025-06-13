@@ -1,0 +1,174 @@
+<app-offcanvas-template [offcanvasTitle]="filterTitle">
+  <div class="px-10">
+    <div class="px-3 py-8">
+      <form [formGroup]="formGroup" class="row gy-3" (ngSubmit)="onSubmit()">
+        <div class="col-12">
+          <app-field
+            label="{{ 'indicators.filters.form.fieldDate.label' | translate }}"
+          >
+            <app-select-box
+              [formControl]="f.fieldDate"
+              [dataSource]="fieldDateDataSource"
+              valueExpr="value"
+              displayExpr="label"
+            ></app-select-box>
+          </app-field>
+        </div>
+
+        <div class="col-12">
+          <app-field
+            label="{{ 'indicators.filters.form.startDate.label' | translate }}"
+          >
+            <app-date-box [formControl]="f.startDate"></app-date-box>
+          </app-field>
+        </div>
+
+        <div class="col-12">
+          <app-field
+            label="{{ 'indicators.filters.form.endDate.label' | translate }}"
+          >
+            <app-date-box [formControl]="f.endDate"></app-date-box>
+          </app-field>
+        </div>
+
+        <div class="col-12">
+          <app-field
+            label="{{ 'indicators.filters.form.segmentId.label' | translate }}"
+          >
+            <app-select-box
+              [formControl]="f.segmentId"
+              [dataSource]="segmentDataSource"
+              valueExpr="id"
+              displayExpr="name"
+              [searchModeEnabled]="true"
+              searchMode="dropdown"
+            ></app-select-box>
+          </app-field>
+        </div>
+
+        <div class="col-12">
+          <app-field
+            label="{{ 'indicators.filters.form.productId.label' | translate }}"
+          >
+            <app-select-box
+              [formControl]="f.productId"
+              [dataSource]="productDataSource"
+              valueExpr="id"
+              displayExpr="name"
+              [searchModeEnabled]="true"
+              searchMode="dropdown"
+            ></app-select-box>
+          </app-field>
+        </div>
+
+        <div class="col-12">
+          <app-field
+            label="{{
+              'indicators.filters.form.negotiationTypeId.label' | translate
+            }}"
+          >
+            <app-select-box
+              [formControl]="f.negotiationTypeId"
+              [dataSource]="negotiationTypeDataSource"
+              valueExpr="id"
+              displayExpr="name"
+              [searchModeEnabled]="true"
+              searchMode="dropdown"
+            ></app-select-box>
+          </app-field>
+        </div>
+
+        <div class="col-12">
+          <app-field
+            label="{{ 'indicators.filters.form.legacyId.label' | translate }}"
+          >
+            <app-select-box
+              [formControl]="f.legacyId"
+              [dataSource]="legacyDataSource"
+              valueExpr="id"
+              displayExpr="name"
+              [searchModeEnabled]="true"
+              searchMode="dropdown"
+            ></app-select-box>
+          </app-field>
+        </div>
+
+        <div class="col-12">
+          <app-field
+            label="{{ 'indicators.filters.form.supplierId.label' | translate }}"
+          >
+            <app-select-box
+              [formControl]="f.supplierId"
+              [dataSource]="supplierDataSource"
+              valueExpr="id"
+              displayExpr="name"
+              [searchModeEnabled]="true"
+              searchMode="dropdown"
+            ></app-select-box>
+          </app-field>
+        </div>
+
+        <div class="col-12">
+          <app-field
+            label="{{ 'indicators.filters.form.towerId.label' | translate }}"
+          >
+            <app-select-box
+              [formControl]="f.towerId"
+              [dataSource]="towerDataSource"
+              valueExpr="id"
+              displayExpr="name"
+              [searchModeEnabled]="true"
+              searchMode="dropdown"
+            ></app-select-box>
+          </app-field>
+        </div>
+
+        <div class="col-12">
+          <app-field
+            label="{{ 'indicators.filters.form.islandId.label' | translate }}"
+          >
+            <app-select-box
+              [formControl]="f.islandId"
+              [dataSource]="islandDataSource"
+              valueExpr="id"
+              displayExpr="name"
+              [searchModeEnabled]="true"
+              searchMode="dropdown"
+            ></app-select-box>
+          </app-field>
+        </div>
+
+        <div class="col-12">
+          <app-field
+            label="{{
+              'indicators.filters.form.subislandId.label' | translate
+            }}"
+          >
+            <app-select-box
+              [formControl]="f.subislandId"
+              [dataSource]="subislandDataSource"
+              valueExpr="id"
+              displayExpr="name"
+              [searchModeEnabled]="true"
+              searchMode="dropdown"
+            ></app-select-box>
+          </app-field>
+        </div>
+
+        <div class="col-12 d-flex justify-content-end">
+          <button
+            type="button"
+            class="btn btn-secondary-accent btn-lg"
+            (click)="onBtnClearClick()"
+          >
+            {{ "defaults.actions.clear" | translate }}
+          </button>
+
+          <button type="submit" class="btn btn-primary-accent btn-lg ms-3">
+            {{ "defaults.actions.apply" | translate }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</app-offcanvas-template>

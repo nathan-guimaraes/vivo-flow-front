@@ -1,0 +1,84 @@
+<app-modal-template modalTitle="dealing-protocols-modal.title">
+  <div class="row mt-6">
+    <div class="col-12">
+      <div class="table-container">
+        <div class="table-content">
+          <table
+            class="table-users table table-striped table-bordered"
+            cdk-table
+            [dataSource]="dataSource"
+          >
+            <ng-container
+              *ngFor="let column of displayedColumnInfoList"
+              cdkColumnDef="{{ column.name }}"
+            >
+              <th
+                cdk-header-cell
+                *cdkHeaderCellDef
+                [width]="column.width ?? ''"
+              >
+                {{ column.label ?? column.name | translate }}
+              </th>
+
+              <td cdk-cell *cdkCellDef="let item">
+                <ng-template
+                  [ngTemplateOutlet]="column.template ?? cellDefaultTpl"
+                  [ngTemplateOutletContext]="{column, item}"
+                ></ng-template>
+              </td>
+            </ng-container>
+
+            <ng-container cdkColumnDef="actions">
+              <th cdk-header-cell *cdkHeaderCellDef width="155px">
+                {{
+                  "dealing-protocols-modal.table.headers.actions" | translate
+                }}
+              </th>
+
+              <td cdk-cell *cdkCellDef="let item">
+                <button
+                  *ngIf="!!playButtonEnabled && !isInTreatment(item)"
+                  type="button"
+                  class="btn btn-secondary-accent"
+                  (click)="onBtnPlayProtocolClick(item)"
+                >
+                  {{ "dealing-protocols-modal.actions.continue" | translate }}
+                </button>
+              </td>
+            </ng-container>
+
+            <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+            <tr cdk-row *cdkRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+
+        <app-loading-indicator
+          [visible]="dataSource.isLoading()"
+          [showBackdrop]="false"
+        ></app-loading-indicator>
+      </div>
+
+      <div class="mt-2">
+        <app-pagination
+          class="d-flex justify-content-end"
+          [(page)]="dataSource.page"
+          (pageChange)="dataSource.load()"
+          [collectionSize]="dataSource.totalCount"
+          [pageSize]="dataSource.pageSize"
+        ></app-pagination>
+      </div>
+    </div>
+  </div>
+</app-modal-template>
+
+<ng-template #cellDefaultTpl let-column="column" let-item="item">
+  <ng-container [ngSwitch]="column.dataType">
+    <ng-container *ngSwitchCase="TableColumnType.Date">
+      {{ getValue(item, column.name) | date : "dd/MM/yyyy" }}
+    </ng-container>
+
+    <ng-container *ngSwitchDefault>
+      {{ getValue(item, column.name) }}
+    </ng-container>
+  </ng-container>
+</ng-template>

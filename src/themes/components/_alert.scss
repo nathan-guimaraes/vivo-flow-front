@@ -1,0 +1,30 @@
+$alert-padding-y: $spacer;
+$alert-padding-x: $spacer;
+$alert-margin-bottom: 20px;
+$alert-border-radius: 0px;
+$alert-link-font-weight: $font-weight-bold;
+$alert-border-width: $border-width;
+$alert-bg-scale: -80%;
+$alert-border-scale: -70%;
+$alert-color-scale: 40%;
+$alert-dismissible-padding-r: $alert-padding-x * 3;
+
+.custom-theme {
+  .alert-custom-danger {
+    --bs-alert-bg: var(--bs-accent-lighter);
+    --bs-alert-color: var(--bs-black);
+
+    .highlight-icon {
+      font-size: 20px;
+    }
+  }
+
+  .alert-custom-warning {
+    --bs-alert-bg: var(--bs-gray-100);
+    --bs-alert-color: var(--bs-black);
+
+    .highlight-icon {
+      font-size: 30px;
+    }
+  }
+}

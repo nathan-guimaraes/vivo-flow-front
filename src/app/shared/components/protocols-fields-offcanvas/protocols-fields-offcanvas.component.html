@@ -1,0 +1,287 @@
+<app-offcanvas-template offcanvasTitle="protocols-fields-offcanvas.title">
+  <div class="py-8 px-10">
+    <div class="px-3">
+      <div class="row gy-5">
+        <div class="col-12">
+          <h4 class="text-black mb-0">
+            {{ "protocols-fields-offcanvas.info" | translate }}
+          </h4>
+        </div>
+        <div class="col-12" [formGroup]="formGroup">
+          <div class="row gy-3">
+            <div class="col-auto">
+              <app-select-box
+                [formControl]="f.towerId"
+                class="filter tower-filter"
+                [dataSource]="towerDataSource"
+                valueExpr="id"
+                displayExpr="name"
+                [selectedTextExprFn]="selectedTextExpr"
+                [searchModeEnabled]="true"
+                searchMode="dropdown"
+                placeholder="{{
+                  'protocols-fields-offcanvas.filters.tower.placeholder'
+                    | translate
+                }}"
+              ></app-select-box>
+            </div>
+            <div class="col-auto">
+              <app-select-box
+                [formControl]="f.islandId"
+                class="filter island-filter"
+                [dataSource]="islandDataSource"
+                valueExpr="id"
+                displayExpr="name"
+                [selectedTextExprFn]="selectedTextExpr"
+                [searchModeEnabled]="true"
+                searchMode="dropdown"
+                placeholder="{{
+                  'protocols-fields-offcanvas.filters.island.placeholder'
+                    | translate
+                }}"
+              ></app-select-box>
+            </div>
+            <div class="col-auto">
+              <app-select-box
+                [formControl]="f.subislandId"
+                class="filter subisland-filter"
+                [dataSource]="subislandDataSource"
+                valueExpr="id"
+                displayExpr="name"
+                [selectedTextExprFn]="selectedTextExpr"
+                [searchModeEnabled]="true"
+                searchMode="dropdown"
+                placeholder="{{
+                  'protocols-fields-offcanvas.filters.subisland.placeholder'
+                    | translate
+                }}"
+              ></app-select-box>
+            </div>
+            <div class="col-auto">
+              <app-select-box
+                [formControl]="f.legacyIds"
+                class="filter legacy-filter"
+                [dataSource]="legacyDataSource"
+                valueExpr="id"
+                displayExpr="name"
+                [multiple]="true"
+                [showSelectControls]="true"
+                [applyButtonEnabled]="true"
+                [selectedTextExprFn]="selectedTextExpr"
+                [searchModeEnabled]="true"
+                searchMode="dropdown"
+                placeholder="{{
+                  'protocols-fields-offcanvas.filters.legacy.placeholder'
+                    | translate
+                }}"
+              ></app-select-box>
+            </div>
+            <div class="col-auto">
+              <app-select-box
+                [formControl]="f.negotiationTypeIds"
+                class="filter negotiationType-filter"
+                [dataSource]="negotiationTypeDataSource"
+                valueExpr="id"
+                displayExpr="name"
+                [multiple]="true"
+                [showSelectControls]="true"
+                [applyButtonEnabled]="true"
+                [selectedTextExprFn]="selectedTextExpr"
+                [searchModeEnabled]="true"
+                searchMode="dropdown"
+                placeholder="{{
+                  'protocols-fields-offcanvas.filters.negotiationType.placeholder'
+                    | translate
+                }}"
+              ></app-select-box>
+            </div>
+            <div class="col-auto">
+              <app-select-box
+                [formControl]="f.productIds"
+                class="filter product-filter"
+                [dataSource]="productDataSource"
+                valueExpr="id"
+                displayExpr="name"
+                [multiple]="true"
+                [showSelectControls]="true"
+                [applyButtonEnabled]="true"
+                [selectedTextExprFn]="selectedTextExpr"
+                [searchModeEnabled]="true"
+                searchMode="dropdown"
+                placeholder="{{
+                  'protocols-fields-offcanvas.filters.product.placeholder'
+                    | translate
+                }}"
+              ></app-select-box>
+            </div>
+            <div class="col-auto">
+              <app-select-box
+                [formControl]="f.segmentIds"
+                class="filter segment-filter"
+                [dataSource]="segmentDataSource"
+                valueExpr="id"
+                displayExpr="name"
+                [multiple]="true"
+                [showSelectControls]="true"
+                [applyButtonEnabled]="true"
+                [selectedTextExprFn]="selectedTextExpr"
+                [searchModeEnabled]="true"
+                searchMode="dropdown"
+                placeholder="{{
+                  'protocols-fields-offcanvas.filters.segment.placeholder'
+                    | translate
+                }}"
+              ></app-select-box>
+            </div>
+            <div class="col-auto">
+              <app-select-box
+                [dataSource]="manualDataSource"
+                [formControl]="f.isManual"
+                class="filter manual-filter"
+                valueExpr="value"
+                displayExpr="label"
+                placeholder="{{
+                  'protocols-fields-offcanvas.filters.manual.placeholder'
+                    | translate
+                }}"
+              ></app-select-box>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="table-container" style="--table-height: {{ tableHeight }}px">
+            <ng-scrollbar class="scrollbar">
+              <div class="table-content">
+                <table
+                  class="table-users table table-striped table-bordered"
+                  cdk-table
+                  appTableSort
+                  [dataSource]="fieldList"
+                >
+                  <ng-container cdkColumnDef="selection">
+                    <th
+                      cdk-header-cell
+                      *cdkHeaderCellDef
+                      width="auto"
+                      class="px-3"
+                    >
+                      <app-checkbox
+                        [value]="isAllSelected()"
+                        (valueChange)="toggleAllSelect()"
+                        [disabled]="isControlsDisabled"
+                      ></app-checkbox>
+                    </th>
+
+                    <td cdk-cell *cdkCellDef="let element" class="px-3">
+                      <app-checkbox
+                        [value]="isSelected(element)"
+                        (valueChange)="toggleSelect(element)"
+                        [disabled]="isControlsDisabled"
+                      ></app-checkbox>
+                    </td>
+                  </ng-container>
+
+                  <ng-container cdkColumnDef="label">
+                    <th cdk-header-cell *cdkHeaderCellDef width="100%">
+                      {{
+                        "protocols-fields-offcanvas.table.headers.label"
+                          | translate
+                      }}
+                    </th>
+
+                    <td cdk-cell *cdkCellDef="let element">
+                      {{ element.label }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container cdkColumnDef="required">
+                    <th cdk-header-cell *cdkHeaderCellDef width="auto">
+                      <div class="d-flex">
+                        <app-checkbox
+                          styleType="switch"
+                          [(value)]="allRequired"
+                          (valueChange)="onRequiredAllChanged($event)"
+                          [disabled]="isControlsDisabled || !isAnySelected()"
+                        ></app-checkbox>
+
+                        {{
+                          "protocols-fields-offcanvas.table.headers.required"
+                            | translate
+                        }}
+                      </div>
+                    </th>
+
+                    <td cdk-cell *cdkCellDef="let element">
+                      <app-checkbox
+                        styleType="switch"
+                        [value]="isRequired(element)"
+                        (valueChange)="onRequiredChanged(element, $event)"
+                        [disabled]="isControlsDisabled"
+                      ></app-checkbox>
+                    </td>
+                  </ng-container>
+
+                  <ng-container cdkColumnDef="active">
+                    <th cdk-header-cell *cdkHeaderCellDef width="auto">
+                      <app-checkbox
+                        styleType="switch"
+                        [(value)]="allActive"
+                        (valueChange)="onActiveAllChanged($event)"
+                        [disabled]="isControlsDisabled || !isAnySelected()"
+                      ></app-checkbox>
+                    </th>
+
+                    <td cdk-cell *cdkCellDef="let element">
+                      <app-checkbox
+                        styleType="switch"
+                        [value]="isActive(element)"
+                        (valueChange)="onActiveChanged(element, $event)"
+                        [disabled]="isControlsDisabled"
+                      ></app-checkbox>
+                    </td>
+                  </ng-container>
+
+                  <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+                  <tr
+                    cdk-row
+                    *cdkRowDef="let row; columns: displayedColumns"
+                  ></tr>
+                </table>
+              </div>
+            </ng-scrollbar>
+
+            <app-loading-indicator
+              [visible]="loadingController.changes | async"
+              [showBackdrop]="false"
+              [lockScreen]="true"
+            ></app-loading-indicator>
+          </div>
+
+          <div class="row gx-6 mt-10">
+            <div class="col-auto text-center">
+              <button
+                type="button"
+                class="btn btn-secondary-accent btn-lg"
+                (click)="formGroup.reset()"
+              >
+                {{ "defaults.actions.clear" | translate }}
+              </button>
+            </div>
+
+            <div class="col-auto text-center">
+              <button
+                type="button"
+                class="btn btn-primary-accent btn-lg"
+                [disabled]="isControlsDisabled || !hasChanges"
+                (click)="onBtnSaveChangesClick()"
+              >
+                {{ "protocols-fields-offcanvas.actions.save" | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-offcanvas-template>

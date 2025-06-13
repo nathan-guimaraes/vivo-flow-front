@@ -1,0 +1,15 @@
+<ngb-timepicker
+  class="timepicker"
+  [formControl]="f.startHour"
+  [spinners]="false"
+></ngb-timepicker>
+
+<span>
+  {{ "time-interval-box.labels.to" | translate }}
+</span>
+
+<ngb-timepicker
+  class="timepicker"
+  [formControl]="f.endHour"
+  [spinners]="false"
+></ngb-timepicker>

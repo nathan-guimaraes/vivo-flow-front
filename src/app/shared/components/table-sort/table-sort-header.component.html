@@ -1,0 +1,11 @@
+<div class="table-sort-header-container">
+  <div class="table-sort-header-content">
+    <ng-content></ng-content>
+  </div>
+
+  <ng-container *ngIf="_renderArrow()">
+    <div class="arrow-indicator" [class.before]="arrowPosition === 'before'">
+      <app-iconic class="icon" icon="arrow-up"></app-iconic>
+    </div>
+  </ng-container>
+</div>

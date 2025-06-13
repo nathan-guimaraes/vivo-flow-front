@@ -1,0 +1,2017 @@
+{
+  "defaults": {
+    "ok": "Ok",
+    "yes": "Sim",
+    "not": "Não",
+    "manual": "Manual",
+    "automatic": "Automático",
+    "actions": {
+      "add": "Adicionar",
+      "edit": "Editar",
+      "delete": "Apagar",
+      "clear": "Limpar",
+      "apply": "Aplicar",
+      "export": "Exportar",
+      "refresh": "Atualizar",
+      "filters": "Filtros",
+      "save": "Salvar",
+      "signout": "Sair"
+    },
+    "placeholders": {
+      "input": "Digite aqui...",
+      "textarea": "Digite aqui...",
+      "select": "Selecione..."
+    },
+    "errors": {
+      "cannotLoadPage": "Houve um erro inesperado! Por favor, atualize a página ou tente mais tarde.",
+      "cannotAccessServer": "Servidor não está disponível no momento. Favor entrar em contato com o adminitrador do sistema.",
+      "notAuthenticated": "Você não está autenticado!",
+      "forbidden": "Você não possui autorização!",
+      "cannotDoAction": "Não foi possível completar a ação!"
+    },
+    "form": {
+      "validation": {
+        "required": "Campo obrigatório"
+      }
+    }
+  },
+  "header": {
+    "items": {
+      "home": "Página Inicial",
+      "indicators": "Indicadores",
+      "protocols": "Bolsão",
+      "users-admin": "Administração de Usuário",
+      "system-admin": "Administração de Ferramenta",
+      "protocol-dealings": "Tratativas"
+    },
+    "actions": {
+      "goback": "Voltar"
+    }
+  },
+  "footer": {
+    "text": "Vivo Flow"
+  },
+  "sla": {
+    "indicators": {
+      "normal": "Dentro do SLA",
+      "warning": "Prestes a vencer",
+      "danger": "Vencido"
+    },
+    "types": {
+      "hours": "Horas Corridas",
+      "hours-singular": "Hora Corrida",
+      "days": "Dias Corridos",
+      "days-singular": "Dia Corrido",
+      "business-hours": "Horas Úteis",
+      "business-hours-singular": "Hora Útil",
+      "business-days": "Dias Úteis",
+      "business-days-singular": "Dia Útil"
+    }
+  },
+  "treatment-status": {
+    "in-treatment": "Em Tratativa",
+    "paused": "Pausada",
+    "done": "Concluída"
+  },
+  "login": {
+    "form": {
+      "login": {
+        "label": "Usuário",
+        "placeholder": "Selecione o usuário...",
+        "validation": {
+          "required": "Usuário é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "signin": "Entrar"
+    }
+  },
+  "home": {
+    "menu-items": {
+      "indicators": {
+        "title": "Indicadores",
+        "info-list": {
+          "protocols": {
+            "title": "Protocolos",
+            "items": {
+              "protocols-worked": "Protocolos Trabalhados",
+              "protocols-finished": "Protocolos Finalizados"
+            }
+          },
+          "productivity": {
+            "title": "Produtividade",
+            "items": {
+              "productivity-real": "Produtividade Real",
+              "productivity-reference": "Produtividade Referencial"
+            }
+          }
+        }
+      },
+      "protocols": {
+        "title": "Bolsão",
+        "info-list": {
+          "protocols-pending": {
+            "title": "Protocolos Pendentes",
+            "items": {
+              "total-protocols-pending": "Total Pendentes",
+              "out-sla": "Fora do SLA",
+              "paused": "Pausados",
+              "prioritized": "Priorizados"
+            }
+          }
+        }
+      },
+      "users-admin": {
+        "title": "Adm de Usuário",
+        "info-list": {
+          "active-users": {
+            "title": "Usuários Ativos",
+            "items": {
+              "total-active-users": "Total Ativos",
+              "users-online": "Usuários Online",
+              "users-paused": "Usuários Pausados",
+              "users-offline": "Usuários Offline"
+            }
+          },
+          "new-users": {
+            "title": "Novos Usuários",
+            "items": {
+              "new-users": "Novos Usuários"
+            }
+          }
+        }
+      },
+      "system-admin": {
+        "title": "Adm de Ferramentas"
+      }
+    },
+    "actions": {
+      "open-page": "Consultar"
+    }
+  },
+  "indicators": {
+    "title": "Indicadores",
+    "sessions": {
+      "indicators": {
+        "cards": {
+          "protocol-volumetry": {
+            "title": "Volumetria de protocolos",
+            "chart": {
+              "stand-by": "Stand-By",
+              "pending": "Pendente",
+              "in-treatment": "Em Tratativa",
+              "paused": "Pausado",
+              "canceled": "Cancelado",
+              "done": "Concluído",
+              "in-transfer": "Em Transferência",
+              "transfer-error": "Erro Transferência"
+            }
+          },
+          "cutoff-date": {
+            "title": "Data de Corte",
+            "chart": {
+              "created-month": "Criados (mês)",
+              "backlog": "Backlog",
+              "done-percentual": "Concluídos (%)",
+              "outof-cutof-date": "Fora da Data de Corte (%)"
+            }
+          },
+          "sla": {
+            "title": "SLA"
+          },
+          "productivity": {
+            "title": "Produtividade (média)",
+            "chart": {
+              "average-productivity": "Real",
+              "average-productivity-ref": "Referencial",
+              "productivity-percentual": "Percentual (%)"
+            }
+          },
+          "treatment-time": {
+            "title": "Tempo de Tratativa",
+            "chart": {
+              "done-protocols": "Concluídos",
+              "undone-protocols": "Não Concluídos",
+              "average-time": "Tempo médio"
+            }
+          },
+          "performance": {
+            "title": "Performance"
+          },
+          "disapproval-treatments": {
+            "title": "Reprovações",
+            "chart": {
+              "total-treatments": "Total de Tratativas",
+              "disapproval-treatments": "Tratativas Reprovadas",
+              "disapproval-treatments-percent": "Tratativas Reprovadas (%)"
+            }
+          },
+          "calendar-report": {
+            "title": "Relatório Calendário",
+            "subtitle": "Gestão das jornadas de trabalho e banco de horas"
+          }
+        },
+        "errors": {
+          "cannot-load-indicator": "Não foi possível carregar o indicador '{{value}}'"
+        }
+      },
+      "operation-manager": {
+        "title": "Visão de gerenciamento da operação"
+      }
+    },
+    "filters": {
+      "form": {
+        "fieldDate": {
+          "label": "Tipo de Data",
+          "dataSource": {
+            "createdAt": "Data de Solicitação",
+            "endedAt": "Data de Conclusão"
+          }
+        },
+        "startDate": {
+          "label": "Data de início"
+        },
+        "endDate": {
+          "label": "Data de fim"
+        },
+        "segmentId": {
+          "label": "Segmento"
+        },
+        "productId": {
+          "label": "Produto"
+        },
+        "negotiationTypeId": {
+          "label": "Tipo de Negociação"
+        },
+        "legacyId": {
+          "label": "Legado"
+        },
+        "supplierId": {
+          "label": "Fornecedor"
+        },
+        "towerId": {
+          "label": "Torre"
+        },
+        "islandId": {
+          "label": "Ilha"
+        },
+        "subislandId": {
+          "label": "Subilha"
+        }
+      }
+    }
+  },
+  "protocols-admin": {
+    "title": "Bolsão",
+    "actions": {
+      "define-columns": "Definir Colunas",
+      "assign": "Atribuir",
+      "priorize": "Priorizar",
+      "deprioritize": "Despriorizar"
+    },
+    "table": {
+      "headers": {
+        "id": "Protocolo",
+        "number": "NºPedido",
+        "sla": "SLA",
+        "customerName": "Razão Social",
+        "document": "CNPJ",
+        "tower": "Torre",
+        "island": "Ilha",
+        "subisland": "Subilha",
+        "subject": "Assunto",
+        "segment": "Segmento",
+        "codeGroup": "Cód. Grupo",
+        "customerCode": "Cód. Cli",
+        "partner": "Parceiro",
+        "supplier": "Fornecedor",
+        "negotiationType": "Tipo Negociação",
+        "product": "Produto",
+        "status": "Status",
+        "queueTime": "Tempo de Fila",
+        "user": "Usuário",
+        "dealingsTime": "Tempo tratativa"
+      }
+    },
+    "define-columns-modal": {
+      "subtitle": "Selecione até 10 Campos que serão exibidos em Tela"
+    },
+    "filters-offcanvas": {
+      "title": "Filtro Bolsão"
+    },
+    "messages": {
+      "protocols-exported": "Protocolos exportados com sucesso",
+      "protocol-priorized": "Protocolo priorizado com sucesso",
+      "protocol-deprioritized": "Protocolo despriorizado com sucesso"
+    },
+    "errors": {
+      "cannot-export-protocols": "Não foi possível exportar os protocolos!",
+      "cannot-priorize-protocol": "Não foi possível priorizar!",
+      "cannot-deprioritize-protocol": "Não foi possível despriorizar!"
+    }
+  },
+  "protocols-filter-form": {
+    "form": {
+      "number": {
+        "placeholder": "NºPedido"
+      },
+      "status": {
+        "placeholder": "Status"
+      },
+      "tower": {
+        "placeholder": "Torre"
+      },
+      "island": {
+        "placeholder": "Ilha"
+      },
+      "subisland": {
+        "placeholder": "Subilha"
+      },
+      "subject": {
+        "placeholder": "Assunto"
+      },
+      "segment": {
+        "placeholder": "Segmento"
+      },
+      "partnerCode": {
+        "placeholder": "Parceiro"
+      },
+      "document": {
+        "placeholder": "CNPJ"
+      },
+      "codeGroup": {
+        "placeholder": "Cod Grupo"
+      },
+      "customerCode": {
+        "placeholder": "Cod Cli"
+      },
+      "negotiationType": {
+        "placeholder": "Tipo Negociação"
+      },
+      "product": {
+        "placeholder": "Produto"
+      },
+      "user": {
+        "placeholder": "Usuário"
+      },
+      "supplier": {
+        "placeholder": "Fornecedor"
+      },
+      "priority": {
+        "placeholder": "Prioridade"
+      },
+      "sla": {
+        "placeholder": "SLA"
+      }
+    }
+  },
+  "distribution-protocols-offcanvas": {
+    "title": "Atribuições",
+    "form": {
+      "priority": {
+        "title": "Priorizar",
+        "label": "Defina o Protocolo como Prioritário ou Despriorize",
+        "fields": {
+          "none": "Despriorizar",
+          "current": "Priorizar etapa atual",
+          "all": "Priorizar toda a esteira"
+        }
+      },
+      "step": {
+        "title": "Alterar Subilha",
+        "label": "Selecione uma Subilha"
+      },
+      "user": {
+        "title": "Definir Usuário",
+        "label": "Selecione um usuário ativo"
+      }
+    },
+    "actions": {
+      "save": "Salvar Atribuições"
+    },
+    "messages": {
+      "protocols-updated": "Protocolos atribuídos com sucesso"
+    },
+    "warnings": {
+      "has-differents-protocols": "Ação não permitida. Protocolos selecionados têm fluxos diferentes"
+    },
+    "errors": {
+      "cannot-validate-protocols": "Não foi possível validar os protocolos!",
+      "cannot-update-protocols": "Não foi possível atribuir os protocolos!"
+    }
+  },
+  "users-admin": {
+    "title": "Adminstração de Usuário",
+    "actions": {
+      "skills": "Skills",
+      "status": "Status",
+      "delegate": "Delegar"
+    },
+    "table": {
+      "headers": {
+        "login": "Login",
+        "profile": "Perfil",
+        "name": "Usuário",
+        "supervisor": "Supervisor",
+        "workscale": "Escala",
+        "workload": "Carga Horária",
+        "worktime": "Horário",
+        "supplier": "Fornecedor",
+        "status": "Status",
+        "returnedAt": "Data Retorno"
+      }
+    },
+    "filters-offcanvas": {
+      "title": "Filtro Usuários"
+    },
+    "messages": {
+      "users-exported": "Usuários exportados com sucesso"
+    },
+    "errors": {
+      "cannot-export-users": "Não foi possível exportar os usuários!"
+    }
+  },
+  "users-filter-form": {
+    "form": {
+      "login": {
+        "placeholder": "Login"
+      },
+      "user": {
+        "placeholder": "Usuário"
+      },
+      "supervisor": {
+        "placeholder": "Supervisor"
+      },
+      "profile": {
+        "placeholder": "Perfil"
+      },
+      "tower": {
+        "placeholder": "Torre"
+      },
+      "island": {
+        "placeholder": "Ilha"
+      },
+      "subisland": {
+        "placeholder": "Subilha"
+      },
+      "subject": {
+        "placeholder": "Assunto"
+      },
+      "segment": {
+        "placeholder": "Segmento"
+      },
+      "supplier": {
+        "placeholder": "Fornecedor"
+      },
+      "status": {
+        "placeholder": "Status"
+      }
+    }
+  },
+  "users-status-edit-modal": {
+    "title": "Alterar Status",
+    "form": {
+      "status": {
+        "label": "Status",
+        "validation": {
+          "required": "Status é obrigatório"
+        }
+      },
+      "returnedAt": {
+        "label": "Data Retorno",
+        "validation": {
+          "required": "Data Retorno é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Concluir Alteração"
+    },
+    "messages": {
+      "statusUpdated": "Status atualizado com sucesso"
+    },
+    "warnings": {
+      "usersWithDifferentStatus": "Foram selecionados usuários com status diferentes. Ao continuar a alteração refletirá para todos os usuários selecionados."
+    },
+    "errors": {
+      "cannotUpdateStatus": "Não foi possível atualizar o status!"
+    }
+  },
+  "delegate-activities-modal": {
+    "title": "Delegar",
+    "form": {
+      "userId": {
+        "label": "Usuário",
+        "validation": {
+          "required": "Usuário é obrigatório"
+        }
+      },
+      "startedAt": {
+        "label": "Data de início",
+        "validation": {
+          "required": "Data de início é obrigatório"
+        }
+      },
+      "endedAt": {
+        "label": "Data de Retorno",
+        "validation": {
+          "required": "Data de Retorno é obrigatório"
+        }
+      },
+      "reason": {
+        "label": "Justificativa",
+        "placeholder": "Descreva o motivo aqui",
+        "validation": {
+          "required": "Justificativa é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Salvar e Delegar"
+    },
+    "success": {
+      "delegation-succeeded": "Delegação realizada com sucesso"
+    },
+    "warnings": {
+      "info": "Selecione o Usuário que ficará Responsável pelas suas atividades."
+    },
+    "errors": {
+      "cannot-delegate": "Não foi possível delegar!"
+    }
+  },
+  "users-skills-modal": {
+    "title": "Definição de Skills do Usuário",
+    "export-button": {
+      "label": "Atualizar via Upload de Arquivo",
+      "items": {
+        "download": "Baixar Planilha",
+        "upload": "Upload da Planilha atualizada"
+      }
+    },
+    "form": {
+      "status": {
+        "label": "Status",
+        "validation": {
+          "required": "Status é obrigatório"
+        }
+      },
+      "returnDate": {
+        "label": "Data de Retorno",
+        "validation": {
+          "required": "Data de Retorno é obrigatório"
+        }
+      },
+      "workscale": {
+        "label": "Escala",
+        "validation": {
+          "required": "Escala é obrigatório"
+        }
+      },
+      "workload": {
+        "label": "Carga Horária",
+        "validation": {
+          "required": "Carga Horária é obrigatório"
+        }
+      },
+      "worktime": {
+        "label": "Horário",
+        "validation": {
+          "required": "Horário é obrigatório"
+        }
+      },
+      "priority": {
+        "label": "Prioridade",
+        "validation": {
+          "required": "Prioridade é obrigatório"
+        }
+      },
+      "supplier": {
+        "label": "Fornecedor",
+        "validation": {
+          "required": "Fornecedor é obrigatório"
+        }
+      },
+      "supervisor": {
+        "label": "Supervisor",
+        "validation": {
+          "required": "Supervisor é obrigatório"
+        }
+      }
+    },
+    "skill-boxes": {
+      "tower": "Torre",
+      "island": "Ilha",
+      "subIsland": "Subilha",
+      "subject": "Assunto",
+      "type-negotioation": "Tipo de Negociação",
+      "product": "Produto",
+      "segment": "Segmento",
+      "customer": "Cliente"
+    },
+    "tooltips": {
+      "mark-principal": "Marcar como principal",
+      "remove-principal": "Remover principal"
+    },
+    "actions": {
+      "save": "Salvar Definições de Skill"
+    },
+    "messages": {
+      "skills-updated": "Skills atualizadas com sucesso",
+      "skills-template-downloaded": "Template de skills baixado com sucesso"
+    },
+    "warnings": {
+      "towerRequired": "Escolha ao menos uma torre",
+      "towerPrincipalRequired": "Preencha a torre principal",
+      "islandRequired": "Escolha ao menos uma ilha",
+      "subislandRequired": "Escolha ao menos uma subilha",
+      "negotiationTypeRequired": "Escolha ao menos um tipo de negociação",
+      "productRequired": "Escolha ao menos um produto",
+      "segmentRequired": "Escolha ao menos um segmento"
+    },
+    "errors": {
+      "cannotLoadUser": "Não foi possível carregar os dados do usuário!",
+      "cannotChangeSkills": "Não foi possível atualizar as skills!",
+      "cannotDownloadSkillsTemplate": "Não foi possível baixar o modelo de skills!"
+    }
+  },
+  "system-admin": {
+    "title": "Administração da Ferramenta",
+    "items": {
+      "protocol-fields": {
+        "title": "Ativar e Inativar Campos",
+        "subtitle": "Ativação e Inativação de campos da tela de Tratativa de Protocolos",
+        "button": "Ativar / Inativar"
+      },
+      "parameters": {
+        "title": "Criação, Ativação e Inativação de parâmetro",
+        "subtitle": "Alteração e criação de Parametros",
+        "button": "Cadastrar ou editar"
+      },
+      "sla": {
+        "title": "Cadastrar e Alterar SLA",
+        "subtitle": "Cadastro e Alteração de SLA de tratativa das etapas.",
+        "button": "Cadastrar SLA"
+      },
+      "productivity": {
+        "title": "Cadastrar e Alterar Produtividade",
+        "subtitle": "Cadastro e Alteração de Produtividade de tratativa das etapas.",
+        "button": "Cadastrar Produtividade"
+      },
+      "protocols": {
+        "title": "Upload de Base",
+        "subtitle": "Upload de base manual para atualizar e cadastrar protocolos",
+        "button": "Upload da Base"
+      },
+      "cutoff-date": {
+        "title": "Data de Corte",
+        "subtitle": "Cadastro da data de corte",
+        "button": "Cadastrar Data de Corte"
+      },
+      "flow": {
+        "title": "Criação de Fluxo",
+        "subtitle": "Criação de Fluxos de atendimento",
+        "button": "Criar Novo Fluxo"
+      }
+    }
+  },
+  "cutoff-date-register-modal": {
+    "title": "Cadastrar Data de Corte",
+    "form": {
+      "tower": {
+        "label": "Torre",
+        "validation": {
+          "required": "Torre é obrigatório"
+        }
+      },
+      "negotiationType": {
+        "label": "Tipo Negociação",
+        "validation": {
+          "required": "Tipo Negociação é obrigatório"
+        }
+      },
+      "product": {
+        "label": "Produto",
+        "validation": {
+          "required": "Produto é obrigatório"
+        }
+      },
+      "date": {
+        "label": "Insira a Data",
+        "validation": {
+          "required": "Data é obrigatório"
+        }
+      }
+    },
+    "table": {
+      "headers": {
+        "tower": "Torre",
+        "negotiationType": "Tipo Negociação",
+        "product": "Produto",
+        "date": "Data de Corte",
+        "actions": "Excluir"
+      }
+    },
+    "actions": {
+      "save": "Cadastrar"
+    },
+    "messages": {
+      "register-created": "Data de Corte salvo com sucesso",
+      "register-deleted": "Data de Corte apagado com sucesso"
+    },
+    "errors": {
+      "cannot-save-register": "Não foi possível salvar a data de corte!",
+      "cannot-delete-register": "Não foi possível apagar a data de corte!"
+    }
+  },
+  "protocols-fields-offcanvas": {
+    "title": "Ativação e Inativação",
+    "filters": {
+      "tower": {
+        "placeholder": "Torre"
+      },
+      "island": {
+        "placeholder": "Ilha"
+      },
+      "subisland": {
+        "placeholder": "Subilha"
+      },
+      "legacy": {
+        "placeholder": "Legado"
+      },
+      "negotiationType": {
+        "placeholder": "Tipo de negociação"
+      },
+      "segment": {
+        "placeholder": "Segmento"
+      },
+      "product": {
+        "placeholder": "Produto"
+      },
+      "manual": {
+        "placeholder": "Manual"
+      }
+    },
+    "table": {
+      "headers": {
+        "label": "Campos da tela de Tratativa",
+        "required": "Obrigatório"
+      }
+    },
+    "actions": {
+      "save": "Salvar Ajustes"
+    },
+    "messages": {
+      "changes-saved": "Alterações salvas com sucesso"
+    },
+    "warnings": {
+      "selected-multiple-filters": "Selecionado multiplos filtros"
+    },
+    "errors": {
+      "cannot-load-list": "Não foi possível carregar a lista de campos!",
+      "cannot-save-changes": "Não foi possível salvar as alterações!"
+    },
+    "info": "O Preenchimento de todos os filtros é obrigatório."
+  },
+  "sla-admin": {
+    "title": "Cadastrar e Alterar SLA",
+    "table": {
+      "headers": {
+        "tower": "Torre",
+        "island": "Ilha",
+        "subisland": "Subilha",
+        "subject": "Assunto",
+        "negotiationType": "Tipo Negociação",
+        "product": "Produto",
+        "segment": "Segmento",
+        "sla": "SLA",
+        "actions": "Ações"
+      }
+    },
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "filters-offcanvas": {
+      "title": "Filtro SLA"
+    },
+    "messages": {
+      "sla-deleted": "SLA apagado com sucesso"
+    },
+    "errors": {
+      "cannot-delete-sla": "Não foi possível apagar o SLA!"
+    }
+  },
+  "sla-filter-form": {
+    "form": {
+      "tower": {
+        "placeholder": "Torre"
+      },
+      "island": {
+        "placeholder": "Ilha"
+      },
+      "subisland": {
+        "placeholder": "Subilha"
+      },
+      "subject": {
+        "placeholder": "Assunto"
+      },
+      "segment": {
+        "placeholder": "Segmento"
+      },
+      "negotiationType": {
+        "placeholder": "Tipo Negociação"
+      },
+      "product": {
+        "placeholder": "Produto"
+      }
+    }
+  },
+  "sla-register-modal": {
+    "title": "Cadastrar novo SLA",
+    "form": {
+      "tower": {
+        "label": "Torre",
+        "validation": {
+          "required": "Torre é obrigatório"
+        }
+      },
+      "island": {
+        "label": "Ilha",
+        "validation": {
+          "required": "Ilha é obrigatório"
+        }
+      },
+      "subisland": {
+        "label": "Subilha",
+        "validation": {
+          "required": "Subilha é obrigatório"
+        }
+      },
+      "subject": {
+        "label": "Assunto"
+      },
+      "negotiationType": {
+        "label": "Tipo Negociação",
+        "validation": {
+          "required": "Tipo Negociação é obrigatório"
+        }
+      },
+      "product": {
+        "label": "Produto",
+        "validation": {
+          "required": "Produto é obrigatório"
+        }
+      },
+      "segment": {
+        "label": "Segmento",
+        "validation": {
+          "required": "Segmento é obrigatório"
+        }
+      },
+      "sla": {
+        "label": "SLA",
+        "validation": {
+          "required": "SLA é obrigatório"
+        }
+      },
+      "type": {
+        "label": "Tipo",
+        "validation": {
+          "required": "Tipo é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Concluir Cadastro"
+    },
+    "messages": {
+      "sla-registered": "SLA cadastrado com sucesso"
+    },
+    "errors": {
+      "cannot-save-sla": "Não foi possível salvar o SLA!"
+    }
+  },
+  "sla-update-modal": {
+    "title": "Alterar SLA",
+    "form": {
+      "sla": {
+        "label": "SLA",
+        "validation": {
+          "required": "SLA é obrigatório"
+        }
+      },
+      "type": {
+        "label": "Tipo",
+        "validation": {
+          "required": "Tipo é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Alterar"
+    },
+    "messages": {
+      "sla-updated": "SLA atualizado com sucesso"
+    },
+    "errors": {
+      "cannot-save-sla": "Não foi possível salvar o SLA!"
+    }
+  },
+  "productivity-admin": {
+    "title": "Cadastro e Alteração de Produtividade",
+    "table": {
+      "headers": {
+        "tower": "Torre",
+        "island": "Ilha",
+        "subisland": "Subilha",
+        "subject": "Assunto",
+        "negotiationType": "Tipo Negociação",
+        "segment": "Segmento",
+        "product": "Produto",
+        "productivity": "Produtividade",
+        "actions": "Ações"
+      }
+    },
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "filters-offcanvas": {
+      "title": "Filtro Produtividade"
+    },
+    "messages": {
+      "productivityDeleted": "Produtividade apagada com sucesso"
+    },
+    "errors": {
+      "cannotDeleteProductivity": "Não foi possível apagar a Produtividade!"
+    }
+  },
+  "productivity-filter-form": {
+    "form": {
+      "tower": {
+        "placeholder": "Torre"
+      },
+      "island": {
+        "placeholder": "Ilha"
+      },
+      "subisland": {
+        "placeholder": "Subilha"
+      },
+      "subject": {
+        "placeholder": "Assunto"
+      },
+      "segment": {
+        "placeholder": "Segmento"
+      },
+      "negotiationType": {
+        "placeholder": "Tipo Negociação"
+      },
+      "product": {
+        "placeholder": "Produto"
+      }
+    }
+  },
+  "productivity-register-modal": {
+    "title": "Cadastrar Produtividade",
+    "form": {
+      "tower": {
+        "label": "Torre",
+        "validation": {
+          "required": "Torre é obrigatório"
+        }
+      },
+      "island": {
+        "label": "Ilha",
+        "validation": {
+          "required": "Ilha é obrigatório"
+        }
+      },
+      "subisland": {
+        "label": "Subilha",
+        "validation": {
+          "required": "Subilha é obrigatório"
+        }
+      },
+      "subject": {
+        "label": "Assunto"
+      },
+      "negotiationType": {
+        "label": "Tipo Negociação",
+        "validation": {
+          "required": "Tipo Negociação é obrigatório"
+        }
+      },
+      "product": {
+        "label": "Produto",
+        "validation": {
+          "required": "Produto é obrigatório"
+        }
+      },
+      "segment": {
+        "label": "Segmento",
+        "validation": {
+          "required": "Segmento é obrigatório"
+        }
+      },
+      "productivity": {
+        "label": "Produtividade",
+        "validation": {
+          "required": "Produtividade é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Salvar e Cadastrar"
+    },
+    "messages": {
+      "productivityRegistered": "Produtividade cadastrada com sucesso"
+    },
+    "errors": {
+      "cannot-save-productivity": "Não foi possível salvar a Produtividade!"
+    }
+  },
+  "productivity-update-modal": {
+    "title": "Editar Produtividade",
+    "form": {
+      "productivity": {
+        "label": "Produtividade",
+        "validation": {
+          "required": "Produtividade é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Salvar alteração"
+    },
+    "messages": {
+      "productivityUpdated": "Produtividade atualizada com sucesso"
+    },
+    "errors": {
+      "cannot-save-productivity": "Não foi possível salvar a Produtividade!"
+    }
+  },
+  "protocols-upload-offcanvas": {
+    "title": "Upload de Base",
+    "info": "Baixe o arquivo de Status e depois faça o upload do arquivo atualizado.",
+    "logs-list": {
+      "createdBy": "Anexado por:",
+      "success": "Importado com Sucesso",
+      "error": "Erro na Importação",
+      "warning": "Importado Parcialmente",
+      "processing": "Processando..."
+    },
+    "actions": {
+      "upload": "Upload do Arquivo",
+      "download": "Download"
+    },
+    "messages": {
+      "protocols-template-downloaded": "Template de protocolos baixado com sucesso",
+      "protocols-imported": "Protocolos importados com sucesso",
+      "protocols-downloaded": "Protocolo baixado com sucesso"
+    },
+    "errors": {
+      "cannot-download-template": "Não foi possível baixar o modelo!",
+      "cannot-import-protocols": "Não foi possível importar os protocolos!",
+      "cannot-download-protocol": "Não foi possível importar o protocolo!"
+    }
+  },
+  "parameters-admin": {
+    "title": "Criação, Ativação e Inativação de parâmetro",
+    "items": {
+      "tower": "Torre",
+      "island": "Ilha",
+      "subisland": "Subilha",
+      "subject": "Assunto",
+      "legacy": "Legado",
+      "segment": "Segmento",
+      "negotiationType": "Tipo Negociação",
+      "product": "Produto",
+      "customer": "Cliente",
+      "supplier": "Fornecedor",
+      "workscale": "Escala",
+      "workload": "Carga Horária",
+      "dealing-reason": "Motivo",
+      "dealing-subreason": "Submotivo",
+      "dealing-subreason2": "Submotivo 2",
+      "protocol-action": "Ação"
+    },
+    "actions": {
+      "new-edit-parameters": "Cadastrar ou Editar"
+    }
+  },
+  "tower-register-offcanvas": {
+    "title": "Torre",
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "messages": {
+      "tower-activated": "Torre ativada com sucesso",
+      "tower-inactivated": "Torre inativada com sucesso"
+    },
+    "errors": {
+      "cannot-active-tower": "Não foi possível ativar a torre!",
+      "cannot-inactive-tower": "Não foi possível inativar a torre!"
+    }
+  },
+  "tower-register-form": {
+    "form": {
+      "name": {
+        "label": "Torre",
+        "placeholder": "Digite o nome",
+        "validation": {
+          "required": "Nome da torre é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Cadastrar",
+      "cancel": "Cancelar"
+    },
+    "messages": {
+      "tower-saved": "Torre salva com sucesso"
+    },
+    "errors": {
+      "cannot-save-tower": "Não foi possível salvar a torre!"
+    }
+  },
+  "island-register-offcanvas": {
+    "title": "Ilha",
+    "list": {
+      "group": {
+        "tower": "Torre:"
+      }
+    },
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "messages": {
+      "island-activated": "Ilha ativada com sucesso",
+      "island-inactivated": "Ilha inativada com sucesso"
+    },
+    "errors": {
+      "cannot-active-island": "Não foi possível ativar a ilha!",
+      "cannot-inactive-island": "Não foi possível inativar a ilha!"
+    }
+  },
+  "island-register-form": {
+    "form": {
+      "tower": {
+        "label": "Torre",
+        "placeholder": "Selecione",
+        "validation": {
+          "required": "Torre é obrigatório"
+        }
+      },
+      "name": {
+        "label": "Ilha",
+        "placeholder": "Digite o nome",
+        "validation": {
+          "required": "Nome da ilha é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Cadastrar",
+      "cancel": "Cancelar"
+    },
+    "messages": {
+      "island-saved": "Ilha salva com sucesso"
+    },
+    "errors": {
+      "cannot-save-island": "Não foi possível salvar a ilha!"
+    }
+  },
+  "subisland-register-offcanvas": {
+    "title": "Subilha",
+    "list": {
+      "group": {
+        "tower": "Torre:",
+        "island": "Ilha:"
+      }
+    },
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "messages": {
+      "subisland-activated": "Subilha ativada com sucesso",
+      "subisland-inactivated": "Subilha inativada com sucesso"
+    },
+    "errors": {
+      "cannot-active-subisland": "Não foi possível ativar a subilha!",
+      "cannot-inactive-subisland": "Não foi possível inativar a subilha!"
+    }
+  },
+  "subisland-register-form": {
+    "form": {
+      "tower": {
+        "label": "Torre",
+        "placeholder": "Selecione",
+        "validation": {
+          "required": "Torre é obrigatório"
+        }
+      },
+      "island": {
+        "label": "Ilha",
+        "placeholder": "Selecione",
+        "validation": {
+          "required": "Ilha é obrigatório"
+        }
+      },
+      "name": {
+        "label": "Subilha",
+        "placeholder": "Digite o nome",
+        "validation": {
+          "required": "Nome da subilha é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Cadastrar",
+      "cancel": "Cancelar"
+    },
+    "messages": {
+      "subisland-saved": "Subilha salva com sucesso"
+    },
+    "errors": {
+      "cannot-save-subisland": "Não foi possível salvar a subilha!"
+    }
+  },
+  "subject-register-offcanvas": {
+    "title": "Assunto",
+    "list": {
+      "group": {
+        "tower": "Torre:",
+        "island": "Ilha:",
+        "subisland": "Subilha:"
+      }
+    },
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "messages": {
+      "subject-activated": "Assunto ativada com sucesso",
+      "subject-inactivated": "Assunto inativada com sucesso"
+    },
+    "errors": {
+      "cannot-active-subject": "Não foi possível ativar o assunto!",
+      "cannot-inactive-subject": "Não foi possível inativar o assunto!"
+    }
+  },
+  "subject-register-form": {
+    "form": {
+      "tower": {
+        "label": "Torre",
+        "placeholder": "Selecione",
+        "validation": {
+          "required": "Torre é obrigatório"
+        }
+      },
+      "island": {
+        "label": "Ilha",
+        "placeholder": "Selecione",
+        "validation": {
+          "required": "Ilha é obrigatório"
+        }
+      },
+      "subisland": {
+        "label": "Subilha",
+        "placeholder": "Selecione",
+        "validation": {
+          "required": "Subilha é obrigatório"
+        }
+      },
+      "name": {
+        "label": "Assunto",
+        "placeholder": "Digite o nome",
+        "validation": {
+          "required": "Nome do assunto é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Cadastrar",
+      "cancel": "Cancelar"
+    },
+    "messages": {
+      "subject-saved": "Assunto salvo com sucesso"
+    },
+    "errors": {
+      "cannot-save-subject": "Não foi possível salvar o assunto!"
+    }
+  },
+  "legacy-register-offcanvas": {
+    "title": "Legado",
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "messages": {
+      "legacy-activated": "Legado ativado com sucesso",
+      "legacy-inactivated": "Legado inativado com sucesso"
+    },
+    "errors": {
+      "cannot-active-legacy": "Não foi possível ativar o legado!",
+      "cannot-inactive-legacy": "Não foi possível inativar o legado!"
+    }
+  },
+  "legacy-register-form": {
+    "form": {
+      "name": {
+        "label": "Legado",
+        "placeholder": "Digite o nome",
+        "validation": {
+          "required": "Nome do legado é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Cadastrar",
+      "cancel": "Cancelar"
+    },
+    "messages": {
+      "legacy-saved": "Legado salvo com sucesso"
+    },
+    "errors": {
+      "cannot-save-legacy": "Não foi possível salvar o legado!"
+    }
+  },
+  "segment-register-offcanvas": {
+    "title": "Segmento",
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "messages": {
+      "segment-activated": "Segmento ativado com sucesso",
+      "segment-inactivated": "Segmento inativado com sucesso"
+    },
+    "errors": {
+      "cannot-active-segment": "Não foi possível ativar o segmento!",
+      "cannot-inactive-segment": "Não foi possível inativar o segmento!"
+    }
+  },
+  "segment-register-form": {
+    "form": {
+      "name": {
+        "label": "Segmento",
+        "placeholder": "Digite o nome",
+        "validation": {
+          "required": "Nome do segmento é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Cadastrar",
+      "cancel": "Cancelar"
+    },
+    "messages": {
+      "segment-saved": "Segmento salvo com sucesso"
+    },
+    "errors": {
+      "cannot-save-segment": "Não foi possível salvar o segmento!"
+    }
+  },
+  "negotiation-type-register-offcanvas": {
+    "title": "Tipo Negociação",
+    "list": {
+      "group": {
+        "tower": "Torre:"
+      }
+    },
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "messages": {
+      "negotiation-type-activated": "Tipo Negociação ativado com sucesso",
+      "negotiation-type-inactivated": "Tipo Negociação inativado com sucesso"
+    },
+    "errors": {
+      "cannot-active-negotiation-type": "Não foi possível ativar o tipo negociação!",
+      "cannot-inactive-negotiation-type": "Não foi possível inativar o tipo negociação!"
+    }
+  },
+  "negotiation-type-register-form": {
+    "form": {
+      "tower": {
+        "label": "Torre",
+        "placeholder": "Selecione",
+        "validation": {
+          "required": "Torre é obrigatório"
+        }
+      },
+      "name": {
+        "label": "Tipo Negociação",
+        "placeholder": "Digite o tipo de negociação",
+        "validation": {
+          "required": "Tipo Negociação é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Cadastrar",
+      "cancel": "Cancelar"
+    },
+    "messages": {
+      "negotiation-type-saved": "Tipo Negociação salvo com sucesso"
+    },
+    "errors": {
+      "cannot-save-negotiation-type": "Não foi possível salvar o tipo negociação!"
+    }
+  },
+  "product-register-offcanvas": {
+    "title": "Produto",
+    "list": {
+      "group": {
+        "tower": "Torre:"
+      }
+    },
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "messages": {
+      "product-activated": "Produto ativado com sucesso",
+      "product-inactivated": "Produto inativado com sucesso"
+    },
+    "errors": {
+      "cannot-active-product": "Não foi possível ativar o produto!",
+      "cannot-inactive-product": "Não foi possível inativar o produto!"
+    }
+  },
+  "product-register-form": {
+    "form": {
+      "tower": {
+        "label": "Torre",
+        "placeholder": "Selecione",
+        "validation": {
+          "required": "Torre é obrigatório"
+        }
+      },
+      "name": {
+        "label": "Produto",
+        "placeholder": "Digite o nome",
+        "validation": {
+          "required": "Nome do produto é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Cadastrar",
+      "cancel": "Cancelar"
+    },
+    "messages": {
+      "product-saved": "Produto salvo com sucesso"
+    },
+    "errors": {
+      "cannot-save-product": "Não foi possível salvar o produto!"
+    }
+  },
+  "supplier-register-offcanvas": {
+    "title": "Fornecedor",
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "messages": {
+      "supplier-activated": "Fornecedor ativado com sucesso",
+      "supplier-inactivated": "Fornecedor inativado com sucesso"
+    },
+    "errors": {
+      "cannot-active-supplier": "Não foi possível ativar o fornecedor!",
+      "cannot-inactive-supplier": "Não foi possível inativar o fornecedor!"
+    }
+  },
+  "supplier-register-form": {
+    "form": {
+      "name": {
+        "label": "Fornecedor",
+        "placeholder": "Digite o nome",
+        "validation": {
+          "required": "Nome do fornecedor é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Cadastrar",
+      "cancel": "Cancelar"
+    },
+    "messages": {
+      "supplier-saved": "Fornecedor salva com sucesso"
+    },
+    "errors": {
+      "cannot-save-supplier": "Não foi possível salvar o fornecedor!"
+    }
+  },
+  "workscale-register-offcanvas": {
+    "title": "Escala",
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "messages": {
+      "workscale-activated": "Escala ativada com sucesso",
+      "workscale-inactivated": "Escala inativada com sucesso"
+    },
+    "errors": {
+      "cannot-active-workscale": "Não foi possível ativar a escala!",
+      "cannot-inactive-workscale": "Não foi possível inativar a escala!"
+    }
+  },
+  "workscale-register-form": {
+    "form": {
+      "name": {
+        "label": "Escala",
+        "placeholder": "Digite a escala",
+        "validation": {
+          "required": "Escala é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Cadastrar",
+      "cancel": "Cancelar"
+    },
+    "messages": {
+      "workscale-saved": "Fornecedor salva com sucesso"
+    },
+    "errors": {
+      "cannot-save-workscale": "Não foi possível salvar a escala!"
+    }
+  },
+  "workload-register-offcanvas": {
+    "title": "Carga Horária",
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "messages": {
+      "workload-activated": "Carga Horária ativada com sucesso",
+      "workload-inactivated": "Carga Horária inativada com sucesso"
+    },
+    "errors": {
+      "cannot-active-workload": "Não foi possível ativar a carga horária!",
+      "cannot-inactive-workload": "Não foi possível inativar a carga horária!"
+    }
+  },
+  "workload-register-form": {
+    "form": {
+      "name": {
+        "label": "Carga Horária",
+        "placeholder": "Digite a carga horária",
+        "validation": {
+          "required": "Carga Horária é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Cadastrar",
+      "cancel": "Cancelar"
+    },
+    "messages": {
+      "workload-saved": "Carga Horária salva com sucesso"
+    },
+    "errors": {
+      "cannot-save-workload": "Não foi possível salvar a carga horária!"
+    }
+  },
+  "dealing-reason-register-offcanvas": {
+    "title": "Motivo",
+    "list": {
+      "group": {
+        "tower": "Torre:"
+      }
+    },
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "messages": {
+      "dealing-reason-activated": "Motivo ativado com sucesso",
+      "dealing-reason-inactivated": "Motivo inativado com sucesso"
+    },
+    "errors": {
+      "cannot-active-dealing-reason": "Não foi possível ativar o motivo!",
+      "cannot-inactive-dealing-reason": "Não foi possível inativar o motivo!"
+    }
+  },
+  "dealing-reason-register-form": {
+    "form": {
+      "tower": {
+        "label": "Torre",
+        "placeholder": "Selecione",
+        "validation": {
+          "required": "Torre é obrigatório"
+        }
+      },
+      "name": {
+        "label": "Motivo",
+        "placeholder": "Digite o nome",
+        "validation": {
+          "required": "Motivo é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Cadastrar",
+      "cancel": "Cancelar"
+    },
+    "messages": {
+      "dealing-reason-saved": "Motivo salvo com sucesso"
+    },
+    "errors": {
+      "cannot-save-dealing-reason": "Não foi possível salvar o motivo!"
+    }
+  },
+  "dealing-subreason-register-offcanvas": {
+    "title": "Submotivo",
+    "list": {
+      "group": {
+        "tower": "Torre:",
+        "reason": "Motivo:"
+      }
+    },
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "messages": {
+      "dealing-subreason-activated": "Submotivo ativado com sucesso",
+      "dealing-subreason-inactivated": "Submotivo inativado com sucesso"
+    },
+    "errors": {
+      "cannot-active-dealing-subreason": "Não foi possível ativar o submotivo!",
+      "cannot-inactive-dealing-subreason": "Não foi possível inativar o submotivo!"
+    }
+  },
+  "dealing-subreason-register-form": {
+    "form": {
+      "tower": {
+        "label": "Torre",
+        "placeholder": "Selecione",
+        "validation": {
+          "required": "Torre é obrigatório"
+        }
+      },
+      "reason": {
+        "label": "Motivo",
+        "placeholder": "Selecione",
+        "validation": {
+          "required": "Motivo é obrigatório"
+        }
+      },
+      "name": {
+        "label": "Submotivo",
+        "placeholder": "Digite o nome",
+        "validation": {
+          "required": "Submotivo é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Cadastrar",
+      "cancel": "Cancelar"
+    },
+    "messages": {
+      "dealing-subreason-saved": "Submotivo salvo com sucesso"
+    },
+    "errors": {
+      "cannot-save-dealing-subreason": "Não foi possível salvar o submotivo!"
+    }
+  },
+  "dealing-subreason2-register-offcanvas": {
+    "title": "Submotivo 2",
+    "list": {
+      "group": {
+        "tower": "Torre:",
+        "reason": "Motivo:",
+        "subreason": "Submotivo:"
+      }
+    },
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "messages": {
+      "dealing-subreason2-activated": "Submotivo 2 ativado com sucesso",
+      "dealing-subreason2-inactivated": "Submotivo 2 inativado com sucesso"
+    },
+    "errors": {
+      "cannot-active-dealing-subreason2": "Não foi possível ativar o submotivo 2!",
+      "cannot-inactive-dealing-subreason2": "Não foi possível inativar o submotivo 2!"
+    }
+  },
+  "dealing-subreason2-register-form": {
+    "form": {
+      "tower": {
+        "label": "Torre",
+        "placeholder": "Selecione",
+        "validation": {
+          "required": "Torre é obrigatório"
+        }
+      },
+      "reason": {
+        "label": "Motivo",
+        "placeholder": "Selecione",
+        "validation": {
+          "required": "Motivo é obrigatório"
+        }
+      },
+      "subreason": {
+        "label": "Submotivo",
+        "placeholder": "Selecione",
+        "validation": {
+          "required": "Submotivo é obrigatório"
+        }
+      },
+      "name": {
+        "label": "Submotivo 2",
+        "placeholder": "Digite o nome",
+        "validation": {
+          "required": "Submotivo 2 é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Cadastrar",
+      "cancel": "Cancelar"
+    },
+    "messages": {
+      "dealing-subreason2-saved": "Submotivo 2 salvo com sucesso"
+    },
+    "errors": {
+      "cannot-save-dealing-subreason2": "Não foi possível salvar o submotivo2!"
+    }
+  },
+  "protocol-action-register-offcanvas": {
+    "title": "Ação",
+    "actions": {
+      "new-register": "Novo Cadastro"
+    },
+    "messages": {
+      "protocol-action-activated": "Ação ativada com sucesso",
+      "protocol-action-inactivated": "Ação inativada com sucesso"
+    },
+    "errors": {
+      "cannot-active-protocol-action": "Não foi possível ativar a ação!",
+      "cannot-inactive-protocol-action": "Não foi possível inativar a ação!"
+    }
+  },
+  "protocol-action-register-form": {
+    "form": {
+      "name": {
+        "label": "Ação",
+        "placeholder": "Digite o nome",
+        "validation": {
+          "required": "Nome da ação é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Cadastrar",
+      "cancel": "Cancelar"
+    },
+    "messages": {
+      "protocol-action-saved": "Ação salva com sucesso"
+    },
+    "errors": {
+      "cannot-save-protocol-action": "Não foi possível salvar a ação!"
+    }
+  },
+  "flow-register-offcanvas": {
+    "title": "Criar Novo Fluxo",
+    "info": "O Preenchimento de todos os filtros é obrigatório.",
+    "form": {
+      "tower": {
+        "label": "Torre",
+        "validation": {
+          "required": "Torre é obrigatório"
+        }
+      },
+      "legacy": {
+        "label": "Legado",
+        "validation": {
+          "required": "Legado é obrigatório"
+        }
+      },
+      "product": {
+        "label": "Produto",
+        "validation": {
+          "required": "Produto é obrigatório"
+        }
+      },
+      "segment": {
+        "label": "Segmento",
+        "validation": {
+          "required": "Segmento é obrigatório"
+        }
+      },
+      "negotiationType": {
+        "label": "Tipo Negociação",
+        "validation": {
+          "required": "Tipo Negociação é obrigatório"
+        }
+      }
+    },
+    "logs-list": {
+      "createdBy": "Anexado por:"
+    },
+    "actions": {
+      "upload": "Upload do Arquivo",
+      "download": "Download"
+    },
+    "messages": {
+      "flow-template-downloaded": "Fluxo baixado com sucesso",
+      "flow-imported": "Fluxo importado com sucesso"
+    },
+    "errors": {
+      "cannot-download-flow": "Não foi possível baixar o fluxo!",
+      "cannot-download-template": "Não foi possível baixar o modelo!",
+      "cannot-import-flow": "Não foi possível importar o fluxo!",
+      "fileInvalid": "Fluxo possui Ilha ou Subilha não encontrada"
+    },
+    "filters": {
+      "tower": {
+        "placeholder": "Torre"
+      },
+      "negotiationType": {
+        "placeholder": "Tipo de negociação"
+      },
+      "segment": {
+        "placeholder": "Segmento"
+      },
+      "product": {
+        "placeholder": "Produto"
+      }
+    }
+  },
+  "logs-report-download-modal": {
+    "title": "Baixar Relatório",
+    "info": "Selecione as opções para fazer o download do Relatório.",
+    "form": {
+      "startDate": {
+        "label": "Data de início",
+        "validation": {
+          "required": "Data de início é obrigatório"
+        }
+      },
+      "endDate": {
+        "label": "Data Fim",
+        "validation": {
+          "required": "Data Fim é obrigatório"
+        }
+      },
+      "actions": {
+        "label": "Item",
+        "placeholder": "Tipo de relatório",
+        "validation": {
+          "required": "Item é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "save": "Clique aqui para Baixar o Relatório"
+    },
+    "messages": {
+      "statusUpdated": "Status atualizado com sucesso",
+      "logs-report-exported": "Relatório exportado com sucesso"
+    },
+    "warnings": {
+      "usersWithDifferentStatus": "Foram selecionados usuários com status diferentes. Ao continuar a alteração refletirá para todos os usuários selecionados."
+    },
+    "errors": {
+      "cannotUpdateStatus": "Não foi possível atualizar o status!",
+      "logReportDownloadFail": "Não foi possível baixar o relatório!"
+    }
+  },
+  "protocol-dealings": {
+    "title": "Tratativas de Protocolo",
+    "labels": {
+      "timer": "Timer",
+      "analyst-name": "Nome do Analista",
+      "activity-name": "Nome da Atividade",
+      "protocols-met": "Protocolos atendidos",
+      "protocols-running": "Em andamento",
+      "protocol-status": "Situação",
+      "protocol-startedat": "Protocolo iniciado em:"
+    },
+    "form": {
+      "id": {
+        "label": "N° do Protocolo"
+      },
+      "number": {
+        "label": "N° do Pedido"
+      },
+      "customerName": {
+        "label": "Razão Social"
+      },
+      "document": {
+        "label": "CNPJ"
+      },
+      "segment": {
+        "label": "Segmento Venda"
+      },
+      "stepLegacy": {
+        "label": "Etapa Legado"
+      },
+      "createdAt": {
+        "label": "Data de Criação"
+      },
+      "action": {
+        "label": "Ação"
+      },
+      "reason": {
+        "label": "Motivo da Ação"
+      },
+      "subreason": {
+        "label": "Submotivo da Ação"
+      },
+      "subreason2": {
+        "label": "Submotivo 2 da Ação"
+      },
+      "observation": {
+        "label": "Observação"
+      }
+    },
+    "actions": {
+      "start-work": "Iniciar",
+      "finish-work": "Encerrar",
+      "verify": "Verificar",
+      "pause": "Pausar",
+      "continue": "Continuar",
+      "conclude-protocol": "Concluir Tratativa"
+    },
+    "dialogs": {
+      "paused-protocols-warning": {
+        "title": "Teste",
+        "message": "Você tem protocolos pausados, deseja tratá-los agora?"
+      }
+    },
+    "messages": {
+      "protocol-played": "Tratativa retomada com sucesso",
+      "treatment-finished": "Tratativa concluída com sucesso"
+    },
+    "errors": {
+      "cannot-play-protocol": "Não foi possível retomar a tratativa!",
+      "cannot-finish-treatment": "Não foi possível concluir a tratativa!"
+    }
+  },
+  "finish-work-modal": {
+    "title": "Deseja encerrar a Jornada de Trabalho?",
+    "info": "O seu Protocolo deverá ser concluído ou pausado agora. Você não receberá mais protocolos hoje.",
+    "form": {
+      "reason": {
+        "label": "Selecione um Motivo",
+        "validation": {
+          "required": "Motivo é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "finish": "Encerrar Jornada"
+    }
+  },
+  "pause-protocol-modal": {
+    "title": "Motivo da Pausa",
+    "form": {
+      "reason": {
+        "label": "Selecione um Motivo",
+        "validation": {
+          "required": "Motivo é obrigatório"
+        }
+      }
+    },
+    "actions": {
+      "pause": "Pausar Tratativa"
+    },
+    "messages": {
+      "protocol-paused": "Tratativa pausada com sucesso"
+    },
+    "errors": {
+      "cannot-pause-protocol": "Não foi possível pausar a tratativa!"
+    }
+  },
+  "dealing-protocols-modal": {
+    "title": "Protocolos em Tratativa",
+    "table": {
+      "headers": {
+        "id": "N° Protocolo",
+        "number": "N° Legado",
+        "customerName": "Razão Social",
+        "document": "CNPJ",
+        "time": "Tempo",
+        "status": "Status",
+        "actions": "Ações"
+      }
+    },
+    "actions": {
+      "continue": "Continuar Tratativa"
+    },
+    "messages": {
+      "protocol-played": "Tratativa retomada com sucesso"
+    },
+    "errors": {
+      "cannot-play-protocol": "Não foi possível retomar a tratativa!"
+    }
+  },
+  "define-columns-modal": {
+    "title": "Definir Colunas",
+    "actions": {
+      "save": "Concluir"
+    }
+  },
+  "time-interval-box": {
+    "labels": {
+      "to": "às"
+    }
+  }
+}

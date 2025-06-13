@@ -1,0 +1,6 @@
+<router-outlet></router-outlet>
+
+<app-loading-indicator
+  [visible]="globalLoadingController.changes | async"
+  size="large"
+></app-loading-indicator>
